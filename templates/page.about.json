@@ -1,0 +1,46 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true
+    },
+    "about_hero": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"background: linear-gradient(135deg, #003B56 0%, #005A7A 100%); color: white; padding: 4rem 2rem; text-align: center;\">\n  <div style=\"max-width: 800px; margin: 0 auto;\">\n    <h1 style=\"font-size: 2.5rem; margin-bottom: 1rem; color: white;\">About 3 Delta Dental</h1>\n    <p style=\"font-size: 1.25rem; opacity: 0.95;\">Gold Coast-based company dedicated to providing innovative dental solutions</p>\n  </div>\n</div>"
+      }
+    },
+    "about_story": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"max-width: 1000px; margin: 0 auto; padding: 4rem 2rem;\">\n  <div style=\"display: grid; grid-template-columns: 1fr; gap: 3rem;\">\n    <div>\n      <h2 style=\"color: #003B56; font-size: 2rem; margin-bottom: 1rem;\">Our Story</h2>\n      <p style=\"font-size: 1.125rem; line-height: 1.8; color: #0D0D0D; margin-bottom: 1rem;\">\n        Founded in 2017 by Angelo Di Franco, 3 Delta Dental was relaunched in 2023 with partner Emilio Ragazzo. Our leadership team brings over 37 years of combined technical expertise in the dental industry.\n      </p>\n      <p style=\"font-size: 1.125rem; line-height: 1.8; color: #0D0D0D; margin-bottom: 1rem;\">\n        We serve as official distributors for prominent European dental brands including Micro Medica, Micropolymer, Vertsystem, Megadental Italia, Unidesa, Techim Group, Bausch, Mesa, and SDI.\n      </p>\n      <p style=\"font-size: 1.125rem; line-height: 1.8; color: #0D0D0D;\">\n        Our inventory encompasses nano acrylics, fiber quartz, zirconia, metal alloys, and monolithic composite materials—all TGA approved.\n      </p>\n    </div>\n  </div>\n</div>"
+      }
+    },
+    "about_features": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"background: #F7F7F7; padding: 4rem 2rem;\">\n  <div style=\"max-width: 1200px; margin: 0 auto;\">\n    <h2 style=\"color: #003B56; font-size: 2rem; margin-bottom: 3rem; text-align: center;\">What We Offer</h2>\n    <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;\">\n      <div style=\"background: white; padding: 2rem; border-radius: 8px; text-align: center;\">\n        <div style=\"font-size: 2.5rem; margin-bottom: 1rem;\">🦷</div>\n        <h3 style=\"color: #003B56; margin-bottom: 1rem;\">Premium Materials</h3>\n        <p style=\"line-height: 1.6;\">Nano acrylics, fiber quartz, zirconia, metal alloys, and monolithic composites - all TGA approved</p>\n      </div>\n      <div style=\"background: white; padding: 2rem; border-radius: 8px; text-align: center;\">\n        <div style=\"font-size: 2.5rem; margin-bottom: 1rem;\">📚</div>\n        <h3 style=\"color: #003B56; margin-bottom: 1rem;\">Professional Training</h3>\n        <p style=\"line-height: 1.6;\">Training in carbon fiber techniques, monolithic composite methodology, All-on-4/6 procedures, and zirconia ceramic processing</p>\n      </div>\n      <div style=\"background: white; padding: 2rem; border-radius: 8px; text-align: center;\">\n        <div style=\"font-size: 2.5rem; margin-bottom: 1rem;\">🔬</div>\n        <h3 style=\"color: #003B56; margin-bottom: 1rem;\">Advanced Technology</h3>\n        <p style=\"line-height: 1.6;\">Cutting-edge cold-curing acrylic resin formulations using universal casting or injection techniques with nano-microtechnology</p>\n      </div>\n      <div style=\"background: white; padding: 2rem; border-radius: 8px; text-align: center;\">\n        <div style=\"font-size: 2.5rem; margin-bottom: 1rem;\">🚚</div>\n        <h3 style=\"color: #003B56; margin-bottom: 1rem;\">Rapid Delivery</h3>\n        <p style=\"line-height: 1.6;\">Fast shipping across Australia and New Zealand with dedicated customer service</p>\n      </div>\n      <div style=\"background: white; padding: 2rem; border-radius: 8px; text-align: center;\">\n        <div style=\"font-size: 2.5rem; margin-bottom: 1rem;\">🏆</div>\n        <h3 style=\"color: #003B56; margin-bottom: 1rem;\">European Brands</h3>\n        <p style=\"line-height: 1.6;\">Official distributor for Micro Medica, Micropolymer, Techim Group, Bausch, Mesa, SDI and more</p>\n      </div>\n      <div style=\"background: white; padding: 2rem; border-radius: 8px; text-align: center;\">\n        <div style=\"font-size: 2.5rem; margin-bottom: 1rem;\">⏰</div>\n        <h3 style=\"color: #003B56; margin-bottom: 1rem;\">24/7 Support</h3>\n        <p style=\"line-height: 1.6;\">Round-the-clock technical support available for our customers</p>\n      </div>\n    </div>\n  </div>\n</div>"
+      }
+    },
+    "about_expertise": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"max-width: 1000px; margin: 4rem auto; padding: 0 2rem;\">\n  <div style=\"background: linear-gradient(135deg, #03B239 0%, #029A2F 100%); padding: 3rem; border-radius: 12px; color: white; text-align: center;\">\n    <h2 style=\"font-size: 2rem; margin-bottom: 1rem; color: white;\">37+ Years of Combined Expertise</h2>\n    <p style=\"font-size: 1.125rem; margin-bottom: 2rem; opacity: 0.95;\">Our team's deep industry knowledge ensures you get the right products and support</p>\n    <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem;\">\n      <div>\n        <div style=\"font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;\">Founded 2017</div>\n        <div>Years of Excellence</div>\n      </div>\n      <div>\n        <div style=\"font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;\">100+</div>\n        <div>Product Lines</div>\n      </div>\n      <div>\n        <div style=\"font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;\">24/7</div>\n        <div>Technical Support</div>\n      </div>\n    </div>\n  </div>\n</div>"
+      }
+    },
+    "about_contact": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"background: #F7F7F7; padding: 4rem 2rem; text-align: center;\">\n  <div style=\"max-width: 800px; margin: 0 auto;\">\n    <h2 style=\"color: #003B56; font-size: 2rem; margin-bottom: 1rem;\">Get in Touch</h2>\n    <p style=\"font-size: 1.125rem; margin-bottom: 2rem;\">Ready to experience the 3 Delta Dental difference?</p>\n    <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;\">\n      <div>\n        <strong style=\"color: #003B56;\">Location:</strong><br>\n        Gold Coast, Australia\n      </div>\n      <div>\n        <strong style=\"color: #003B56;\">ABN:</strong><br>\n        67 354 783 242\n      </div>\n    </div>\n    <a href=\"/pages/contact\" style=\"display: inline-block; background: #03B239; color: white; padding: 1rem 2.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1.125rem;\">Contact Us</a>\n  </div>\n</div>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "about_hero",
+    "about_story",
+    "about_features",
+    "about_expertise",
+    "about_contact"
+  ]
+}

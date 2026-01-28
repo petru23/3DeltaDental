@@ -1,0 +1,190 @@
+{% comment %}
+  Category Grid Section - Show product categories as clickable tiles
+  For 3 Delta Dental - Simple, intuitive category navigation
+{% endcomment %}
+
+<style>
+  .category-grid {
+    padding: 3rem 2rem;
+  }
+
+  .category-grid__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .category-grid__header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .category-grid__title {
+    font-size: 2rem;
+    color: var(--color-foreground-heading);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .category-grid__subtitle {
+    font-size: 1rem;
+    color: var(--color-foreground);
+  }
+
+  .category-grid__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .category-card {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+  }
+
+  .category-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .category-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .category-card__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground-heading);
+    margin-bottom: 0.5rem;
+  }
+
+  .category-card__count {
+    font-size: 0.875rem;
+    color: var(--color-foreground);
+  }
+
+  @media (max-width: 768px) {
+    .category-grid {
+      padding: 2rem 1rem;
+    }
+
+    .category-grid__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .category-card {
+      padding: 1.5rem 1rem;
+    }
+
+    .category-card__icon {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<div class="category-grid color-{{ section.settings.color_scheme }}">
+  <div class="category-grid__container">
+    {% if section.settings.title != blank or section.settings.subtitle != blank %}
+      <div class="category-grid__header">
+        {% if section.settings.title != blank %}
+          <h2 class="category-grid__title">{{ section.settings.title }}</h2>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+          <p class="category-grid__subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="category-grid__grid">
+      {% for block in section.blocks %}
+        {% assign collection = collections[block.settings.collection] %}
+        <a href="{{ collection.url }}" class="category-card" {{ block.shopify_attributes }}>
+          {% if block.settings.icon != blank %}
+            <div class="category-card__icon">{{ block.settings.icon }}</div>
+          {% endif %}
+          <h3 class="category-card__title">{{ block.settings.title | default: collection.title }}</h3>
+          <p class="category-card__count">{{ collection.products_count }} products</p>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Category Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Browse our most popular product categories"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom Title",
+          "info": "Leave blank to use collection title"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (Emoji)",
+          "info": "Add an emoji to represent this category"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Grid",
+      "blocks": [
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        },
+        {
+          "type": "category"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
