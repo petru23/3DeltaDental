@@ -1,0 +1,753 @@
+{% comment %}
+  FAQ Page Section - Fully editable accordion-style FAQ for 3 Delta Dental
+  Categories: Ordering, Shipping, Returns, TGA Compliance, Account/Trade Terms
+  Uses CSS-only accordion (checkbox hack) for expand/collapse - no JavaScript required
+{% endcomment %}
+
+{%- liquid
+  assign hero_bg_start = section.settings.hero_bg_start
+  assign hero_bg_end = section.settings.hero_bg_end
+  assign hero_text_color = section.settings.hero_text_color
+  assign accent_color = section.settings.accent_color
+  assign title_color = section.settings.title_color
+  assign body_bg = section.settings.body_background_color
+-%}
+
+{%- style -%}
+  .faq-page {
+    background-color: {{ body_bg }};
+  }
+
+  .faq-hero {
+    background: linear-gradient(135deg, {{ hero_bg_start }} 0%, {{ hero_bg_end }} 100%);
+    color: {{ hero_text_color }};
+    padding: {{ section.settings.hero_padding_top }}px 2rem {{ section.settings.hero_padding_bottom }}px;
+    text-align: center;
+  }
+
+  .faq-hero__container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-hero__eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid {{ accent_color }};
+    color: {{ accent_color }};
+    border-radius: 50px;
+    padding: 0.3rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .faq-hero__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.02em;
+    color: {{ hero_text_color }};
+  }
+
+  .faq-hero__subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  .faq-body {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: {{ section.settings.body_padding_top }}px 2rem {{ section.settings.body_padding_bottom }}px;
+  }
+
+  .faq-category {
+    margin-bottom: 3rem;
+  }
+
+  .faq-category__title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: {{ title_color }};
+    margin: 0 0 1.25rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid {{ accent_color }};
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .faq-category__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: {{ accent_color }};
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .faq-category__icon svg {
+    color: #FFFFFF;
+  }
+
+  /* CSS-only accordion using hidden checkbox technique */
+  .faq-item {
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .faq-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 59, 86, 0.08);
+  }
+
+  .faq-item__toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+  }
+
+  .faq-item__label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.125rem 1.25rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: {{ title_color }};
+    line-height: 1.4;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .faq-item__label:hover {
+    color: {{ accent_color }};
+  }
+
+  .faq-item__chevron {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: {{ accent_color }};
+    transition: transform 0.25s ease;
+  }
+
+  .faq-item__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .faq-item__answer-inner {
+    padding: 0 1.25rem 1.25rem;
+    font-size: 0.975rem;
+    line-height: 1.7;
+    color: #374151;
+    border-top: 1px solid #F3F4F6;
+    padding-top: 1rem;
+  }
+
+  /* When checkbox is checked, expand the answer */
+  .faq-item__toggle:checked ~ .faq-item__label .faq-item__chevron {
+    transform: rotate(180deg);
+  }
+
+  .faq-item__toggle:checked ~ .faq-item__answer {
+    max-height: 600px;
+  }
+
+  .faq-item__toggle:checked ~ .faq-item__label {
+    color: {{ accent_color }};
+  }
+
+  /* CTA section at the bottom */
+  .faq-cta {
+    background: linear-gradient(135deg, {{ hero_bg_start }} 0%, {{ hero_bg_end }} 100%);
+    color: {{ hero_text_color }};
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .faq-cta__container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .faq-cta__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    color: {{ hero_text_color }};
+  }
+
+  .faq-cta__text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 0 1.75rem 0;
+    opacity: 0.9;
+  }
+
+  .faq-cta__buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .faq-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 2rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .faq-cta__btn--primary {
+    background-color: {{ section.settings.cta_primary_color }};
+    color: {{ section.settings.cta_primary_text }};
+  }
+
+  .faq-cta__btn--secondary {
+    background-color: transparent;
+    color: {{ hero_text_color }};
+    border: 2px solid {{ hero_text_color }};
+  }
+
+  .faq-cta__btn:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    .faq-hero {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .faq-body {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .faq-cta {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .faq-hero__title {
+      font-size: 2rem;
+    }
+
+    .faq-category__title {
+      font-size: 1.2rem;
+    }
+
+    .faq-item__label {
+      font-size: 0.95rem;
+      padding: 1rem;
+    }
+
+    .faq-item__answer-inner {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="faq-page">
+  {%- comment %} Hero Section {%- endcomment %}
+  <div class="faq-hero">
+    <div class="faq-hero__container">
+      {%- if section.settings.hero_eyebrow != blank -%}
+        <p class="faq-hero__eyebrow">{{ section.settings.hero_eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.hero_title != blank -%}
+        <h1 class="faq-hero__title">{{ section.settings.hero_title }}</h1>
+      {%- endif -%}
+      {%- if section.settings.hero_subtitle != blank -%}
+        <p class="faq-hero__subtitle">{{ section.settings.hero_subtitle }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- comment %} FAQ Body - iterate over blocks, group by category {%- endcomment %}
+  <div class="faq-body">
+
+    {%- comment %} Collect unique category labels from blocks {%- endcomment %}
+    {%- assign category_list = "" -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == "faq_item" -%}
+        {%- assign cat = block.settings.category -%}
+        {%- unless category_list contains cat -%}
+          {%- if category_list == "" -%}
+            {%- assign category_list = cat -%}
+          {%- else -%}
+            {%- assign category_list = category_list | append: "|||" | append: cat -%}
+          {%- endif -%}
+        {%- endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- assign categories = category_list | split: "|||" -%}
+
+    {%- for category in categories -%}
+      <div class="faq-category">
+        <h2 class="faq-category__title">
+          {%- comment %} Category icon based on category name {%- endcomment %}
+          {%- assign cat_lower = category | downcase -%}
+          <span class="faq-category__icon" aria-hidden="true">
+            {%- if cat_lower contains "order" -%}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+              </svg>
+            {%- elsif cat_lower contains "ship" -%}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            {%- elsif cat_lower contains "return" -%}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/>
+              </svg>
+            {%- elsif cat_lower contains "tga" or cat_lower contains "compli" -%}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            {%- elsif cat_lower contains "account" or cat_lower contains "trade" -%}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+              </svg>
+            {%- else -%}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+            {%- endif -%}
+          </span>
+          {{ category }}
+        </h2>
+
+        {%- assign item_index = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == "faq_item" and block.settings.category == category -%}
+            {%- assign item_index = item_index | plus: 1 -%}
+            {%- assign toggle_id = "faq-toggle-" | append: forloop.index -%}
+
+            <div class="faq-item" {{ block.shopify_attributes }}>
+              <input
+                type="checkbox"
+                id="{{ toggle_id }}"
+                class="faq-item__toggle"
+                aria-hidden="true"
+                {%- if block.settings.open_by_default %} checked{%- endif -%}
+              >
+              <label class="faq-item__label" for="{{ toggle_id }}">
+                <span>{{ block.settings.question }}</span>
+                <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </label>
+              <div class="faq-item__answer" role="region">
+                <div class="faq-item__answer-inner">
+                  {{ block.settings.answer }}
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+
+    {%- if section.blocks.size == 0 -%}
+      <p style="text-align:center; color:#9CA3AF; padding: 3rem 0;">
+        Add FAQ items using the theme editor to display questions here.
+      </p>
+    {%- endif -%}
+  </div>
+
+  {%- comment %} CTA Section {%- endcomment %}
+  {%- if section.settings.cta_title != blank -%}
+    <div class="faq-cta">
+      <div class="faq-cta__container">
+        <h2 class="faq-cta__title">{{ section.settings.cta_title }}</h2>
+        {%- if section.settings.cta_text != blank -%}
+          <p class="faq-cta__text">{{ section.settings.cta_text }}</p>
+        {%- endif -%}
+        <div class="faq-cta__buttons">
+          {%- if section.settings.cta_primary_label != blank and section.settings.cta_primary_link != blank -%}
+            <a href="{{ section.settings.cta_primary_link }}" class="faq-cta__btn faq-cta__btn--primary">
+              {{ section.settings.cta_primary_label }}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.cta_secondary_label != blank and section.settings.cta_secondary_link != blank -%}
+            <a href="{{ section.settings.cta_secondary_link }}" class="faq-cta__btn faq-cta__btn--secondary">
+              {{ section.settings.cta_secondary_label }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Page",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_eyebrow",
+      "label": "Eyebrow Badge",
+      "default": "Help Centre"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Find answers to common questions about ordering, shipping, returns, TGA compliance, and trade accounts."
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_start",
+      "label": "Hero Background Start",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_end",
+      "label": "Hero Background End",
+      "default": "#005A7A"
+    },
+    {
+      "type": "color",
+      "id": "hero_text_color",
+      "label": "Hero Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_top",
+      "label": "Hero Padding Top (px)",
+      "min": 40,
+      "max": 120,
+      "step": 8,
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_bottom",
+      "label": "Hero Padding Bottom (px)",
+      "min": 40,
+      "max": 120,
+      "step": 8,
+      "default": 72
+    },
+    {
+      "type": "header",
+      "content": "FAQ Body"
+    },
+    {
+      "type": "color",
+      "id": "body_background_color",
+      "label": "Body Background Color",
+      "default": "#F9FAFB"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Category Title & Question Color",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent / Chevron Color",
+      "default": "#03B239"
+    },
+    {
+      "type": "range",
+      "id": "body_padding_top",
+      "label": "Body Padding Top (px)",
+      "min": 32,
+      "max": 120,
+      "step": 8,
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "body_padding_bottom",
+      "label": "Body Padding Bottom (px)",
+      "min": 32,
+      "max": 120,
+      "step": 8,
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Title",
+      "default": "Still Have Questions?"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Our expert team is available 24/7 to help with any questions about products, orders, or technical support."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_label",
+      "label": "Primary Button Label",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "color",
+      "id": "cta_primary_color",
+      "label": "Primary Button Background",
+      "default": "#03B239"
+    },
+    {
+      "type": "color",
+      "id": "cta_primary_text",
+      "label": "Primary Button Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_label",
+      "label": "Secondary Button Label",
+      "default": "Apply for Trade Account"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_link",
+      "label": "Secondary Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Category",
+          "options": [
+            { "value": "Ordering", "label": "Ordering" },
+            { "value": "Shipping", "label": "Shipping" },
+            { "value": "Returns", "label": "Returns" },
+            { "value": "TGA Compliance", "label": "TGA Compliance" },
+            { "value": "Trade Account & Terms", "label": "Trade Account & Terms" }
+          ],
+          "default": "Ordering"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How do I place an order?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "You can place an order directly through our website by adding items to your cart and proceeding to checkout. For large or custom orders, please contact our team via phone or email."
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "Open by default",
+          "default": false,
+          "info": "Check to have this FAQ item expanded when the page loads"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Page",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Ordering",
+            "question": "How do I place an order?",
+            "answer": "You can place an order directly through our website by adding items to your cart and proceeding to checkout. For large or custom orders, or if you have a trade account with credit terms, please contact our team via phone or email.",
+            "open_by_default": true
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Ordering",
+            "question": "Can I order by SKU or product code?",
+            "answer": "Yes. You can search directly by SKU or product code using the search bar at the top of every page. All product listings display their SKU prominently, making it easy to reorder from your existing supply lists.",
+            "open_by_default": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Ordering",
+            "question": "What payment methods do you accept?",
+            "answer": "We accept all major credit cards (Visa, Mastercard, American Express), bank transfer (EFT), and PayPal. Trade account holders with approved credit terms can also pay via invoice. All prices are in Australian Dollars (AUD) and are exclusive of GST.",
+            "open_by_default": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Ordering",
+            "question": "Is there a minimum order value?",
+            "answer": "There is no minimum order for standard online orders. Trade account holders may have different minimum order requirements as outlined in their trade agreement. Please contact us if you have any questions about minimum quantities for specific products.",
+            "open_by_default": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Shipping",
+            "question": "How long does shipping take?",
+            "answer": "Orders placed before 2pm AEST on business days are dispatched the same day. Standard delivery within Australia is typically 2-5 business days depending on your location. Express overnight shipping is available for metro areas. We ship from our Gold Coast warehouse.",
+            "open_by_default": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Shipping",
+            "question": "Do you ship internationally?",
+            "answer": "Yes, we ship to New Zealand and select international destinations. International shipping rates and transit times vary by destination. Please contact us before placing an international order to confirm availability and get an accurate shipping quote.",
+            "open_by_default": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Shipping",
+            "question": "How much does shipping cost?",
+            "answer": "Shipping costs are calculated at checkout based on your location and order weight. We offer free shipping on orders over a certain threshold for trade account holders — please contact us for details. Standard flat-rate and express options are available at checkout.",
+            "open_by_default": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Returns",
+            "question": "What is your returns policy?",
+            "answer": "We accept returns on unopened, undamaged products within 30 days of purchase with proof of purchase. Items must be in their original packaging. Due to the nature of dental consumables, opened products cannot be returned unless they are faulty or incorrectly supplied.",
+            "open_by_default": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Returns",
+            "question": "What if I receive a faulty or incorrect product?",
+            "answer": "If you receive a faulty, damaged, or incorrect product, please contact us within 7 days of receipt. We will arrange a replacement or full refund at no cost to you. Please do not return items without contacting us first, as this may delay resolution.",
+            "open_by_default": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Returns",
+            "question": "How do I initiate a return?",
+            "answer": "To initiate a return, contact our team by phone or email with your order number and reason for return. We will provide you with a Return Merchandise Authorisation (RMA) number and return instructions. Unauthorised returns may not be accepted.",
+            "open_by_default": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "TGA Compliance",
+            "question": "Are your products TGA approved?",
+            "answer": "Yes. All products supplied by 3 Delta Dental are TGA (Therapeutic Goods Administration) registered and comply with Australian regulatory requirements for dental therapeutic goods. We maintain current registration documentation for all product lines.",
+            "open_by_default": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "TGA Compliance",
+            "question": "What is the TGA and why does it matter?",
+            "answer": "The Therapeutic Goods Administration (TGA) is Australia's regulatory body for therapeutic goods, including dental materials. TGA registration ensures that products have been assessed for safety, quality, and performance. Purchasing TGA-registered dental materials protects your laboratory, your patients, and your professional licence.",
+            "open_by_default": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "TGA Compliance",
+            "question": "Can you provide TGA registration certificates?",
+            "answer": "Yes. TGA registration documentation is available on request for all our product lines. Please contact our team with the specific product(s) you require documentation for and we will provide the relevant certificates or ARTG (Australian Register of Therapeutic Goods) numbers.",
+            "open_by_default": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Trade Account & Terms",
+            "question": "How do I apply for a trade account?",
+            "answer": "You can apply for a trade account by completing our Trade Account Application form on this website. Applications are typically assessed within 2-3 business days. Trade accounts offer benefits including trade pricing, credit terms, priority support, and dedicated account management.",
+            "open_by_default": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Trade Account & Terms",
+            "question": "What are your trade credit terms?",
+            "answer": "Approved trade account holders can access 30-day net credit terms (EOM). Credit limits are assessed based on your business size and purchase history. Please contact us to discuss your specific requirements during the application process.",
+            "open_by_default": false
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "category": "Trade Account & Terms",
+            "question": "Who is eligible for a trade account?",
+            "answer": "Trade accounts are available to registered dental laboratories, dental technicians, dentists, and other verified dental industry professionals with an active ABN. We may request proof of professional registration or business documentation during the application process.",
+            "open_by_default": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

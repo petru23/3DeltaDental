@@ -1,0 +1,1013 @@
+{% comment %}
+  Brands Page Section - Official distributor brand showcase for 3 Delta Dental
+  Displays European dental brand cards with logo, description, and optional collection link
+  Fully editable from the theme editor
+{% endcomment %}
+
+{%- liquid
+  assign hero_bg_start = section.settings.hero_bg_start
+  assign hero_bg_end = section.settings.hero_bg_end
+  assign hero_text_color = section.settings.hero_text_color
+  assign accent_color = section.settings.accent_color
+  assign title_color = section.settings.title_color
+  assign card_bg = section.settings.card_background_color
+  assign card_border = section.settings.card_border_color
+-%}
+
+{%- style -%}
+  .brands-page {
+    background-color: {{ section.settings.body_background_color }};
+  }
+
+  /* Hero */
+  .brands-hero {
+    background: linear-gradient(135deg, {{ hero_bg_start }} 0%, {{ hero_bg_end }} 100%);
+    color: {{ hero_text_color }};
+    padding: {{ section.settings.hero_padding_top }}px 2rem {{ section.settings.hero_padding_bottom }}px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .brands-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .brands-hero__container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .brands-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid {{ accent_color }};
+    color: {{ accent_color }};
+    border-radius: 50px;
+    padding: 0.3rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .brands-hero__badge-dot {
+    width: 6px;
+    height: 6px;
+    background-color: {{ accent_color }};
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .brands-hero__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.02em;
+    color: {{ hero_text_color }};
+  }
+
+  .brands-hero__subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
+    margin: 0 0 2rem 0;
+    opacity: 0.9;
+  }
+
+  .brands-hero__trust {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .brands-hero__trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    opacity: 0.9;
+  }
+
+  .brands-hero__trust-item svg {
+    color: {{ accent_color }};
+    flex-shrink: 0;
+  }
+
+  /* Intro section */
+  .brands-intro {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: {{ section.settings.intro_padding_top }}px 2rem {{ section.settings.intro_padding_bottom }}px;
+    text-align: center;
+  }
+
+  .brands-intro__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: {{ title_color }};
+    margin: 0 0 1rem 0;
+  }
+
+  .brands-intro__text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #4B5563;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* Brand grid */
+  .brands-grid-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem {{ section.settings.grid_padding_bottom }}px;
+  }
+
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+    gap: {{ section.settings.card_gap }}px;
+  }
+
+  /* Brand card */
+  .brand-card {
+    background-color: {{ card_bg }};
+    border: 1px solid {{ card_border }};
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .brand-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 59, 86, 0.12);
+    transform: translateY(-3px);
+  }
+
+  .brand-card__logo-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ section.settings.logo_bg_color }};
+    border-bottom: 1px solid {{ card_border }};
+    padding: 1.75rem 1.5rem;
+    min-height: 120px;
+  }
+
+  .brand-card__logo-img {
+    max-width: 100%;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .brand-card__logo-text {
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: {{ title_color }};
+    text-align: center;
+    letter-spacing: 0.03em;
+    margin: 0;
+  }
+
+  .brand-card__body {
+    padding: 1.25rem 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0.75rem;
+  }
+
+  .brand-card__name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: {{ title_color }};
+    margin: 0;
+  }
+
+  .brand-card__country {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: {{ accent_color }};
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0;
+  }
+
+  .brand-card__description {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #6B7280;
+    margin: 0;
+    flex: 1;
+  }
+
+  .brand-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem 1.25rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .brand-card__badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background-color: {{ accent_color }}1A;
+    color: {{ accent_color }};
+    border: 1px solid {{ accent_color }}40;
+    border-radius: 4px;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .brand-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: {{ title_color }};
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .brand-card__link:hover {
+    color: {{ accent_color }};
+  }
+
+  .brand-card__link svg {
+    transition: transform 0.2s ease;
+  }
+
+  .brand-card__link:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* CTA Section */
+  .brands-cta {
+    background: linear-gradient(135deg, {{ hero_bg_start }} 0%, {{ hero_bg_end }} 100%);
+    color: {{ hero_text_color }};
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .brands-cta__container {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .brands-cta__eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: {{ accent_color }};
+    margin: 0 0 0.75rem 0;
+  }
+
+  .brands-cta__title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    color: {{ hero_text_color }};
+  }
+
+  .brands-cta__text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 0 2rem 0;
+    opacity: 0.9;
+  }
+
+  .brands-cta__buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .brands-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .brands-cta__btn--primary {
+    background-color: {{ section.settings.cta_primary_color }};
+    color: {{ section.settings.cta_primary_text }};
+  }
+
+  .brands-cta__btn--secondary {
+    background-color: transparent;
+    color: {{ hero_text_color }};
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .brands-cta__btn:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 1024px) {
+    .brands-grid {
+      grid-template-columns: repeat({{ section.settings.columns_tablet }}, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .brands-hero {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .brands-intro {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .brands-grid-section {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .brands-cta {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .brands-hero__title {
+      font-size: 2rem;
+    }
+
+    .brands-intro__title {
+      font-size: 1.5rem;
+    }
+
+    .brands-hero__trust {
+      gap: 1rem;
+    }
+
+    .brands-grid {
+      grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .brands-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .brands-cta__title {
+      font-size: 1.5rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="brands-page">
+
+  {%- comment %} Hero {%- endcomment %}
+  <div class="brands-hero">
+    <div class="brands-hero__container">
+      {%- if section.settings.hero_badge != blank -%}
+        <p class="brands-hero__badge">
+          <span class="brands-hero__badge-dot"></span>
+          {{ section.settings.hero_badge }}
+        </p>
+      {%- endif -%}
+      {%- if section.settings.hero_title != blank -%}
+        <h1 class="brands-hero__title">{{ section.settings.hero_title }}</h1>
+      {%- endif -%}
+      {%- if section.settings.hero_subtitle != blank -%}
+        <p class="brands-hero__subtitle">{{ section.settings.hero_subtitle }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.show_trust_items -%}
+        <div class="brands-hero__trust">
+          {%- if section.settings.trust_item_1 != blank -%}
+            <span class="brands-hero__trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+              {{ section.settings.trust_item_1 }}
+            </span>
+          {%- endif -%}
+          {%- if section.settings.trust_item_2 != blank -%}
+            <span class="brands-hero__trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+              {{ section.settings.trust_item_2 }}
+            </span>
+          {%- endif -%}
+          {%- if section.settings.trust_item_3 != blank -%}
+            <span class="brands-hero__trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M20 6L9 17l-5-5"/>
+              </svg>
+              {{ section.settings.trust_item_3 }}
+            </span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- comment %} Intro Text {%- endcomment %}
+  {%- if section.settings.intro_title != blank or section.settings.intro_text != blank -%}
+    <div class="brands-intro">
+      {%- if section.settings.intro_title != blank -%}
+        <h2 class="brands-intro__title">{{ section.settings.intro_title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.intro_text != blank -%}
+        <p class="brands-intro__text">{{ section.settings.intro_text }}</p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- comment %} Brand Cards Grid {%- endcomment %}
+  {%- if section.blocks.size > 0 -%}
+    <div class="brands-grid-section">
+      <div class="brands-grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == "brand_card" -%}
+            <article class="brand-card" {{ block.shopify_attributes }}>
+
+              {%- comment %} Logo area {%- endcomment %}
+              <div class="brand-card__logo-area">
+                {%- if block.settings.logo != blank -%}
+                  <img
+                    src="{{ block.settings.logo | image_url: width: 400 }}"
+                    srcset="{{ block.settings.logo | image_url: width: 200 }} 200w,
+                            {{ block.settings.logo | image_url: width: 400 }} 400w"
+                    sizes="(max-width: 768px) 140px, 200px"
+                    alt="{{ block.settings.brand_name | default: block.settings.logo.alt | default: 'Brand logo' }}"
+                    width="{{ block.settings.logo.width | at_most: 400 }}"
+                    height="{{ block.settings.logo.height | at_most: 120 }}"
+                    loading="lazy"
+                    class="brand-card__logo-img"
+                  >
+                {%- else -%}
+                  <p class="brand-card__logo-text">{{ block.settings.brand_name | default: "Brand" }}</p>
+                {%- endif -%}
+              </div>
+
+              {%- comment %} Card body {%- endcomment %}
+              <div class="brand-card__body">
+                {%- if block.settings.brand_name != blank -%}
+                  <h3 class="brand-card__name">{{ block.settings.brand_name }}</h3>
+                {%- endif -%}
+                {%- if block.settings.country != blank -%}
+                  <p class="brand-card__country">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    {{ block.settings.country }}
+                  </p>
+                {%- endif -%}
+                {%- if block.settings.description != blank -%}
+                  <p class="brand-card__description">{{ block.settings.description }}</p>
+                {%- endif -%}
+              </div>
+
+              {%- comment %} Card footer {%- endcomment %}
+              <div class="brand-card__footer">
+                {%- if block.settings.distributor_badge != blank -%}
+                  <span class="brand-card__badge">{{ block.settings.distributor_badge }}</span>
+                {%- else -%}
+                  <span class="brand-card__badge">{{ section.settings.default_badge }}</span>
+                {%- endif -%}
+
+                {%- if block.settings.collection_link != blank -%}
+                  <a href="{{ block.settings.collection_link }}" class="brand-card__link" aria-label="Shop {{ block.settings.brand_name | default: 'brand' }} products">
+                    {{ section.settings.shop_link_label }}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                      <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                  </a>
+                {%- endif -%}
+              </div>
+
+            </article>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- else -%}
+    <div style="text-align: center; padding: 4rem 2rem; color: #9CA3AF;">
+      <p>Add brand cards using the theme editor to display your brands here.</p>
+    </div>
+  {%- endif -%}
+
+  {%- comment %} CTA Section {%- endcomment %}
+  {%- if section.settings.cta_title != blank -%}
+    <div class="brands-cta">
+      <div class="brands-cta__container">
+        {%- if section.settings.cta_eyebrow != blank -%}
+          <p class="brands-cta__eyebrow">{{ section.settings.cta_eyebrow }}</p>
+        {%- endif -%}
+        <h2 class="brands-cta__title">{{ section.settings.cta_title }}</h2>
+        {%- if section.settings.cta_text != blank -%}
+          <p class="brands-cta__text">{{ section.settings.cta_text }}</p>
+        {%- endif -%}
+        <div class="brands-cta__buttons">
+          {%- if section.settings.cta_primary_label != blank and section.settings.cta_primary_link != blank -%}
+            <a href="{{ section.settings.cta_primary_link }}" class="brands-cta__btn brands-cta__btn--primary">
+              {{ section.settings.cta_primary_label }}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.cta_secondary_label != blank and section.settings.cta_secondary_link != blank -%}
+            <a href="{{ section.settings.cta_secondary_link }}" class="brands-cta__btn brands-cta__btn--secondary">
+              {{ section.settings.cta_secondary_label }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "Brands Page",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_badge",
+      "label": "Hero Badge Text",
+      "default": "Official Distributor"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Our European Brand Partners"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "3 Delta Dental is the official Australian distributor for leading European dental manufacturers. Every brand we carry is TGA registered and backed by our 37+ years of industry expertise."
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_start",
+      "label": "Hero Background Start",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_end",
+      "label": "Hero Background End",
+      "default": "#005A7A"
+    },
+    {
+      "type": "color",
+      "id": "hero_text_color",
+      "label": "Hero Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_top",
+      "label": "Hero Padding Top (px)",
+      "min": 40,
+      "max": 120,
+      "step": 8,
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_bottom",
+      "label": "Hero Padding Bottom (px)",
+      "min": 40,
+      "max": 120,
+      "step": 8,
+      "default": 72
+    },
+    {
+      "type": "header",
+      "content": "Hero Trust Items"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_items",
+      "label": "Show trust items in hero",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trust_item_1",
+      "label": "Trust Item 1",
+      "default": "TGA Registered Products"
+    },
+    {
+      "type": "text",
+      "id": "trust_item_2",
+      "label": "Trust Item 2",
+      "default": "European Manufacturing Standards"
+    },
+    {
+      "type": "text",
+      "id": "trust_item_3",
+      "label": "Trust Item 3",
+      "default": "Official Australian Distributor"
+    },
+    {
+      "type": "header",
+      "content": "Intro Section"
+    },
+    {
+      "type": "text",
+      "id": "intro_title",
+      "label": "Intro Title",
+      "default": "Curated European Excellence"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_text",
+      "label": "Intro Text",
+      "default": "We partner exclusively with European dental manufacturers known for innovation, precision, and material quality. Unlike generalist distributors, we carry only brands we believe in — products our own technical team uses and recommends."
+    },
+    {
+      "type": "range",
+      "id": "intro_padding_top",
+      "label": "Intro Padding Top (px)",
+      "min": 32,
+      "max": 96,
+      "step": 8,
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "intro_padding_bottom",
+      "label": "Intro Padding Bottom (px)",
+      "min": 16,
+      "max": 80,
+      "step": 8,
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Brand Grid Layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns (Desktop)",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "label": "Columns (Tablet)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "label": "Columns (Mobile)",
+      "min": 1,
+      "max": 2,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Gap Between Cards (px)",
+      "min": 12,
+      "max": 48,
+      "step": 4,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "grid_padding_bottom",
+      "label": "Grid Padding Bottom (px)",
+      "min": 32,
+      "max": 120,
+      "step": 8,
+      "default": 72
+    },
+    {
+      "type": "header",
+      "content": "Card Defaults"
+    },
+    {
+      "type": "text",
+      "id": "default_badge",
+      "label": "Default Badge Text",
+      "default": "Official Distributor",
+      "info": "Shown on cards where no custom badge is set"
+    },
+    {
+      "type": "text",
+      "id": "shop_link_label",
+      "label": "Shop Link Label",
+      "default": "Shop Products"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "body_background_color",
+      "label": "Page Background",
+      "default": "#F9FAFB"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title & Text Color",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#03B239"
+    },
+    {
+      "type": "color",
+      "id": "card_background_color",
+      "label": "Card Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card Border",
+      "default": "#E5E7EB"
+    },
+    {
+      "type": "color",
+      "id": "logo_bg_color",
+      "label": "Logo Area Background",
+      "default": "#F8F9FA"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action Section"
+    },
+    {
+      "type": "text",
+      "id": "cta_eyebrow",
+      "label": "CTA Eyebrow",
+      "default": "Ready to Order?"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Title",
+      "default": "Can't Find a Brand You're Looking For?"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "We are constantly expanding our European brand portfolio. Contact our team to discuss sourcing requirements or to enquire about a specific brand or product range."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_label",
+      "label": "Primary Button Label",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "color",
+      "id": "cta_primary_color",
+      "label": "Primary Button Background",
+      "default": "#03B239"
+    },
+    {
+      "type": "color",
+      "id": "cta_primary_text",
+      "label": "Primary Button Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_label",
+      "label": "Secondary Button Label",
+      "default": "Shop All Products"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_link",
+      "label": "Secondary Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand_card",
+      "name": "Brand Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Brand Logo",
+          "info": "Recommended: PNG with transparent background, min 300px wide"
+        },
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Brand Name",
+          "default": "Brand Name",
+          "info": "Displayed as text if no logo uploaded, also used as alt text"
+        },
+        {
+          "type": "text",
+          "id": "country",
+          "label": "Country of Origin",
+          "default": "Italy",
+          "info": "e.g. Italy, Germany, France, Spain"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Brand Description",
+          "default": "Premium European dental manufacturer specialising in advanced dental materials and laboratory supplies."
+        },
+        {
+          "type": "text",
+          "id": "distributor_badge",
+          "label": "Badge Text",
+          "info": "Leave blank to use the section default badge (e.g. 'Official Distributor')",
+          "default": "Official Distributor"
+        },
+        {
+          "type": "url",
+          "id": "collection_link",
+          "label": "Collection Link",
+          "info": "Link to this brand's product collection. Leave blank to hide the shop link."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brands Page",
+      "blocks": [
+        {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Micro Medica",
+            "country": "Italy",
+            "description": "Specialists in high-performance nano acrylic resins and advanced dental laboratory materials for precision prosthetics.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Micropolymer",
+            "country": "Italy",
+            "description": "Innovative manufacturer of nano-reinforced polymer systems for modern dental laboratory workflows.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Vertsystem",
+            "country": "Italy",
+            "description": "Leading European supplier of zirconia and advanced ceramic materials for digital and conventional dental laboratories.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Megadental Italia",
+            "country": "Italy",
+            "description": "Comprehensive range of professional dental laboratory products including acrylics, composites, and alloys.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Unidesa",
+            "country": "Spain",
+            "description": "Trusted Spanish manufacturer of dental impression materials, plaster, and laboratory consumables.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Techim Group",
+            "country": "Italy",
+            "description": "Specialised chemistry solutions for dental laboratories, including bonding agents and surface treatment products.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Bausch",
+            "country": "Germany",
+            "description": "World-renowned German manufacturer of articulating papers, dental forceps, and precision diagnostics for over 100 years.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Mesa Labs",
+            "country": "Spain",
+            "description": "High-quality dental laboratory equipment and accessories, including polishing systems and casting machines.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "SDI",
+            "country": "Australia",
+            "description": "Australian-owned manufacturer of composite resins, glass ionomers, and whitening products used in dental practice and laboratories worldwide.",
+            "distributor_badge": "Authorised Distributor"
+          }
+        },
+        {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Brand 10",
+            "country": "Germany",
+            "description": "Premium European dental materials supplier with a focus on advanced ceramics and restorative materials.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Brand 11",
+            "country": "France",
+            "description": "Innovative French manufacturer specialising in fiber quartz and reinforced polymer dental materials.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Brand 12",
+            "country": "Italy",
+            "description": "European leader in metal alloys and casting materials for dental laboratories and prosthetic production.",
+            "distributor_badge": "Official Distributor"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

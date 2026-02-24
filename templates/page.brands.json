@@ -1,0 +1,174 @@
+{
+  "sections": {
+    "brands_page": {
+      "type": "brands-page",
+      "blocks": {
+        "brand_1": {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Micro Medica",
+            "country": "Italy",
+            "description": "Specialists in high-performance nano acrylic resins and advanced dental laboratory materials for precision prosthetics.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        "brand_2": {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Micropolymer",
+            "country": "Italy",
+            "description": "Innovative manufacturer of nano-reinforced polymer systems for modern dental laboratory workflows.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        "brand_3": {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Vertsystem",
+            "country": "Italy",
+            "description": "Leading European supplier of zirconia and advanced ceramic materials for digital and conventional dental laboratories.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        "brand_4": {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Megadental Italia",
+            "country": "Italy",
+            "description": "Comprehensive range of professional dental laboratory products including acrylics, composites, and alloys.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        "brand_5": {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Unidesa",
+            "country": "Spain",
+            "description": "Trusted Spanish manufacturer of dental impression materials, plaster, and laboratory consumables.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        "brand_6": {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Techim Group",
+            "country": "Italy",
+            "description": "Specialised chemistry solutions for dental laboratories, including bonding agents and surface treatment products.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        "brand_7": {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Bausch",
+            "country": "Germany",
+            "description": "World-renowned German manufacturer of articulating papers, dental forceps, and precision diagnostics for over 100 years.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        "brand_8": {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Mesa Labs",
+            "country": "Spain",
+            "description": "High-quality dental laboratory equipment and accessories, including polishing systems and casting machines.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        "brand_9": {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "SDI",
+            "country": "Australia",
+            "description": "Australian-owned manufacturer of composite resins, glass ionomers, and whitening products used in dental practice and laboratories worldwide.",
+            "distributor_badge": "Authorised Distributor"
+          }
+        },
+        "brand_10": {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Brand 10",
+            "country": "Germany",
+            "description": "Premium European dental materials supplier with a focus on advanced ceramics and restorative materials.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        "brand_11": {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Brand 11",
+            "country": "France",
+            "description": "Innovative French manufacturer specialising in fiber quartz and reinforced polymer dental materials.",
+            "distributor_badge": "Official Distributor"
+          }
+        },
+        "brand_12": {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Brand 12",
+            "country": "Italy",
+            "description": "European leader in metal alloys and casting materials for dental laboratories and prosthetic production.",
+            "distributor_badge": "Official Distributor"
+          }
+        }
+      },
+      "block_order": [
+        "brand_1",
+        "brand_2",
+        "brand_3",
+        "brand_4",
+        "brand_5",
+        "brand_6",
+        "brand_7",
+        "brand_8",
+        "brand_9",
+        "brand_10",
+        "brand_11",
+        "brand_12"
+      ],
+      "settings": {
+        "hero_badge": "Official Distributor",
+        "hero_title": "Our European Brand Partners",
+        "hero_subtitle": "3 Delta Dental is the official Australian distributor for leading European dental manufacturers. Every brand we carry is TGA registered and backed by our 37+ years of industry expertise.",
+        "hero_bg_start": "#003B56",
+        "hero_bg_end": "#005A7A",
+        "hero_text_color": "#FFFFFF",
+        "hero_padding_top": 72,
+        "hero_padding_bottom": 72,
+        "show_trust_items": true,
+        "trust_item_1": "TGA Registered Products",
+        "trust_item_2": "European Manufacturing Standards",
+        "trust_item_3": "Official Australian Distributor",
+        "intro_title": "Curated European Excellence",
+        "intro_text": "We partner exclusively with European dental manufacturers known for innovation, precision, and material quality. Unlike generalist distributors, we carry only brands we believe in — products our own technical team uses and recommends.",
+        "intro_padding_top": 56,
+        "intro_padding_bottom": 32,
+        "columns_desktop": 3,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "card_gap": 24,
+        "grid_padding_bottom": 72,
+        "default_badge": "Official Distributor",
+        "shop_link_label": "Shop Products",
+        "body_background_color": "#F9FAFB",
+        "title_color": "#003B56",
+        "accent_color": "#03B239",
+        "card_background_color": "#FFFFFF",
+        "card_border_color": "#E5E7EB",
+        "logo_bg_color": "#F8F9FA",
+        "cta_eyebrow": "Ready to Order?",
+        "cta_title": "Can't Find a Brand You're Looking For?",
+        "cta_text": "We are constantly expanding our European brand portfolio. Contact our team to discuss sourcing requirements or to enquire about a specific brand or product range.",
+        "cta_primary_label": "Contact Us",
+        "cta_primary_link": "shopify://pages/contact",
+        "cta_primary_color": "#03B239",
+        "cta_primary_text": "#FFFFFF",
+        "cta_secondary_label": "Shop All Products",
+        "cta_secondary_link": "shopify://collections/all"
+      }
+    }
+  },
+  "order": [
+    "brands_page"
+  ]
+}

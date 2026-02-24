@@ -1,0 +1,1520 @@
+{% comment %}
+  TGA Compliance Page Section - Authoritative compliance information for 3 Delta Dental
+  Structure: Hero, What is TGA, Compliance Statement, Product Certification, Contact
+  Tone: Professional, authoritative, reassuring
+  Fully editable from theme editor
+{% endcomment %}
+
+{%- liquid
+  assign hero_bg_start = section.settings.hero_bg_start
+  assign hero_bg_end = section.settings.hero_bg_end
+  assign hero_text_color = section.settings.hero_text_color
+  assign accent_color = section.settings.accent_color
+  assign title_color = section.settings.title_color
+  assign body_bg = section.settings.body_background_color
+-%}
+
+{%- style -%}
+  .tga-page {
+    background-color: {{ body_bg }};
+  }
+
+  /* Hero */
+  .tga-hero {
+    background: linear-gradient(135deg, {{ hero_bg_start }} 0%, {{ hero_bg_end }} 100%);
+    color: {{ hero_text_color }};
+    padding: {{ section.settings.hero_padding_top }}px 2rem {{ section.settings.hero_padding_bottom }}px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tga-hero::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .tga-hero__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tga-hero__content {
+    max-width: 620px;
+  }
+
+  .tga-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid {{ accent_color }};
+    color: {{ accent_color }};
+    border-radius: 50px;
+    padding: 0.3rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .tga-hero__title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.02em;
+    color: {{ hero_text_color }};
+  }
+
+  .tga-hero__subtitle {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    margin: 0 0 2rem 0;
+    opacity: 0.9;
+    max-width: 560px;
+  }
+
+  .tga-hero__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .tga-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 0.4rem 0.875rem;
+    color: {{ hero_text_color }};
+  }
+
+  .tga-hero__badge svg {
+    color: {{ accent_color }};
+  }
+
+  /* TGA Logo panel */
+  .tga-hero__logo-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .tga-hero__logo-box {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+    min-height: 100px;
+  }
+
+  .tga-hero__logo-box img {
+    max-width: 140px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .tga-hero__logo-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .tga-hero__logo-caption {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* What is TGA section */
+  .tga-what {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: {{ section.settings.section_padding_top }}px 2rem {{ section.settings.section_padding_bottom }}px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .tga-what__content {}
+
+  .tga-what__eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: {{ accent_color }};
+    margin: 0 0 0.5rem 0;
+  }
+
+  .tga-what__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: {{ title_color }};
+    margin: 0 0 1.25rem 0;
+    line-height: 1.2;
+  }
+
+  .tga-what__text {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #4B5563;
+    margin: 0 0 1rem 0;
+  }
+
+  .tga-what__text:last-child {
+    margin-bottom: 0;
+  }
+
+  .tga-what__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: {{ accent_color }};
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: gap 0.2s ease;
+  }
+
+  .tga-what__link:hover {
+    gap: 0.6rem;
+  }
+
+  /* Why it matters box */
+  .tga-what__matters-box {
+    background: {{ section.settings.callout_bg_color }};
+    border: 1px solid {{ section.settings.callout_border_color }};
+    border-radius: 12px;
+    padding: 2rem;
+    border-left: 4px solid {{ accent_color }};
+  }
+
+  .tga-what__matters-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: {{ title_color }};
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .tga-what__matters-title svg {
+    color: {{ accent_color }};
+    flex-shrink: 0;
+  }
+
+  .tga-what__matters-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .tga-what__matters-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #374151;
+  }
+
+  .tga-what__matters-list li svg {
+    color: {{ accent_color }};
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Compliance Statement */
+  .tga-compliance-statement {
+    background: linear-gradient(135deg, {{ hero_bg_start }} 0%, {{ hero_bg_end }} 100%);
+    color: {{ hero_text_color }};
+    padding: {{ section.settings.statement_padding_top }}px 2rem {{ section.settings.statement_padding_bottom }}px;
+  }
+
+  .tga-compliance-statement__container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .tga-compliance-statement__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    color: {{ accent_color }};
+  }
+
+  .tga-compliance-statement__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    color: {{ hero_text_color }};
+  }
+
+  .tga-compliance-statement__text {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    opacity: 0.92;
+    margin: 0 0 1.5rem 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tga-compliance-statement__text:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .tga-compliance-statement__highlight {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 1.25rem 2rem;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    max-width: 600px;
+  }
+
+  /* Product Certification Grid */
+  .tga-certifications {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: {{ section.settings.section_padding_top }}px 2rem {{ section.settings.section_padding_bottom }}px;
+  }
+
+  .tga-certifications__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .tga-certifications__eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: {{ accent_color }};
+    margin: 0 0 0.5rem 0;
+  }
+
+  .tga-certifications__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: {{ title_color }};
+    margin: 0 0 0.75rem 0;
+    line-height: 1.2;
+  }
+
+  .tga-certifications__subtitle {
+    font-size: 1rem;
+    color: #6B7280;
+    line-height: 1.6;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .tga-certifications__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.cert_columns }}, 1fr);
+    gap: 1.5rem;
+  }
+
+  .cert-card {
+    background-color: {{ section.settings.card_background }};
+    border: 1px solid {{ section.settings.card_border }};
+    border-radius: 10px;
+    padding: 1.5rem;
+    position: relative;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .cert-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 59, 86, 0.08);
+  }
+
+  .cert-card__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 0.2rem 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .cert-card__status--registered {
+    background-color: #D1FAE5;
+    color: #065F46;
+    border: 1px solid #A7F3D0;
+  }
+
+  .cert-card__status--pending {
+    background-color: #FEF3C7;
+    color: #92400E;
+    border: 1px solid #FDE68A;
+  }
+
+  .cert-card__status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: currentColor;
+  }
+
+  .cert-card__category {
+    font-size: 1rem;
+    font-weight: 700;
+    color: {{ title_color }};
+    margin: 0 0 0.4rem 0;
+  }
+
+  .cert-card__description {
+    font-size: 0.875rem;
+    color: #6B7280;
+    line-height: 1.55;
+    margin: 0 0 1rem 0;
+  }
+
+  .cert-card__artg {
+    font-size: 0.8rem;
+    color: #9CA3AF;
+    font-family: monospace;
+    margin: 0;
+  }
+
+  /* FAQ quick links in certification area */
+  .tga-note {
+    background-color: {{ section.settings.callout_bg_color }};
+    border: 1px solid {{ section.settings.callout_border_color }};
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .tga-note__icon {
+    flex-shrink: 0;
+    color: {{ accent_color }};
+    margin-top: 2px;
+  }
+
+  .tga-note__content {}
+
+  .tga-note__title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: {{ title_color }};
+    margin: 0 0 0.35rem 0;
+  }
+
+  .tga-note__text {
+    font-size: 0.875rem;
+    color: #4B5563;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Contact Section */
+  .tga-contact {
+    background: {{ section.settings.contact_bg }};
+    padding: {{ section.settings.contact_padding_top }}px 2rem {{ section.settings.contact_padding_bottom }}px;
+  }
+
+  .tga-contact__container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .tga-contact__info {}
+
+  .tga-contact__eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: {{ accent_color }};
+    margin: 0 0 0.5rem 0;
+  }
+
+  .tga-contact__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: {{ title_color }};
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+  }
+
+  .tga-contact__text {
+    font-size: 0.975rem;
+    color: #4B5563;
+    line-height: 1.7;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .tga-contact__details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .tga-contact__detail {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .tga-contact__detail-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: {{ accent_color }}1A;
+    border-radius: 8px;
+    color: {{ accent_color }};
+    flex-shrink: 0;
+  }
+
+  .tga-contact__detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .tga-contact__detail-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #9CA3AF;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .tga-contact__detail-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: {{ title_color }};
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a.tga-contact__detail-value:hover {
+    color: {{ accent_color }};
+  }
+
+  /* Download card */
+  .tga-contact__downloads {}
+
+  .tga-download-card {
+    background-color: {{ section.settings.card_background }};
+    border: 1px solid {{ section.settings.card_border }};
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .tga-download-card__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: {{ title_color }};
+    margin: 0 0 0.5rem 0;
+  }
+
+  .tga-download-card__text {
+    font-size: 0.875rem;
+    color: #6B7280;
+    line-height: 1.6;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .tga-download-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    background-color: {{ accent_color }};
+    color: #FFFFFF;
+    transition: opacity 0.2s ease;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .tga-download-card__cta:hover {
+    opacity: 0.88;
+  }
+
+  .tga-download-card__cta--secondary {
+    background-color: transparent;
+    color: {{ title_color }};
+    border: 1px solid {{ section.settings.card_border }};
+  }
+
+  .tga-download-card__cta--secondary:hover {
+    border-color: {{ accent_color }};
+    color: {{ accent_color }};
+    opacity: 1;
+  }
+
+  @media (max-width: 900px) {
+    .tga-hero__container {
+      grid-template-columns: 1fr;
+    }
+
+    .tga-hero__logo-panel {
+      display: none;
+    }
+
+    .tga-what {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .tga-contact__container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .tga-certifications__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .tga-hero {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .tga-what {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .tga-compliance-statement {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .tga-certifications {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .tga-contact {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .tga-hero__title {
+      font-size: 2rem;
+    }
+
+    .tga-what__title {
+      font-size: 1.5rem;
+    }
+
+    .tga-compliance-statement__title {
+      font-size: 1.5rem;
+    }
+
+    .tga-certifications__title {
+      font-size: 1.5rem;
+    }
+
+    .tga-certifications__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tga-contact__title {
+      font-size: 1.4rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="tga-page">
+
+  {%- comment %} Hero {%- endcomment %}
+  <div class="tga-hero">
+    <div class="tga-hero__container">
+      <div class="tga-hero__content">
+        {%- if section.settings.hero_eyebrow != blank -%}
+          <p class="tga-hero__eyebrow">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            {{ section.settings.hero_eyebrow }}
+          </p>
+        {%- endif -%}
+        {%- if section.settings.hero_title != blank -%}
+          <h1 class="tga-hero__title">{{ section.settings.hero_title }}</h1>
+        {%- endif -%}
+        {%- if section.settings.hero_subtitle != blank -%}
+          <p class="tga-hero__subtitle">{{ section.settings.hero_subtitle }}</p>
+        {%- endif -%}
+
+        <div class="tga-hero__badges">
+          {%- if section.settings.badge_1 != blank -%}
+            <span class="tga-hero__badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              {{ section.settings.badge_1 }}
+            </span>
+          {%- endif -%}
+          {%- if section.settings.badge_2 != blank -%}
+            <span class="tga-hero__badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              {{ section.settings.badge_2 }}
+            </span>
+          {%- endif -%}
+          {%- if section.settings.badge_3 != blank -%}
+            <span class="tga-hero__badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              {{ section.settings.badge_3 }}
+            </span>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- comment %} TGA Logo Panel {%- endcomment %}
+      <div class="tga-hero__logo-panel">
+        <div class="tga-hero__logo-box">
+          {%- if section.settings.tga_logo != blank -%}
+            <img
+              src="{{ section.settings.tga_logo | image_url: width: 300 }}"
+              srcset="{{ section.settings.tga_logo | image_url: width: 150 }} 150w,
+                      {{ section.settings.tga_logo | image_url: width: 300 }} 300w"
+              sizes="140px"
+              alt="{{ section.settings.tga_logo.alt | default: 'TGA - Therapeutic Goods Administration' }}"
+              width="{{ section.settings.tga_logo.width | at_most: 300 }}"
+              height="{{ section.settings.tga_logo.height | at_most: 120 }}"
+              loading="eager"
+            >
+          {%- else -%}
+            <div class="tga-hero__logo-placeholder" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <span>TGA Logo</span>
+            </div>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.tga_logo_caption != blank -%}
+          <p class="tga-hero__logo-caption">{{ section.settings.tga_logo_caption }}</p>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+
+  {%- comment %} What is TGA Section {%- endcomment %}
+  <div class="tga-what">
+    <div class="tga-what__content">
+      {%- if section.settings.what_eyebrow != blank -%}
+        <p class="tga-what__eyebrow">{{ section.settings.what_eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.what_title != blank -%}
+        <h2 class="tga-what__title">{{ section.settings.what_title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.what_paragraph_1 != blank -%}
+        <p class="tga-what__text">{{ section.settings.what_paragraph_1 }}</p>
+      {%- endif -%}
+      {%- if section.settings.what_paragraph_2 != blank -%}
+        <p class="tga-what__text">{{ section.settings.what_paragraph_2 }}</p>
+      {%- endif -%}
+      {%- if section.settings.what_link_label != blank and section.settings.what_link_url != blank -%}
+        <a href="{{ section.settings.what_link_url }}" class="tga-what__link" target="_blank" rel="noopener noreferrer">
+          {{ section.settings.what_link_label }}
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="tga-what__matters-box">
+      {%- if section.settings.matters_title != blank -%}
+        <h3 class="tga-what__matters-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/>
+          </svg>
+          {{ section.settings.matters_title }}
+        </h3>
+      {%- endif -%}
+      <ul class="tga-what__matters-list">
+        {%- if section.settings.matters_item_1 != blank -%}
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            {{ section.settings.matters_item_1 }}
+          </li>
+        {%- endif -%}
+        {%- if section.settings.matters_item_2 != blank -%}
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            {{ section.settings.matters_item_2 }}
+          </li>
+        {%- endif -%}
+        {%- if section.settings.matters_item_3 != blank -%}
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            {{ section.settings.matters_item_3 }}
+          </li>
+        {%- endif -%}
+        {%- if section.settings.matters_item_4 != blank -%}
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            {{ section.settings.matters_item_4 }}
+          </li>
+        {%- endif -%}
+        {%- if section.settings.matters_item_5 != blank -%}
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            {{ section.settings.matters_item_5 }}
+          </li>
+        {%- endif -%}
+      </ul>
+    </div>
+  </div>
+
+  {%- comment %} Compliance Statement {%- endcomment %}
+  <div class="tga-compliance-statement">
+    <div class="tga-compliance-statement__container">
+      <div class="tga-compliance-statement__icon" aria-hidden="true">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      {%- if section.settings.statement_title != blank -%}
+        <h2 class="tga-compliance-statement__title">{{ section.settings.statement_title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.statement_paragraph_1 != blank -%}
+        <p class="tga-compliance-statement__text">{{ section.settings.statement_paragraph_1 }}</p>
+      {%- endif -%}
+      {%- if section.settings.statement_paragraph_2 != blank -%}
+        <p class="tga-compliance-statement__text">{{ section.settings.statement_paragraph_2 }}</p>
+      {%- endif -%}
+      {%- if section.settings.statement_highlight != blank -%}
+        <div class="tga-compliance-statement__highlight">
+          {{ section.settings.statement_highlight }}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- comment %} Product Certification Section {%- endcomment %}
+  <div class="tga-certifications">
+    <div class="tga-certifications__header">
+      {%- if section.settings.cert_eyebrow != blank -%}
+        <p class="tga-certifications__eyebrow">{{ section.settings.cert_eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.cert_title != blank -%}
+        <h2 class="tga-certifications__title">{{ section.settings.cert_title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.cert_subtitle != blank -%}
+        <p class="tga-certifications__subtitle">{{ section.settings.cert_subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- assign cert_blocks = section.blocks | where: "type", "certification" -%}
+    {%- if cert_blocks.size > 0 -%}
+      <div class="tga-certifications__grid">
+        {%- for block in cert_blocks -%}
+          <div class="cert-card" {{ block.shopify_attributes }}>
+            <span class="cert-card__status cert-card__status--{{ block.settings.status }}">
+              <span class="cert-card__status-dot" aria-hidden="true"></span>
+              {%- if block.settings.status == "registered" -%}TGA Registered{%- else -%}In Review{%- endif -%}
+            </span>
+            <h3 class="cert-card__category">{{ block.settings.category }}</h3>
+            {%- if block.settings.description != blank -%}
+              <p class="cert-card__description">{{ block.settings.description }}</p>
+            {%- endif -%}
+            {%- if block.settings.artg_number != blank -%}
+              <p class="cert-card__artg">ARTG: {{ block.settings.artg_number }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.cert_note != blank -%}
+      <div class="tga-note">
+        <div class="tga-note__icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/>
+          </svg>
+        </div>
+        <div class="tga-note__content">
+          {%- if section.settings.cert_note_title != blank -%}
+            <p class="tga-note__title">{{ section.settings.cert_note_title }}</p>
+          {%- endif -%}
+          <p class="tga-note__text">{{ section.settings.cert_note }}</p>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- comment %} Contact / Documentation Section {%- endcomment %}
+  <div class="tga-contact">
+    <div class="tga-contact__container">
+      <div class="tga-contact__info">
+        {%- if section.settings.contact_eyebrow != blank -%}
+          <p class="tga-contact__eyebrow">{{ section.settings.contact_eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.contact_title != blank -%}
+          <h2 class="tga-contact__title">{{ section.settings.contact_title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.contact_text != blank -%}
+          <p class="tga-contact__text">{{ section.settings.contact_text }}</p>
+        {%- endif -%}
+
+        <div class="tga-contact__details">
+          {%- if section.settings.contact_phone != blank -%}
+            <div class="tga-contact__detail">
+              <div class="tga-contact__detail-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div class="tga-contact__detail-content">
+                <span class="tga-contact__detail-label">Phone</span>
+                <a href="tel:{{ section.settings.contact_phone | remove: ' ' }}" class="tga-contact__detail-value">{{ section.settings.contact_phone }}</a>
+              </div>
+            </div>
+          {%- endif -%}
+          {%- if section.settings.contact_email != blank -%}
+            <div class="tga-contact__detail">
+              <div class="tga-contact__detail-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div class="tga-contact__detail-content">
+                <span class="tga-contact__detail-label">Email</span>
+                <a href="mailto:{{ section.settings.contact_email }}" class="tga-contact__detail-value">{{ section.settings.contact_email }}</a>
+              </div>
+            </div>
+          {%- endif -%}
+          {%- if section.settings.contact_hours != blank -%}
+            <div class="tga-contact__detail">
+              <div class="tga-contact__detail-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <div class="tga-contact__detail-content">
+                <span class="tga-contact__detail-label">Support Hours</span>
+                <span class="tga-contact__detail-value">{{ section.settings.contact_hours }}</span>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="tga-contact__downloads">
+        <div class="tga-download-card">
+          {%- if section.settings.docs_title != blank -%}
+            <h3 class="tga-download-card__title">{{ section.settings.docs_title }}</h3>
+          {%- endif -%}
+          {%- if section.settings.docs_text != blank -%}
+            <p class="tga-download-card__text">{{ section.settings.docs_text }}</p>
+          {%- endif -%}
+          {%- if section.settings.docs_cta_label != blank and section.settings.docs_cta_link != blank -%}
+            <a href="{{ section.settings.docs_cta_link }}" class="tga-download-card__cta">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+              {{ section.settings.docs_cta_label }}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.docs_secondary_label != blank and section.settings.docs_secondary_link != blank -%}
+            <a href="{{ section.settings.docs_secondary_link }}" class="tga-download-card__cta tga-download-card__cta--secondary">
+              {{ section.settings.docs_secondary_label }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "TGA Compliance Page",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_eyebrow",
+      "label": "Hero Eyebrow Badge",
+      "default": "Regulatory Compliance"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "TGA Compliance & Product Registration"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "All products supplied by 3 Delta Dental are TGA (Therapeutic Goods Administration) registered and comply with Australian regulatory requirements. Your professional peace of mind is our priority."
+    },
+    {
+      "type": "text",
+      "id": "badge_1",
+      "label": "Hero Badge 1",
+      "default": "TGA Registered Products"
+    },
+    {
+      "type": "text",
+      "id": "badge_2",
+      "label": "Hero Badge 2",
+      "default": "ARTG Compliant"
+    },
+    {
+      "type": "text",
+      "id": "badge_3",
+      "label": "Hero Badge 3",
+      "default": "Documentation Available on Request"
+    },
+    {
+      "type": "image_picker",
+      "id": "tga_logo",
+      "label": "TGA Logo Image",
+      "info": "Upload the official TGA logo. Recommended: PNG with transparent background."
+    },
+    {
+      "type": "text",
+      "id": "tga_logo_caption",
+      "label": "TGA Logo Caption",
+      "default": "Regulated by TGA"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_start",
+      "label": "Hero Background Start",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_end",
+      "label": "Hero Background End",
+      "default": "#005A7A"
+    },
+    {
+      "type": "color",
+      "id": "hero_text_color",
+      "label": "Hero Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_top",
+      "label": "Hero Padding Top (px)",
+      "min": 40,
+      "max": 120,
+      "step": 8,
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_bottom",
+      "label": "Hero Padding Bottom (px)",
+      "min": 40,
+      "max": 120,
+      "step": 8,
+      "default": 72
+    },
+    {
+      "type": "header",
+      "content": "What is TGA Section"
+    },
+    {
+      "type": "text",
+      "id": "what_eyebrow",
+      "label": "Section Eyebrow",
+      "default": "Understanding Compliance"
+    },
+    {
+      "type": "text",
+      "id": "what_title",
+      "label": "Section Title",
+      "default": "What is the TGA?"
+    },
+    {
+      "type": "textarea",
+      "id": "what_paragraph_1",
+      "label": "Paragraph 1",
+      "default": "The Therapeutic Goods Administration (TGA) is Australia's regulatory body for therapeutic goods, including medicines, medical devices, and dental materials. The TGA operates within the Australian Government's Department of Health, and its role is to protect public health by ensuring therapeutic goods are safe, effective, and of high quality."
+    },
+    {
+      "type": "textarea",
+      "id": "what_paragraph_2",
+      "label": "Paragraph 2",
+      "default": "Before any dental material can be legally supplied in Australia, it must be entered into the Australian Register of Therapeutic Goods (ARTG). The ARTG is a database of all therapeutic goods approved for supply in Australia, and each registered product receives a unique ARTG number that confirms its compliance status."
+    },
+    {
+      "type": "text",
+      "id": "what_link_label",
+      "label": "External Link Label",
+      "default": "Visit the TGA website for more information"
+    },
+    {
+      "type": "url",
+      "id": "what_link_url",
+      "label": "External Link URL",
+      "info": "Typically https://www.tga.gov.au"
+    },
+    {
+      "type": "text",
+      "id": "matters_title",
+      "label": "Why It Matters Box Title",
+      "default": "Why TGA Registration Matters"
+    },
+    {
+      "type": "text",
+      "id": "matters_item_1",
+      "label": "Matters Item 1",
+      "default": "Protects your patients from substandard materials"
+    },
+    {
+      "type": "text",
+      "id": "matters_item_2",
+      "label": "Matters Item 2",
+      "default": "Protects your professional licence and practice"
+    },
+    {
+      "type": "text",
+      "id": "matters_item_3",
+      "label": "Matters Item 3",
+      "default": "Ensures materials meet Australian safety standards"
+    },
+    {
+      "type": "text",
+      "id": "matters_item_4",
+      "label": "Matters Item 4",
+      "default": "Required for legal supply and use in Australia"
+    },
+    {
+      "type": "text",
+      "id": "matters_item_5",
+      "label": "Matters Item 5",
+      "default": "Provides traceability for quality assurance audits"
+    },
+    {
+      "type": "header",
+      "content": "Compliance Statement"
+    },
+    {
+      "type": "text",
+      "id": "statement_title",
+      "label": "Statement Title",
+      "default": "Our Compliance Commitment"
+    },
+    {
+      "type": "textarea",
+      "id": "statement_paragraph_1",
+      "label": "Statement Paragraph 1",
+      "default": "3 Delta Dental is committed to supplying only TGA-registered dental materials. We will not supply non-registered products, regardless of price or availability pressure. This is not simply a legal obligation — it is a core part of how we operate."
+    },
+    {
+      "type": "textarea",
+      "id": "statement_paragraph_2",
+      "label": "Statement Paragraph 2",
+      "default": "We maintain current ARTG registration documentation for all product lines we distribute. We actively monitor TGA updates and regulatory changes, and we work with our European manufacturer partners to ensure ongoing compliance. If a product's registration status changes, we notify affected customers immediately."
+    },
+    {
+      "type": "textarea",
+      "id": "statement_highlight",
+      "label": "Statement Highlight Text",
+      "default": "Every product in the 3 Delta Dental catalogue carries a current TGA registration number. Documentation is available on request — simply contact our compliance team."
+    },
+    {
+      "type": "range",
+      "id": "statement_padding_top",
+      "label": "Statement Padding Top (px)",
+      "min": 40,
+      "max": 100,
+      "step": 8,
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "statement_padding_bottom",
+      "label": "Statement Padding Bottom (px)",
+      "min": 40,
+      "max": 100,
+      "step": 8,
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Product Certification Section"
+    },
+    {
+      "type": "text",
+      "id": "cert_eyebrow",
+      "label": "Section Eyebrow",
+      "default": "ARTG Registration"
+    },
+    {
+      "type": "text",
+      "id": "cert_title",
+      "label": "Section Title",
+      "default": "Registered Product Categories"
+    },
+    {
+      "type": "textarea",
+      "id": "cert_subtitle",
+      "label": "Section Subtitle",
+      "default": "The following product categories in our catalogue are entered on the Australian Register of Therapeutic Goods (ARTG). Full documentation available on request."
+    },
+    {
+      "type": "range",
+      "id": "cert_columns",
+      "label": "Certification Card Columns",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "text",
+      "id": "cert_note_title",
+      "label": "Note Title",
+      "default": "Request Documentation"
+    },
+    {
+      "type": "textarea",
+      "id": "cert_note",
+      "label": "Note Text",
+      "default": "ARTG registration certificates and TGA documentation for specific products are available on request. Contact our compliance team by phone or email with the product name or SKU and we will provide the relevant documentation within one business day."
+    },
+    {
+      "type": "header",
+      "content": "Contact & Documentation Section"
+    },
+    {
+      "type": "text",
+      "id": "contact_eyebrow",
+      "label": "Contact Eyebrow",
+      "default": "Compliance Enquiries"
+    },
+    {
+      "type": "text",
+      "id": "contact_title",
+      "label": "Contact Title",
+      "default": "Need Compliance Documentation?"
+    },
+    {
+      "type": "textarea",
+      "id": "contact_text",
+      "label": "Contact Text",
+      "default": "Our compliance team can provide ARTG registration certificates, TGA documentation, and product safety data sheets for any product in our range. We aim to respond to all documentation requests within one business day."
+    },
+    {
+      "type": "text",
+      "id": "contact_phone",
+      "label": "Phone Number",
+      "default": "+61 7 0000 0000"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Email Address",
+      "default": "compliance@3deltadental.com.au"
+    },
+    {
+      "type": "text",
+      "id": "contact_hours",
+      "label": "Support Hours",
+      "default": "24/7 — available anytime"
+    },
+    {
+      "type": "text",
+      "id": "docs_title",
+      "label": "Documents Card Title",
+      "default": "Request TGA Documentation"
+    },
+    {
+      "type": "textarea",
+      "id": "docs_text",
+      "label": "Documents Card Text",
+      "default": "Email our compliance team with the product name or SKU to request ARTG certificates, safety data sheets, or other compliance documentation."
+    },
+    {
+      "type": "text",
+      "id": "docs_cta_label",
+      "label": "Primary CTA Label",
+      "default": "Email Compliance Team"
+    },
+    {
+      "type": "url",
+      "id": "docs_cta_link",
+      "label": "Primary CTA Link"
+    },
+    {
+      "type": "text",
+      "id": "docs_secondary_label",
+      "label": "Secondary CTA Label",
+      "default": "Visit TGA Website"
+    },
+    {
+      "type": "url",
+      "id": "docs_secondary_link",
+      "label": "Secondary CTA Link"
+    },
+    {
+      "type": "color",
+      "id": "contact_bg",
+      "label": "Contact Section Background",
+      "default": "#F9FAFB"
+    },
+    {
+      "type": "range",
+      "id": "contact_padding_top",
+      "label": "Contact Padding Top (px)",
+      "min": 40,
+      "max": 100,
+      "step": 8,
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "contact_padding_bottom",
+      "label": "Contact Padding Bottom (px)",
+      "min": 40,
+      "max": 100,
+      "step": 8,
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Section Padding Top (px)",
+      "min": 40,
+      "max": 100,
+      "step": 8,
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Section Padding Bottom (px)",
+      "min": 40,
+      "max": 100,
+      "step": 8,
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "body_background_color",
+      "label": "Page Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#03B239"
+    },
+    {
+      "type": "color",
+      "id": "callout_bg_color",
+      "label": "Callout Box Background",
+      "default": "#F0FDF4"
+    },
+    {
+      "type": "color",
+      "id": "callout_border_color",
+      "label": "Callout Box Border",
+      "default": "#BBF7D0"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Card Border Color",
+      "default": "#E5E7EB"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "certification",
+      "name": "Product Certification",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Product Category",
+          "default": "Acrylic Resins"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Cold-cure and heat-cure acrylic resin systems including nano-reinforced formulations."
+        },
+        {
+          "type": "text",
+          "id": "artg_number",
+          "label": "ARTG Number",
+          "info": "Enter the ARTG number if known, e.g. ARTG 123456. Leave blank if not applicable.",
+          "default": "ARTG 000000"
+        },
+        {
+          "type": "select",
+          "id": "status",
+          "label": "Registration Status",
+          "options": [
+            { "value": "registered", "label": "TGA Registered" },
+            { "value": "pending", "label": "In Review" }
+          ],
+          "default": "registered"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "TGA Compliance Page",
+      "blocks": [
+        {
+          "type": "certification",
+          "settings": {
+            "category": "Acrylic Resins",
+            "description": "Cold-cure and heat-cure acrylic resin systems including nano-reinforced formulations for complete and partial dentures.",
+            "artg_number": "ARTG 000001",
+            "status": "registered"
+          }
+        },
+        {
+          "type": "certification",
+          "settings": {
+            "category": "Zirconia Materials",
+            "description": "Pre-sintered zirconia discs and blocks for CAD/CAM milling in dental laboratory workflows.",
+            "artg_number": "ARTG 000002",
+            "status": "registered"
+          }
+        },
+        {
+          "type": "certification",
+          "settings": {
+            "category": "Composite Resins",
+            "description": "Monolithic composite materials and fibre-reinforced composites for direct and indirect restorations.",
+            "artg_number": "ARTG 000003",
+            "status": "registered"
+          }
+        },
+        {
+          "type": "certification",
+          "settings": {
+            "category": "Metal Alloys",
+            "description": "Cobalt-chromium, nickel-chromium, and precious metal alloys for laboratory castings and frameworks.",
+            "artg_number": "ARTG 000004",
+            "status": "registered"
+          }
+        },
+        {
+          "type": "certification",
+          "settings": {
+            "category": "Fiber Quartz Products",
+            "description": "Fiber quartz frameworks and reinforcing materials for advanced prosthetic construction techniques.",
+            "artg_number": "ARTG 000005",
+            "status": "registered"
+          }
+        },
+        {
+          "type": "certification",
+          "settings": {
+            "category": "Articulating Materials",
+            "description": "Articulating papers, carbon foils, and diagnostic materials for occlusal analysis.",
+            "artg_number": "ARTG 000006",
+            "status": "registered"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

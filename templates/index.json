@@ -1,15 +1,69 @@
 {
   "sections": {
-    "search_hero": {
-      "type": "search-hero",
+    "hero_banner": {
+      "type": "hero-banner",
       "settings": {
         "heading": "Professional Dental Lab Supplies",
-        "subheading": "Search by product name, SKU, category, or brand",
-        "search_placeholder": "Search for products, SKU, or category...",
-        "button_text": "Search",
-        "show_suggestions": true,
-        "popular_searches": "Acrylics, Burs, CAD/CAM, Polishing, Investment",
-        "color_scheme": "scheme-1"
+        "subheading": "Premium European brands. TGA approved products. 37+ years of expertise serving Australian dental laboratories.",
+        "cta_label": "Shop Now",
+        "cta_link": "/collections/all",
+        "height": "medium",
+        "content_alignment": "left",
+        "overlay_color": "#003B56",
+        "overlay_opacity": 40,
+        "text_color": "#FFFFFF",
+        "cta_bg_color": "#03B239",
+        "cta_text_color": "#FFFFFF"
+      }
+    },
+    "trust_bar": {
+      "type": "trust-bar",
+      "blocks": {
+        "trust_item_1": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "✅",
+            "title": "TGA Approved",
+            "description": "All products meet Australian standards"
+          }
+        },
+        "trust_item_2": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "🌍",
+            "title": "European Brands",
+            "description": "Premium manufacturers from Europe"
+          }
+        },
+        "trust_item_3": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "⭐",
+            "title": "37+ Years Expertise",
+            "description": "Trusted since 1987"
+          }
+        },
+        "trust_item_4": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "📞",
+            "title": "24/7 Support",
+            "description": "Expert help when you need it"
+          }
+        }
+      },
+      "block_order": [
+        "trust_item_1",
+        "trust_item_2",
+        "trust_item_3",
+        "trust_item_4"
+      ],
+      "settings": {
+        "heading": "",
+        "background_color": "#003B56",
+        "text_color": "#FFFFFF",
+        "icon_color": "#FED440",
+        "padding_vertical": 20
       }
     },
     "category_grid": {
@@ -269,8 +323,7 @@
           ]
         }
       },
-      "block_order": [
-      ],
+      "block_order": [],
       "name": "Featured Products",
       "settings": {
         "collection": "all",
@@ -291,11 +344,108 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "brand_showcase": {
+      "type": "brand-showcase",
+      "blocks": {
+        "brand_1": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Brand 1",
+            "link": "",
+            "open_in_new_tab": false
+          }
+        },
+        "brand_2": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Brand 2",
+            "link": "",
+            "open_in_new_tab": false
+          }
+        },
+        "brand_3": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Brand 3",
+            "link": "",
+            "open_in_new_tab": false
+          }
+        },
+        "brand_4": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Brand 4",
+            "link": "",
+            "open_in_new_tab": false
+          }
+        },
+        "brand_5": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Brand 5",
+            "link": "",
+            "open_in_new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "brand_1",
+        "brand_2",
+        "brand_3",
+        "brand_4",
+        "brand_5"
+      ],
+      "settings": {
+        "badge_text": "Official Distributor",
+        "title": "Our Trusted Brands",
+        "subtitle": "We are the authorised Australian distributor for leading European dental manufacturers",
+        "cta_label": "View All Brands",
+        "cta_link": "/pages/brands",
+        "columns": 5,
+        "columns_mobile": 2,
+        "gap": 16,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "background_color": "#FFFFFF",
+        "text_color": "#003B56",
+        "accent_color": "#03B239",
+        "cta_text_color": "#FFFFFF",
+        "logo_background_color": "#F8F8F8",
+        "logo_border_color": "#E5E5E5"
+      }
+    },
+    "clearance_banner": {
+      "type": "clearance-banner",
+      "settings": {
+        "eyebrow": "Clearance Sale",
+        "heading": "Up to 40% Off Selected Products",
+        "subheading": "Limited stock available. Shop our clearance range before it's gone.",
+        "cta_label": "Shop Clearance",
+        "cta_link": "/collections/clearance",
+        "show_cta_arrow": true,
+        "show_decorative_element": true,
+        "decoration_text": "SALE",
+        "text_align": "left",
+        "heading_size": 40,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "background_color": "#003B56",
+        "text_color": "#FFFFFF",
+        "badge_bg_color": "#FED440",
+        "badge_text_color": "#003B56",
+        "cta_bg_color": "#03B239",
+        "cta_text_color": "#FFFFFF",
+        "decoration_color": "#FFFFFF"
+      }
     }
   },
   "order": [
-    "search_hero",
+    "hero_banner",
+    "trust_bar",
     "category_grid",
-    "product_list_fa6P9H"
+    "product_list_fa6P9H",
+    "brand_showcase",
+    "clearance_banner"
   ]
 }

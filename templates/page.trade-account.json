@@ -1,0 +1,131 @@
+{
+  "sections": {
+    "trade_account_page": {
+      "type": "trade-account-page",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "tag",
+            "title": "Trade Pricing",
+            "description": "Access exclusive trade pricing on our full range of 699+ dental laboratory products from leading European manufacturers."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "credit",
+            "title": "30-Day Credit Terms",
+            "description": "Manage your cash flow with 30-day net credit terms (EOM) available to approved trade account holders."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "users",
+            "title": "Dedicated Account Manager",
+            "description": "Your own dedicated account manager who knows your lab's needs and can help with product selection and ordering."
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "icon": "truck",
+            "title": "Priority Shipping",
+            "description": "Trade account orders receive priority processing and dispatch. Same-day dispatch for orders placed before 2pm AEST."
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "icon": "support",
+            "title": "24/7 Technical Support",
+            "description": "Round-the-clock access to our technical support team for product questions, application advice, and troubleshooting."
+          }
+        },
+        "benefit_6": {
+          "type": "benefit",
+          "settings": {
+            "icon": "box",
+            "title": "Bulk Order Discounts",
+            "description": "Additional volume discounts available for large or regular orders. Contact your account manager to discuss custom pricing."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "benefit_6"
+      ],
+      "settings": {
+        "hero_eyebrow": "B2B Trade Accounts",
+        "hero_title": "Apply for a Trade Account",
+        "hero_subtitle": "Join hundreds of Australian dental laboratories who trust 3 Delta Dental as their preferred supplier. A trade account gives you exclusive pricing, flexible payment terms, and dedicated support.",
+        "hero_cta_label": "Apply Now",
+        "hero_cta_bg": "#03B239",
+        "hero_cta_text": "#FFFFFF",
+        "hero_bg_start": "#003B56",
+        "hero_bg_end": "#005A7A",
+        "hero_text_color": "#FFFFFF",
+        "hero_padding_top": 72,
+        "hero_padding_bottom": 72,
+        "show_hero_card": true,
+        "hero_card_title": "Trade Account Benefits",
+        "hero_benefit_1": "Trade pricing on all products",
+        "hero_benefit_2": "30-day net credit terms (EOM)",
+        "hero_benefit_3": "Dedicated account manager",
+        "hero_benefit_4": "Priority order processing",
+        "hero_benefit_5": "24/7 technical support access",
+        "benefits_eyebrow": "Why Open a Trade Account",
+        "benefits_title": "Everything You Need to Run Your Lab Efficiently",
+        "benefits_subtitle": "Trade accounts are designed for professional dental laboratories that require reliable supply, competitive pricing, and flexible payment options.",
+        "benefits_columns": 3,
+        "benefits_padding_top": 72,
+        "benefits_padding_bottom": 56,
+        "show_steps": true,
+        "steps_eyebrow": "Simple Process",
+        "steps_title": "How to Apply",
+        "steps_subtitle": "Getting set up with a 3 Delta Dental trade account takes less than 5 minutes.",
+        "steps_bg_color": "#F0FDF4",
+        "steps_padding_top": 64,
+        "steps_padding_bottom": 64,
+        "step_1_title": "Complete the Form",
+        "step_1_description": "Fill out the trade account application form below with your business details.",
+        "step_2_title": "Review (2-3 Days)",
+        "step_2_description": "Our team reviews your application and verifies your professional credentials.",
+        "step_3_title": "Account Activated",
+        "step_3_description": "You receive login credentials and your trade pricing is applied to your account.",
+        "step_4_title": "Start Ordering",
+        "step_4_description": "Browse our full catalogue at trade prices with credit terms available.",
+        "form_eyebrow": "Apply Online",
+        "form_title": "Trade Account Application",
+        "form_subtitle": "Complete the form below. All fields marked with an asterisk (*) are required. Applications are assessed within 2-3 business days.",
+        "form_padding_top": 64,
+        "form_padding_bottom": 64,
+        "show_form_note": true,
+        "form_note_title": "Form Embed Area",
+        "form_note_text": "To embed your application form, paste the embed code from your form provider (e.g. Typeform, Google Forms, JotForm, or a Shopify form app) into the 'Form Custom Content' field. Once embedded, uncheck 'Show form embed instruction note'.",
+        "contact_alt_text": "Prefer to apply by phone or email? Contact us directly:",
+        "contact_phone": "+61 7 0000 0000",
+        "contact_email": "accounts@3deltadental.com.au",
+        "eligibility_title": "Who Is Eligible?",
+        "eligibility_text": "Trade accounts are available to verified dental industry professionals and businesses with an active ABN.",
+        "eligibility_1": "Registered Dental Laboratories",
+        "eligibility_2": "Licensed Dental Technicians",
+        "eligibility_3": "Dental Practices & Clinics",
+        "eligibility_4": "Dental Education Institutions",
+        "body_background_color": "#FFFFFF",
+        "title_color": "#003B56",
+        "accent_color": "#03B239",
+        "card_background": "#FFFFFF",
+        "card_border": "#E5E7EB"
+      }
+    }
+  },
+  "order": [
+    "trade_account_page"
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "sections": {
+    "tga_compliance_page": {
+      "type": "tga-compliance-page",
+      "blocks": {
+        "cert_1": {
+          "type": "certification",
+          "settings": {
+            "category": "Acrylic Resins",
+            "description": "Cold-cure and heat-cure acrylic resin systems including nano-reinforced formulations for complete and partial dentures.",
+            "artg_number": "ARTG 000001",
+            "status": "registered"
+          }
+        },
+        "cert_2": {
+          "type": "certification",
+          "settings": {
+            "category": "Zirconia Materials",
+            "description": "Pre-sintered zirconia discs and blocks for CAD/CAM milling in dental laboratory workflows.",
+            "artg_number": "ARTG 000002",
+            "status": "registered"
+          }
+        },
+        "cert_3": {
+          "type": "certification",
+          "settings": {
+            "category": "Composite Resins",
+            "description": "Monolithic composite materials and fibre-reinforced composites for direct and indirect restorations.",
+            "artg_number": "ARTG 000003",
+            "status": "registered"
+          }
+        },
+        "cert_4": {
+          "type": "certification",
+          "settings": {
+            "category": "Metal Alloys",
+            "description": "Cobalt-chromium, nickel-chromium, and precious metal alloys for laboratory castings and frameworks.",
+            "artg_number": "ARTG 000004",
+            "status": "registered"
+          }
+        },
+        "cert_5": {
+          "type": "certification",
+          "settings": {
+            "category": "Fiber Quartz Products",
+            "description": "Fiber quartz frameworks and reinforcing materials for advanced prosthetic construction techniques.",
+            "artg_number": "ARTG 000005",
+            "status": "registered"
+          }
+        },
+        "cert_6": {
+          "type": "certification",
+          "settings": {
+            "category": "Articulating Materials",
+            "description": "Articulating papers, carbon foils, and diagnostic materials for occlusal analysis.",
+            "artg_number": "ARTG 000006",
+            "status": "registered"
+          }
+        }
+      },
+      "block_order": [
+        "cert_1",
+        "cert_2",
+        "cert_3",
+        "cert_4",
+        "cert_5",
+        "cert_6"
+      ],
+      "settings": {
+        "hero_eyebrow": "Regulatory Compliance",
+        "hero_title": "TGA Compliance & Product Registration",
+        "hero_subtitle": "All products supplied by 3 Delta Dental are TGA (Therapeutic Goods Administration) registered and comply with Australian regulatory requirements. Your professional peace of mind is our priority.",
+        "badge_1": "TGA Registered Products",
+        "badge_2": "ARTG Compliant",
+        "badge_3": "Documentation Available on Request",
+        "tga_logo_caption": "Regulated by TGA",
+        "hero_bg_start": "#003B56",
+        "hero_bg_end": "#005A7A",
+        "hero_text_color": "#FFFFFF",
+        "hero_padding_top": 72,
+        "hero_padding_bottom": 72,
+        "what_eyebrow": "Understanding Compliance",
+        "what_title": "What is the TGA?",
+        "what_paragraph_1": "The Therapeutic Goods Administration (TGA) is Australia's regulatory body for therapeutic goods, including medicines, medical devices, and dental materials. The TGA operates within the Australian Government's Department of Health, and its role is to protect public health by ensuring therapeutic goods are safe, effective, and of high quality.",
+        "what_paragraph_2": "Before any dental material can be legally supplied in Australia, it must be entered into the Australian Register of Therapeutic Goods (ARTG). The ARTG is a database of all therapeutic goods approved for supply in Australia, and each registered product receives a unique ARTG number that confirms its compliance status.",
+        "what_link_label": "Visit the TGA website for more information",
+        "what_link_url": "https://www.tga.gov.au",
+        "matters_title": "Why TGA Registration Matters",
+        "matters_item_1": "Protects your patients from substandard materials",
+        "matters_item_2": "Protects your professional licence and practice",
+        "matters_item_3": "Ensures materials meet Australian safety standards",
+        "matters_item_4": "Required for legal supply and use in Australia",
+        "matters_item_5": "Provides traceability for quality assurance audits",
+        "statement_title": "Our Compliance Commitment",
+        "statement_paragraph_1": "3 Delta Dental is committed to supplying only TGA-registered dental materials. We will not supply non-registered products, regardless of price or availability pressure. This is not simply a legal obligation — it is a core part of how we operate.",
+        "statement_paragraph_2": "We maintain current ARTG registration documentation for all product lines we distribute. We actively monitor TGA updates and regulatory changes, and we work with our European manufacturer partners to ensure ongoing compliance. If a product's registration status changes, we notify affected customers immediately.",
+        "statement_highlight": "Every product in the 3 Delta Dental catalogue carries a current TGA registration number. Documentation is available on request — simply contact our compliance team.",
+        "statement_padding_top": 64,
+        "statement_padding_bottom": 64,
+        "cert_eyebrow": "ARTG Registration",
+        "cert_title": "Registered Product Categories",
+        "cert_subtitle": "The following product categories in our catalogue are entered on the Australian Register of Therapeutic Goods (ARTG). Full documentation available on request.",
+        "cert_columns": 3,
+        "cert_note_title": "Request Documentation",
+        "cert_note": "ARTG registration certificates and TGA documentation for specific products are available on request. Contact our compliance team by phone or email with the product name or SKU and we will provide the relevant documentation within one business day.",
+        "contact_eyebrow": "Compliance Enquiries",
+        "contact_title": "Need Compliance Documentation?",
+        "contact_text": "Our compliance team can provide ARTG registration certificates, TGA documentation, and product safety data sheets for any product in our range. We aim to respond to all documentation requests within one business day.",
+        "contact_phone": "+61 7 0000 0000",
+        "contact_email": "compliance@3deltadental.com.au",
+        "contact_hours": "24/7 — available anytime",
+        "docs_title": "Request TGA Documentation",
+        "docs_text": "Email our compliance team with the product name or SKU to request ARTG certificates, safety data sheets, or other compliance documentation.",
+        "docs_cta_label": "Email Compliance Team",
+        "docs_cta_link": "shopify://pages/contact",
+        "docs_secondary_label": "Visit TGA Website",
+        "docs_secondary_link": "https://www.tga.gov.au",
+        "contact_bg": "#F9FAFB",
+        "contact_padding_top": 64,
+        "contact_padding_bottom": 64,
+        "section_padding_top": 64,
+        "section_padding_bottom": 64,
+        "body_background_color": "#FFFFFF",
+        "title_color": "#003B56",
+        "accent_color": "#03B239",
+        "callout_bg_color": "#F0FDF4",
+        "callout_border_color": "#BBF7D0",
+        "card_background": "#FFFFFF",
+        "card_border": "#E5E7EB"
+      }
+    }
+  },
+  "order": [
+    "tga_compliance_page"
+  ]
+}

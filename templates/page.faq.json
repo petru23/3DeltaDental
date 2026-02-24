@@ -1,0 +1,197 @@
+{
+  "sections": {
+    "faq_page": {
+      "type": "faq-page",
+      "blocks": {
+        "faq_ordering_1": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Ordering",
+            "question": "How do I place an order?",
+            "answer": "You can place an order directly through our website by adding items to your cart and proceeding to checkout. For large or custom orders, or if you have a trade account with credit terms, please contact our team via phone or email.",
+            "open_by_default": true
+          }
+        },
+        "faq_ordering_2": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Ordering",
+            "question": "Can I order by SKU or product code?",
+            "answer": "Yes. You can search directly by SKU or product code using the search bar at the top of every page. All product listings display their SKU prominently, making it easy to reorder from your existing supply lists.",
+            "open_by_default": false
+          }
+        },
+        "faq_ordering_3": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Ordering",
+            "question": "What payment methods do you accept?",
+            "answer": "We accept all major credit cards (Visa, Mastercard, American Express), bank transfer (EFT), and PayPal. Trade account holders with approved credit terms can also pay via invoice. All prices are in Australian Dollars (AUD) and are exclusive of GST.",
+            "open_by_default": false
+          }
+        },
+        "faq_ordering_4": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Ordering",
+            "question": "Is there a minimum order value?",
+            "answer": "There is no minimum order for standard online orders. Trade account holders may have different minimum order requirements as outlined in their trade agreement. Please contact us if you have any questions about minimum quantities for specific products.",
+            "open_by_default": false
+          }
+        },
+        "faq_shipping_1": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Shipping",
+            "question": "How long does shipping take?",
+            "answer": "Orders placed before 2pm AEST on business days are dispatched the same day. Standard delivery within Australia is typically 2-5 business days depending on your location. Express overnight shipping is available for metro areas. We ship from our Gold Coast warehouse.",
+            "open_by_default": false
+          }
+        },
+        "faq_shipping_2": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Shipping",
+            "question": "Do you ship internationally?",
+            "answer": "Yes, we ship to New Zealand and select international destinations. International shipping rates and transit times vary by destination. Please contact us before placing an international order to confirm availability and get an accurate shipping quote.",
+            "open_by_default": false
+          }
+        },
+        "faq_shipping_3": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Shipping",
+            "question": "How much does shipping cost?",
+            "answer": "Shipping costs are calculated at checkout based on your location and order weight. We offer free shipping on orders over a certain threshold for trade account holders — please contact us for details. Standard flat-rate and express options are available at checkout.",
+            "open_by_default": false
+          }
+        },
+        "faq_returns_1": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Returns",
+            "question": "What is your returns policy?",
+            "answer": "We accept returns on unopened, undamaged products within 30 days of purchase with proof of purchase. Items must be in their original packaging. Due to the nature of dental consumables, opened products cannot be returned unless they are faulty or incorrectly supplied.",
+            "open_by_default": false
+          }
+        },
+        "faq_returns_2": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Returns",
+            "question": "What if I receive a faulty or incorrect product?",
+            "answer": "If you receive a faulty, damaged, or incorrect product, please contact us within 7 days of receipt. We will arrange a replacement or full refund at no cost to you. Please do not return items without contacting us first, as this may delay resolution.",
+            "open_by_default": false
+          }
+        },
+        "faq_returns_3": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Returns",
+            "question": "How do I initiate a return?",
+            "answer": "To initiate a return, contact our team by phone or email with your order number and reason for return. We will provide you with a Return Merchandise Authorisation (RMA) number and return instructions. Unauthorised returns may not be accepted.",
+            "open_by_default": false
+          }
+        },
+        "faq_tga_1": {
+          "type": "faq_item",
+          "settings": {
+            "category": "TGA Compliance",
+            "question": "Are your products TGA approved?",
+            "answer": "Yes. All products supplied by 3 Delta Dental are TGA (Therapeutic Goods Administration) registered and comply with Australian regulatory requirements for dental therapeutic goods. We maintain current registration documentation for all product lines.",
+            "open_by_default": false
+          }
+        },
+        "faq_tga_2": {
+          "type": "faq_item",
+          "settings": {
+            "category": "TGA Compliance",
+            "question": "What is the TGA and why does it matter?",
+            "answer": "The Therapeutic Goods Administration (TGA) is Australia's regulatory body for therapeutic goods, including dental materials. TGA registration ensures that products have been assessed for safety, quality, and performance. Purchasing TGA-registered dental materials protects your laboratory, your patients, and your professional licence.",
+            "open_by_default": false
+          }
+        },
+        "faq_tga_3": {
+          "type": "faq_item",
+          "settings": {
+            "category": "TGA Compliance",
+            "question": "Can you provide TGA registration certificates?",
+            "answer": "Yes. TGA registration documentation is available on request for all our product lines. Please contact our team with the specific product(s) you require documentation for and we will provide the relevant certificates or ARTG (Australian Register of Therapeutic Goods) numbers.",
+            "open_by_default": false
+          }
+        },
+        "faq_trade_1": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Trade Account & Terms",
+            "question": "How do I apply for a trade account?",
+            "answer": "You can apply for a trade account by completing our Trade Account Application form on this website. Applications are typically assessed within 2-3 business days. Trade accounts offer benefits including trade pricing, credit terms, priority support, and dedicated account management.",
+            "open_by_default": false
+          }
+        },
+        "faq_trade_2": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Trade Account & Terms",
+            "question": "What are your trade credit terms?",
+            "answer": "Approved trade account holders can access 30-day net credit terms (EOM). Credit limits are assessed based on your business size and purchase history. Please contact us to discuss your specific requirements during the application process.",
+            "open_by_default": false
+          }
+        },
+        "faq_trade_3": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Trade Account & Terms",
+            "question": "Who is eligible for a trade account?",
+            "answer": "Trade accounts are available to registered dental laboratories, dental technicians, dentists, and other verified dental industry professionals with an active ABN. We may request proof of professional registration or business documentation during the application process.",
+            "open_by_default": false
+          }
+        }
+      },
+      "block_order": [
+        "faq_ordering_1",
+        "faq_ordering_2",
+        "faq_ordering_3",
+        "faq_ordering_4",
+        "faq_shipping_1",
+        "faq_shipping_2",
+        "faq_shipping_3",
+        "faq_returns_1",
+        "faq_returns_2",
+        "faq_returns_3",
+        "faq_tga_1",
+        "faq_tga_2",
+        "faq_tga_3",
+        "faq_trade_1",
+        "faq_trade_2",
+        "faq_trade_3"
+      ],
+      "settings": {
+        "hero_eyebrow": "Help Centre",
+        "hero_title": "Frequently Asked Questions",
+        "hero_subtitle": "Find answers to common questions about ordering, shipping, returns, TGA compliance, and trade accounts.",
+        "hero_bg_start": "#003B56",
+        "hero_bg_end": "#005A7A",
+        "hero_text_color": "#FFFFFF",
+        "hero_padding_top": 72,
+        "hero_padding_bottom": 72,
+        "body_background_color": "#F9FAFB",
+        "title_color": "#003B56",
+        "accent_color": "#03B239",
+        "body_padding_top": 64,
+        "body_padding_bottom": 64,
+        "cta_title": "Still Have Questions?",
+        "cta_text": "Our expert team is available 24/7 to help with any questions about products, orders, or technical support.",
+        "cta_primary_label": "Contact Us",
+        "cta_primary_link": "shopify://pages/contact",
+        "cta_primary_color": "#03B239",
+        "cta_primary_text": "#FFFFFF",
+        "cta_secondary_label": "Apply for Trade Account",
+        "cta_secondary_link": "shopify://pages/trade-account"
+      }
+    }
+  },
+  "order": [
+    "faq_page"
+  ]
+}
