@@ -1,0 +1,520 @@
+{% comment %}
+  About Page Section - Fully Editable
+{% endcomment %}
+
+{%- style -%}
+  .about-hero {
+    background: linear-gradient(135deg, {{ section.settings.hero_bg_start }} 0%, {{ section.settings.hero_bg_end }} 100%);
+    color: {{ section.settings.hero_text_color }};
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .about-hero__container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .about-hero__title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: {{ section.settings.hero_text_color }};
+  }
+  .about-hero__subtitle {
+    font-size: 1.25rem;
+    opacity: 0.95;
+  }
+  .about-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+  .about-section-title {
+    color: {{ section.settings.section_title_color }};
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .about-text {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #0D0D0D;
+    margin-bottom: 1rem;
+  }
+  .about-features {
+    background: #F7F7F7;
+    padding: 4rem 2rem;
+  }
+  .about-features__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .about-features__title {
+    color: {{ section.settings.section_title_color }};
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  .about-features__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  .about-feature {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .about-feature__icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .about-feature__title {
+    color: {{ section.settings.section_title_color }};
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+  .about-feature__text {
+    line-height: 1.6;
+  }
+  .about-stats {
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+  }
+  .about-stats__box {
+    background: linear-gradient(135deg, {{ section.settings.stats_bg_start }} 0%, {{ section.settings.stats_bg_end }} 100%);
+    padding: 3rem;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+  }
+  .about-stats__title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: white;
+  }
+  .about-stats__subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+  }
+  .about-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .about-stat__number {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  .about-cta {
+    background: #F7F7F7;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .about-cta__container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .about-cta__title {
+    color: {{ section.settings.section_title_color }};
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .about-cta__text {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
+  .about-cta__info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .about-cta__button {
+    display: inline-block;
+    background: {{ section.settings.button_bg_color }};
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.125rem;
+  }
+  .about-cta__button:hover {
+    opacity: 0.9;
+  }
+  @media (max-width: 768px) {
+    .about-hero__title {
+      font-size: 2rem;
+    }
+    .about-section-title, .about-features__title, .about-stats__title, .about-cta__title {
+      font-size: 1.5rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="about-hero">
+  <div class="about-hero__container">
+    <h1 class="about-hero__title">{{ section.settings.hero_title }}</h1>
+    <p class="about-hero__subtitle">{{ section.settings.hero_subtitle }}</p>
+  </div>
+</div>
+
+<div class="about-content">
+  <div>
+    <h2 class="about-section-title">{{ section.settings.story_title }}</h2>
+    <div class="about-text">{{ section.settings.story_paragraph_1 }}</div>
+    <div class="about-text">{{ section.settings.story_paragraph_2 }}</div>
+    <div class="about-text">{{ section.settings.story_paragraph_3 }}</div>
+  </div>
+</div>
+
+<div class="about-features">
+  <div class="about-features__container">
+    <h2 class="about-features__title">{{ section.settings.features_title }}</h2>
+    <div class="about-features__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'feature' -%}
+          <div class="about-feature" {{ block.shopify_attributes }}>
+            <div class="about-feature__icon">{{ block.settings.icon }}</div>
+            <h3 class="about-feature__title">{{ block.settings.title }}</h3>
+            <p class="about-feature__text">{{ block.settings.description }}</p>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<div class="about-stats">
+  <div class="about-stats__box">
+    <h2 class="about-stats__title">{{ section.settings.stats_title }}</h2>
+    <p class="about-stats__subtitle">{{ section.settings.stats_subtitle }}</p>
+    <div class="about-stats__grid">
+      <div>
+        <div class="about-stat__number">{{ section.settings.stat_1_number }}</div>
+        <div>{{ section.settings.stat_1_label }}</div>
+      </div>
+      <div>
+        <div class="about-stat__number">{{ section.settings.stat_2_number }}</div>
+        <div>{{ section.settings.stat_2_label }}</div>
+      </div>
+      <div>
+        <div class="about-stat__number">{{ section.settings.stat_3_number }}</div>
+        <div>{{ section.settings.stat_3_label }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="about-cta">
+  <div class="about-cta__container">
+    <h2 class="about-cta__title">{{ section.settings.cta_title }}</h2>
+    <p class="about-cta__text">{{ section.settings.cta_text }}</p>
+    <div class="about-cta__info">
+      <div>
+        <strong style="color: {{ section.settings.section_title_color }};">{{ section.settings.info_1_label }}</strong><br>
+        {{ section.settings.info_1_value }}
+      </div>
+      <div>
+        <strong style="color: {{ section.settings.section_title_color }};">{{ section.settings.info_2_label }}</strong><br>
+        {{ section.settings.info_2_value }}
+      </div>
+    </div>
+    <a href="{{ section.settings.cta_button_url }}" class="about-cta__button">{{ section.settings.cta_button_text }}</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "About 3 Delta Dental"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Gold Coast-based company dedicated to providing innovative dental solutions"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_start",
+      "label": "Hero Background Start Color",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_end",
+      "label": "Hero Background End Color",
+      "default": "#005A7A"
+    },
+    {
+      "type": "color",
+      "id": "hero_text_color",
+      "label": "Hero Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Story Section"
+    },
+    {
+      "type": "text",
+      "id": "story_title",
+      "label": "Story Title",
+      "default": "Our Story"
+    },
+    {
+      "type": "textarea",
+      "id": "story_paragraph_1",
+      "label": "Story Paragraph 1",
+      "default": "Founded in 2017 by Angelo Di Franco, 3 Delta Dental was relaunched in 2023 with partner Emilio Ragazzo. Our leadership team brings over 37 years of combined technical expertise in the dental industry."
+    },
+    {
+      "type": "textarea",
+      "id": "story_paragraph_2",
+      "label": "Story Paragraph 2",
+      "default": "We serve as official distributors for prominent European dental brands including Micro Medica, Micropolymer, Vertsystem, Megadental Italia, Unidesa, Techim Group, Bausch, Mesa, and SDI."
+    },
+    {
+      "type": "textarea",
+      "id": "story_paragraph_3",
+      "label": "Story Paragraph 3",
+      "default": "Our inventory encompasses nano acrylics, fiber quartz, zirconia, metal alloys, and monolithic composite materials—all TGA approved."
+    },
+    {
+      "type": "header",
+      "content": "Features Section"
+    },
+    {
+      "type": "text",
+      "id": "features_title",
+      "label": "Features Section Title",
+      "default": "What We Offer"
+    },
+    {
+      "type": "header",
+      "content": "Stats Section"
+    },
+    {
+      "type": "text",
+      "id": "stats_title",
+      "label": "Stats Title",
+      "default": "37+ Years of Combined Expertise"
+    },
+    {
+      "type": "text",
+      "id": "stats_subtitle",
+      "label": "Stats Subtitle",
+      "default": "Our team's deep industry knowledge ensures you get the right products and support"
+    },
+    {
+      "type": "color",
+      "id": "stats_bg_start",
+      "label": "Stats Background Start Color",
+      "default": "#03B239"
+    },
+    {
+      "type": "color",
+      "id": "stats_bg_end",
+      "label": "Stats Background End Color",
+      "default": "#029A2F"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_number",
+      "label": "Stat 1 Number",
+      "default": "Founded 2017"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Stat 1 Label",
+      "default": "Years of Excellence"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_number",
+      "label": "Stat 2 Number",
+      "default": "100+"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Stat 2 Label",
+      "default": "Product Lines"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_number",
+      "label": "Stat 3 Number",
+      "default": "24/7"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Stat 3 Label",
+      "default": "Technical Support"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action Section"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Title",
+      "default": "Get in Touch"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Ready to experience the 3 Delta Dental difference?"
+    },
+    {
+      "type": "text",
+      "id": "info_1_label",
+      "label": "Info 1 Label",
+      "default": "Location:"
+    },
+    {
+      "type": "text",
+      "id": "info_1_value",
+      "label": "Info 1 Value",
+      "default": "Gold Coast, Australia"
+    },
+    {
+      "type": "text",
+      "id": "info_2_label",
+      "label": "Info 2 Label",
+      "default": "ABN:"
+    },
+    {
+      "type": "text",
+      "id": "info_2_value",
+      "label": "Info 2 Value",
+      "default": "67 354 783 242"
+    },
+    {
+      "type": "text",
+      "id": "cta_button_text",
+      "label": "Button Text",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "cta_button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_title_color",
+      "label": "Section Titles Color",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#03B239"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "🦷"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Premium Materials"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Nano acrylics, fiber quartz, zirconia, metal alloys, and monolithic composites - all TGA approved"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Page",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "🦷",
+            "title": "Premium Materials",
+            "description": "Nano acrylics, fiber quartz, zirconia, metal alloys, and monolithic composites - all TGA approved"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "📚",
+            "title": "Professional Training",
+            "description": "Training in carbon fiber techniques, monolithic composite methodology, All-on-4/6 procedures, and zirconia ceramic processing"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "🔬",
+            "title": "Advanced Technology",
+            "description": "Cutting-edge cold-curing acrylic resin formulations using universal casting or injection techniques with nano-microtechnology"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "🚚",
+            "title": "Rapid Delivery",
+            "description": "Fast shipping across Australia and New Zealand with dedicated customer service"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "🏆",
+            "title": "European Brands",
+            "description": "Official distributor for Micro Medica, Micropolymer, Techim Group, Bausch, Mesa, SDI and more"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "⏰",
+            "title": "24/7 Support",
+            "description": "Round-the-clock technical support available for our customers"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

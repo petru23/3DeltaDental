@@ -1,0 +1,380 @@
+{% comment %}
+  Cart PO Number / Order Notes Field - B2B trade customer feature
+  Allows customers to enter a Purchase Order number and order notes
+  Submits via hidden cart attributes form
+  Fully editable from theme editor
+{% endcomment %}
+
+{%- liquid
+  assign show_po      = section.settings.show_po_field
+  assign show_notes   = section.settings.show_notes_field
+  assign bg_color     = section.settings.background_color
+  assign border_color = section.settings.border_color
+  assign label_color  = section.settings.label_color
+  assign accent_color = section.settings.accent_color
+-%}
+
+{%- unless cart.empty? -%}
+{%- style -%}
+  .cart-po-section {
+    background-color: {{ bg_color }};
+    border: 1px solid {{ border_color }};
+    border-radius: 10px;
+    padding: {{ section.settings.padding_vertical }}px {{ section.settings.padding_horizontal }}px;
+    max-width: 100%;
+    font-family: var(--font-body--family, sans-serif);
+  }
+
+  .cart-po-section__heading {
+    font-size: 1rem;
+    font-weight: 700;
+    color: {{ label_color }};
+    margin: 0 0 0.25rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cart-po-section__heading-icon {
+    font-size: 1.1rem;
+  }
+
+  .cart-po-section__subtitle {
+    font-size: 0.875rem;
+    color: #666;
+    margin: 0 0 1.25rem 0;
+  }
+
+  .cart-po-section__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cart-po-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .cart-po-field__label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: {{ label_color }};
+  }
+
+  .cart-po-field__label-optional {
+    font-weight: 400;
+    color: #888;
+    font-size: 0.8rem;
+  }
+
+  .cart-po-field__input,
+  .cart-po-field__textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid {{ border_color }};
+    border-radius: 6px;
+    font-size: 0.9375rem;
+    font-family: inherit;
+    color: #333;
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+    outline: none;
+  }
+
+  .cart-po-field__input:focus,
+  .cart-po-field__textarea:focus {
+    border-color: {{ accent_color }};
+    box-shadow: 0 0 0 3px {{ accent_color }}26;
+  }
+
+  .cart-po-field__textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .cart-po-section__save-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.5rem;
+    background-color: {{ accent_color }};
+    color: {{ section.settings.btn_text_color }};
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity 0.2s ease;
+    margin-top: 0.5rem;
+  }
+
+  .cart-po-section__save-btn:hover {
+    opacity: 0.88;
+  }
+
+  .cart-po-section__saved-msg {
+    display: none;
+    font-size: 0.875rem;
+    color: {{ accent_color }};
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+
+  .cart-po-section__saved-msg.is-visible {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+{%- endstyle -%}
+
+<div class="cart-po-section">
+  <h2 class="cart-po-section__heading">
+    <span class="cart-po-section__heading-icon" aria-hidden="true">📋</span>
+    {{ section.settings.heading }}
+  </h2>
+  {% if section.settings.subtitle != blank %}
+    <p class="cart-po-section__subtitle">{{ section.settings.subtitle }}</p>
+  {% endif %}
+
+  <form
+    id="cart-po-form"
+    action="/cart"
+    method="post"
+    class="cart-po-section__fields"
+    data-cart-attributes-form
+  >
+    {% if show_po %}
+      <div class="cart-po-field">
+        <label class="cart-po-field__label" for="cart-po-number">
+          {{ section.settings.po_field_label }}
+          <span class="cart-po-field__label-optional">({{ section.settings.po_field_optional_label }})</span>
+        </label>
+        <input
+          type="text"
+          id="cart-po-number"
+          name="attributes[Purchase Order Number]"
+          class="cart-po-field__input"
+          placeholder="{{ section.settings.po_field_placeholder }}"
+          value="{{ cart.attributes['Purchase Order Number'] }}"
+          maxlength="80"
+        >
+      </div>
+    {% endif %}
+
+    {% if show_notes %}
+      <div class="cart-po-field">
+        <label class="cart-po-field__label" for="cart-order-notes">
+          {{ section.settings.notes_field_label }}
+          <span class="cart-po-field__label-optional">({{ section.settings.po_field_optional_label }})</span>
+        </label>
+        <textarea
+          id="cart-order-notes"
+          name="note"
+          class="cart-po-field__textarea"
+          placeholder="{{ section.settings.notes_field_placeholder }}"
+        >{{ cart.note }}</textarea>
+      </div>
+    {% endif %}
+
+    <div>
+      <button type="submit" class="cart-po-section__save-btn">
+        {{ section.settings.save_btn_label }}
+      </button>
+      <div class="cart-po-section__saved-msg" id="cart-po-saved-msg" aria-live="polite">
+        ✓ {{ section.settings.saved_confirmation }}
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  (function () {
+    var form = document.getElementById('cart-po-form');
+    var savedMsg = document.getElementById('cart-po-saved-msg');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var formData = new FormData(form);
+      var body = {};
+      formData.forEach(function(value, key) {
+        body[key] = value;
+      });
+
+      fetch('/cart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
+        body: new URLSearchParams(body).toString()
+      })
+      .then(function () {
+        if (savedMsg) {
+          savedMsg.classList.add('is-visible');
+          setTimeout(function () {
+            savedMsg.classList.remove('is-visible');
+          }, 3000);
+        }
+      })
+      .catch(function (err) {
+        console.error('Cart update error:', err);
+      });
+    });
+  })();
+</script>
+
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "Cart PO / Order Notes",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Order Reference & Notes"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Enter your Purchase Order number and any special instructions for this order."
+    },
+    {
+      "type": "header",
+      "content": "PO Number Field"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_po_field",
+      "label": "Show PO Number Field",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "po_field_label",
+      "label": "PO Field Label",
+      "default": "Purchase Order Number"
+    },
+    {
+      "type": "text",
+      "id": "po_field_placeholder",
+      "label": "PO Field Placeholder",
+      "default": "e.g. PO-2024-1234"
+    },
+    {
+      "type": "text",
+      "id": "po_field_optional_label",
+      "label": "Optional Label Text",
+      "default": "optional"
+    },
+    {
+      "type": "header",
+      "content": "Order Notes Field"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_notes_field",
+      "label": "Show Order Notes Field",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "notes_field_label",
+      "label": "Notes Field Label",
+      "default": "Order Notes / Special Instructions"
+    },
+    {
+      "type": "text",
+      "id": "notes_field_placeholder",
+      "label": "Notes Field Placeholder",
+      "default": "e.g. Please ship to back dock. Do not substitute brands."
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "save_btn_label",
+      "label": "Save Button Label",
+      "default": "Save Details"
+    },
+    {
+      "type": "text",
+      "id": "saved_confirmation",
+      "label": "Saved Confirmation Text",
+      "default": "Details saved successfully"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Padding Vertical (px)",
+      "min": 16,
+      "max": 48,
+      "step": 8,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Padding Horizontal (px)",
+      "min": 16,
+      "max": 48,
+      "step": 8,
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F5F7FA"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#D1D5DB"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label Color",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent / Button Color",
+      "default": "#03B239"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cart PO / Order Notes"
+    }
+  ]
+}
+{% endschema %}

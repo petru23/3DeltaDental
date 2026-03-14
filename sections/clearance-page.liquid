@@ -1,0 +1,624 @@
+{% comment %}
+  Clearance / Sale Landing Page Section - 3 Delta Dental
+  Features: prominent sale hero, discount callouts, urgency messaging
+  Fully editable from theme editor
+{% endcomment %}
+
+{%- liquid
+  assign bg_color     = section.settings.background_color
+  assign accent       = section.settings.accent_color
+  assign blue         = section.settings.blue_color
+  assign gold         = section.settings.gold_color
+  assign text_col     = section.settings.hero_text_color
+-%}
+
+{%- style -%}
+  .cl-page {
+    font-family: var(--font-body--family, sans-serif);
+  }
+
+  /* Hero */
+  .cl-hero {
+    background-color: {{ blue }};
+    color: {{ text_col }};
+    padding: {{ section.settings.hero_padding_top }}px 2rem {{ section.settings.hero_padding_bottom }}px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cl-hero::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -120px;
+    width: 500px;
+    height: 500px;
+    background: rgba(254, 212, 64, 0.08);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cl-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 300px;
+    height: 300px;
+    background: rgba(3, 178, 57, 0.08);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .cl-hero__container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .cl-hero__badge {
+    display: inline-block;
+    background-color: {{ gold }};
+    color: {{ blue }};
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.25rem;
+  }
+
+  .cl-hero__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 0 0 0.75rem 0;
+    color: {{ text_col }};
+  }
+
+  .cl-hero__subtitle {
+    font-size: 1.0625rem;
+    opacity: 0.9;
+    margin: 0 0 1.75rem 0;
+    line-height: 1.6;
+  }
+
+  .cl-hero__cta {
+    display: inline-block;
+    background-color: {{ accent }};
+    color: {{ section.settings.cta_text_color }};
+    padding: 1rem 2.5rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .cl-hero__cta:hover {
+    opacity: 0.88;
+    transform: translateY(-2px);
+  }
+
+  /* Big discount badge */
+  .cl-hero__discount-box {
+    background-color: {{ gold }};
+    color: {{ blue }};
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-shrink: 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  .cl-hero__discount-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .cl-hero__discount-value {
+    font-size: 2.25rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .cl-hero__discount-sub {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.7;
+  }
+
+  /* Urgency bar */
+  .cl-urgency {
+    background-color: {{ accent }};
+    color: #fff;
+    text-align: center;
+    padding: 0.75rem 2rem;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .cl-urgency__icon {
+    margin-right: 0.5rem;
+  }
+
+  /* Discount tiers */
+  .cl-tiers {
+    background-color: {{ section.settings.tiers_bg }};
+    padding: {{ section.settings.tiers_padding_top }}px 2rem {{ section.settings.tiers_padding_bottom }}px;
+  }
+
+  .cl-tiers__container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .cl-tiers__heading {
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: {{ blue }};
+    margin: 0 0 0.5rem 0;
+  }
+
+  .cl-tiers__subheading {
+    text-align: center;
+    color: {{ section.settings.body_color }};
+    margin: 0 0 2.5rem 0;
+    font-size: 1rem;
+  }
+
+  .cl-tiers__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.tier_columns }}, 1fr);
+    gap: 1.25rem;
+  }
+
+  .cl-tier-card {
+    background: {{ section.settings.tier_card_bg }};
+    border: 1px solid {{ section.settings.tier_card_border }};
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cl-tier-card--featured {
+    border: 2px solid {{ gold }};
+    background: linear-gradient(135deg, {{ blue }}0D 0%, #ffffff 100%);
+  }
+
+  .cl-tier-card__icon {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .cl-tier-card__discount {
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: {{ accent }};
+    line-height: 1;
+  }
+
+  .cl-tier-card__label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: {{ blue }};
+    margin: 0;
+  }
+
+  .cl-tier-card__desc {
+    font-size: 0.875rem;
+    color: {{ section.settings.body_color }};
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .cl-tier-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: {{ accent }};
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    margin-top: 0.5rem;
+  }
+
+  .cl-tier-card__link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .cl-hero__container {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .cl-hero__discount-box {
+      display: none;
+    }
+
+    .cl-tiers__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .cl-tiers__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+{%- endstyle -%}
+
+<div class="cl-page">
+  <!-- Hero -->
+  <div class="cl-hero">
+    <div class="cl-hero__container">
+      <div class="cl-hero__content">
+        {% if section.settings.hero_badge != blank %}
+          <span class="cl-hero__badge">{{ section.settings.hero_badge }}</span>
+        {% endif %}
+        <h1 class="cl-hero__title">{{ section.settings.hero_title }}</h1>
+        {% if section.settings.hero_subtitle != blank %}
+          <p class="cl-hero__subtitle">{{ section.settings.hero_subtitle }}</p>
+        {% endif %}
+        {% if section.settings.hero_cta_label != blank %}
+          <a href="{{ section.settings.hero_cta_link }}" class="cl-hero__cta">
+            {{ section.settings.hero_cta_label }}
+          </a>
+        {% endif %}
+      </div>
+      <div class="cl-hero__discount-box" aria-hidden="true">
+        <span class="cl-hero__discount-label">Up To</span>
+        <span class="cl-hero__discount-value">{{ section.settings.discount_value }}</span>
+        <span class="cl-hero__discount-sub">Off Selected Items</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Urgency Bar -->
+  {% if section.settings.show_urgency_bar and section.settings.urgency_text != blank %}
+    <div class="cl-urgency">
+      <span class="cl-urgency__icon" aria-hidden="true">🔥</span>
+      {{ section.settings.urgency_text }}
+    </div>
+  {% endif %}
+
+  <!-- Discount Tier Cards -->
+  {% assign tier_blocks = section.blocks | where: 'type', 'tier_card' %}
+  {% if tier_blocks.size > 0 %}
+    <div class="cl-tiers">
+      <div class="cl-tiers__container">
+        {% if section.settings.tiers_heading != blank %}
+          <h2 class="cl-tiers__heading">{{ section.settings.tiers_heading }}</h2>
+        {% endif %}
+        {% if section.settings.tiers_subheading != blank %}
+          <p class="cl-tiers__subheading">{{ section.settings.tiers_subheading }}</p>
+        {% endif %}
+        <div class="cl-tiers__grid">
+          {% for block in tier_blocks %}
+            <div
+              class="cl-tier-card{% if block.settings.featured %} cl-tier-card--featured{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              {% if block.settings.icon != blank %}
+                <span class="cl-tier-card__icon" aria-hidden="true">{{ block.settings.icon }}</span>
+              {% endif %}
+              {% if block.settings.discount_amount != blank %}
+                <span class="cl-tier-card__discount">{{ block.settings.discount_amount }}</span>
+              {% endif %}
+              <p class="cl-tier-card__label">{{ block.settings.title }}</p>
+              {% if block.settings.description != blank %}
+                <p class="cl-tier-card__desc">{{ block.settings.description }}</p>
+              {% endif %}
+              {% if block.settings.link_label != blank and block.settings.link != blank %}
+                <a href="{{ block.settings.link }}" class="cl-tier-card__link">
+                  {{ block.settings.link_label }} &rarr;
+                </a>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Clearance Page",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "hero_badge",
+      "label": "Hero Badge Text",
+      "default": "Clearance Sale"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Clearance — Up to 40% Off"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Limited stock on selected dental lab supplies. All TGA-approved products. While stocks last."
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_label",
+      "label": "Hero CTA Label",
+      "default": "Shop Clearance Now"
+    },
+    {
+      "type": "url",
+      "id": "hero_cta_link",
+      "label": "Hero CTA Link"
+    },
+    {
+      "type": "text",
+      "id": "discount_value",
+      "label": "Big Discount Badge Value",
+      "default": "40%",
+      "info": "Shown in the circular badge on desktop"
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_top",
+      "label": "Hero Padding Top (px)",
+      "min": 40,
+      "max": 160,
+      "step": 10,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_bottom",
+      "label": "Hero Padding Bottom (px)",
+      "min": 40,
+      "max": 160,
+      "step": 10,
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Urgency Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_urgency_bar",
+      "label": "Show Urgency Bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "urgency_text",
+      "label": "Urgency Bar Text",
+      "default": "Limited stock — once it's gone, it's gone. Order today to avoid disappointment."
+    },
+    {
+      "type": "header",
+      "content": "Discount Tiers Section"
+    },
+    {
+      "type": "text",
+      "id": "tiers_heading",
+      "label": "Section Heading",
+      "default": "Clearance Categories"
+    },
+    {
+      "type": "text",
+      "id": "tiers_subheading",
+      "label": "Section Subheading",
+      "default": "Shop by category and save big on end-of-line and overstocked dental lab supplies."
+    },
+    {
+      "type": "range",
+      "id": "tier_columns",
+      "label": "Columns (Desktop)",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "tiers_padding_top",
+      "label": "Section Padding Top (px)",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "tiers_padding_bottom",
+      "label": "Section Padding Bottom (px)",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "default": 70
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Page Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "blue_color",
+      "label": "Primary Blue",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Green",
+      "default": "#03B239"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Gold",
+      "default": "#FED440"
+    },
+    {
+      "type": "color",
+      "id": "hero_text_color",
+      "label": "Hero Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "CTA Button Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "tiers_bg",
+      "label": "Tiers Section Background",
+      "default": "#F5F7FA"
+    },
+    {
+      "type": "color",
+      "id": "tier_card_bg",
+      "label": "Tier Card Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "tier_card_border",
+      "label": "Tier Card Border",
+      "default": "#E5E7EB"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body Text Color",
+      "default": "#555555"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tier_card",
+      "name": "Clearance Category Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "🏷️"
+        },
+        {
+          "type": "text",
+          "id": "discount_amount",
+          "label": "Discount Amount",
+          "default": "30%"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Category Name"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Card Description",
+          "default": "Brief description of clearance items in this category."
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link Label",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "featured",
+          "label": "Featured Card (gold border)",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Clearance Page",
+      "blocks": [
+        {
+          "type": "tier_card",
+          "settings": {
+            "icon": "🦷",
+            "discount_amount": "40%",
+            "title": "Acrylics",
+            "description": "End-of-line acrylic materials at clearance pricing.",
+            "link_label": "Shop Acrylics",
+            "featured": true
+          }
+        },
+        {
+          "type": "tier_card",
+          "settings": {
+            "icon": "⚙️",
+            "discount_amount": "30%",
+            "title": "Burs & Discs",
+            "description": "Selected burs and cutting discs at reduced prices.",
+            "link_label": "Shop Burs"
+          }
+        },
+        {
+          "type": "tier_card",
+          "settings": {
+            "icon": "✨",
+            "discount_amount": "25%",
+            "title": "Polishing Materials",
+            "description": "Polishing compounds and finishing materials on clearance.",
+            "link_label": "Shop Polishing"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

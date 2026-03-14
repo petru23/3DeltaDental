@@ -4,22 +4,124 @@
       "type": "main-page",
       "disabled": true
     },
-    "terms_hero": {
-      "type": "custom-liquid",
+    "terms_page": {
+      "type": "policy-page",
+      "blocks": {
+        "section_1": {
+          "type": "text_section",
+          "settings": {
+            "title": "Agreement to Terms",
+            "content": "<p>All sales and services are governed by these terms and conditions, which supersede all other documents unless modified in writing by 3 Delta Dental.</p>",
+            "highlight_style": "none"
+          }
+        },
+        "section_2": {
+          "type": "text_section",
+          "settings": {
+            "title": "Registration and Account",
+            "content": "<p>Users must create accounts to access pricing and make purchases. You agree to provide accurate personal details including name, email, address, and phone number.</p><p>Account holders remain responsible for maintaining the confidentiality of their account credentials.</p>",
+            "highlight_style": "none"
+          }
+        },
+        "section_3": {
+          "type": "text_section",
+          "settings": {
+            "title": "Payment and Transactions",
+            "content": "<p>All payments are processed securely through Stripe. You must provide accurate purchase information and update your payment details as necessary.</p><p>You agree to pay all charges incurred by you or any users of your account at the prices in effect when such charges are incurred.</p>",
+            "highlight_style": "none"
+          }
+        },
+        "section_4": {
+          "type": "text_section",
+          "settings": {
+            "title": "Pricing",
+            "content": "<p><strong>All prices are subject to change without notice due to market conditions.</strong></p><p>Prices are processed in Australian Dollars (AUD) and are exclusive of GST where applicable. GST will be added at checkout for eligible transactions.</p><p>We reserve the right to modify or discontinue products and services at any time without notice.</p>",
+            "highlight_style": "warning"
+          }
+        },
+        "section_5": {
+          "type": "text_section",
+          "settings": {
+            "title": "Product Availability",
+            "content": "<p>Certain products available exclusively online may have restricted quantities. All products are subject to availability and our returns policy.</p>",
+            "highlight_style": "none"
+          }
+        },
+        "section_6": {
+          "type": "text_section",
+          "settings": {
+            "title": "Delivery Terms",
+            "content": "<p>Delivery dates are estimates only and are not guaranteed. Customers are responsible for freight and insurance costs.</p><p><strong>Important:</strong> You must report any damage to products within 24 hours of delivery.</p><p>Shipping rates vary by carrier zones, and remote locations may incur additional surcharges.</p>",
+            "highlight_style": "none"
+          }
+        },
+        "section_7": {
+          "type": "text_section",
+          "settings": {
+            "title": "Limitation of Liability",
+            "content": "<p>3 Delta Dental disclaims liability for direct, indirect, incidental, or consequential damages arising from:</p><ul><li>Service or product use</li><li>Inability to use the service</li><li>Unauthorized access to your data</li><li>Any other matter relating to the service</li></ul>",
+            "highlight_style": "none"
+          }
+        },
+        "section_8": {
+          "type": "text_section",
+          "settings": {
+            "title": "User Submissions",
+            "content": "<p>Any comments, feedback, suggestions, or other submissions you provide may be used by 3 Delta Dental without restriction or compensation.</p>",
+            "highlight_style": "none"
+          }
+        },
+        "section_9": {
+          "type": "text_section",
+          "settings": {
+            "title": "Privacy Policy",
+            "content": "<p>Our collection and use of personal information is detailed in our <a href=\"/pages/privacy-policy\">Privacy Policy</a>, which forms part of these terms.</p>",
+            "highlight_style": "none"
+          }
+        },
+        "section_10": {
+          "type": "text_section",
+          "settings": {
+            "title": "Dispute Resolution and Governing Law",
+            "content": "<p>These terms are governed by the laws of Queensland, Australia, and the Commonwealth of Australia.</p><p>Queensland and Commonwealth courts have exclusive jurisdiction over any disputes arising from these terms.</p>",
+            "highlight_style": "none"
+          }
+        },
+        "section_11": {
+          "type": "text_section",
+          "settings": {
+            "title": "Contact Us",
+            "content": "<p>If you have any questions about these Terms and Conditions, please contact us:</p><p><strong>Email:</strong> <a href=\"mailto:info@3deltadental.com\">info@3deltadental.com</a></p><p><strong>Phone:</strong> <a href=\"tel:+61478731344\">+61 (0) 478 731 344</a></p><p><strong>Address:</strong> 1/5a Ashton Street, Labrador, QLD 4215</p>",
+            "highlight_style": "highlight"
+          }
+        }
+      },
+      "block_order": [
+        "section_1",
+        "section_2",
+        "section_3",
+        "section_4",
+        "section_5",
+        "section_6",
+        "section_7",
+        "section_8",
+        "section_9",
+        "section_10",
+        "section_11"
+      ],
       "settings": {
-        "custom_liquid": "<div style=\"background: linear-gradient(135deg, #003B56 0%, #005A7A 100%); color: white; padding: 4rem 2rem; text-align: center;\">\n  <div style=\"max-width: 800px; margin: 0 auto;\">\n    <h1 style=\"font-size: 2.5rem; margin-bottom: 1rem; color: white;\">Terms and Conditions</h1>\n    <p style=\"font-size: 1.125rem; opacity: 0.95;\">Please read these terms carefully before using our services</p>\n  </div>\n</div>"
-      }
-    },
-    "terms_content": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<div style=\"max-width: 900px; margin: 0 auto; padding: 4rem 2rem;\">\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Agreement to Terms</h2>\n    <p style=\"line-height: 1.8;\">All sales and services are governed by these terms and conditions, which supersede all other documents unless modified in writing by 3 Delta Dental.</p>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Registration and Account</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\">Users must create accounts to access pricing and make purchases. You agree to provide accurate personal details including name, email, address, and phone number.</p>\n    <p style=\"line-height: 1.8;\">Account holders remain responsible for maintaining the confidentiality of their account credentials.</p>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Payment and Transactions</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\">All payments are processed securely through Stripe. You must provide accurate purchase information and update your payment details as necessary.</p>\n    <p style=\"line-height: 1.8;\">You agree to pay all charges incurred by you or any users of your account at the prices in effect when such charges are incurred.</p>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Pricing</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\"><strong>All prices are subject to change without notice due to market conditions.</strong></p>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\">Prices are processed in Australian Dollars (AUD) and are exclusive of GST where applicable. GST will be added at checkout for eligible transactions.</p>\n    <p style=\"line-height: 1.8;\">We reserve the right to modify or discontinue products and services at any time without notice.</p>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Product Availability</h2>\n    <p style=\"line-height: 1.8;\">Certain products available exclusively online may have restricted quantities. All products are subject to availability and our returns policy.</p>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Delivery Terms</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\">Delivery dates are estimates only and are not guaranteed. Customers are responsible for freight and insurance costs.</p>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\"><strong>Important:</strong> You must report any damage to products within 24 hours of delivery.</p>\n    <p style=\"line-height: 1.8;\">Shipping rates vary by carrier zones, and remote locations may incur additional surcharges.</p>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Limitation of Liability</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\">3 Delta Dental disclaims liability for direct, indirect, incidental, or consequential damages arising from:</p>\n    <ul style=\"line-height: 1.8; margin-left: 2rem;\">\n      <li>Service or product use</li>\n      <li>Inability to use the service</li>\n      <li>Unauthorized access to your data</li>\n      <li>Any other matter relating to the service</li>\n    </ul>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">User Submissions</h2>\n    <p style=\"line-height: 1.8;\">Any comments, feedback, suggestions, or other submissions you provide may be used by 3 Delta Dental without restriction or compensation.</p>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Privacy Policy</h2>\n    <p style=\"line-height: 1.8;\">Our collection and use of personal information is detailed in our <a href=\"/pages/privacy-policy\" style=\"color: #03B239; text-decoration: underline;\">Privacy Policy</a>, which forms part of these terms.</p>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Dispute Resolution and Governing Law</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\">These terms are governed by the laws of Queensland, Australia, and the Commonwealth of Australia.</p>\n    <p style=\"line-height: 1.8;\">Queensland and Commonwealth courts have exclusive jurisdiction over any disputes arising from these terms.</p>\n  </div>\n\n  <div style=\"background: #F7F7F7; padding: 2rem; border-radius: 8px;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Contact Us</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 0.5rem;\">If you have any questions about these Terms and Conditions, please contact us:</p>\n    <p style=\"line-height: 1.8; margin-bottom: 0.5rem;\"><strong>Email:</strong> <a href=\"mailto:info@3deltadental.com\" style=\"color: #03B239;\">info@3deltadental.com</a></p>\n    <p style=\"line-height: 1.8; margin-bottom: 0.5rem;\"><strong>Phone:</strong> <a href=\"tel:+61478731344\" style=\"color: #03B239;\">+61 (0) 478 731 344</a></p>\n    <p style=\"line-height: 1.8;\"><strong>Address:</strong> 1/5a Ashton Street, Labrador, QLD 4215</p>\n  </div>\n</div>"
+        "hero_title": "Terms and Conditions",
+        "hero_subtitle": "Please read these terms carefully before using our services",
+        "hero_bg_start": "#003B56",
+        "hero_bg_end": "#005A7A",
+        "hero_text_color": "#FFFFFF",
+        "section_title_color": "#003B56",
+        "link_color": "#03B239"
       }
     }
   },
   "order": [
     "main",
-    "terms_hero",
-    "terms_content"
+    "terms_page"
   ]
 }

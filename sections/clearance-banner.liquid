@@ -1,0 +1,353 @@
+{% comment %}
+  Clearance Banner Section - Urgency banner for clearance/sale items
+  Gold accent (#FED440) with editable content and CTA
+{% endcomment %}
+
+<div
+  class="clearance-banner"
+  style="
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+  "
+>
+  <div class="clearance-banner__container">
+    <div class="clearance-banner__content">
+      {% if section.settings.eyebrow != blank %}
+        <p
+          class="clearance-banner__eyebrow"
+          style="
+            background-color: {{ section.settings.badge_bg_color }};
+            color: {{ section.settings.badge_text_color }};
+          "
+        >
+          {{ section.settings.eyebrow }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="clearance-banner__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.subheading != blank %}
+        <p class="clearance-banner__subheading">{{ section.settings.subheading }}</p>
+      {% endif %}
+
+      {% if section.settings.cta_label != blank and section.settings.cta_link != blank %}
+        <a
+          href="{{ section.settings.cta_link }}"
+          class="clearance-banner__cta"
+          style="
+            background-color: {{ section.settings.cta_bg_color }};
+            color: {{ section.settings.cta_text_color }};
+          "
+        >
+          {{ section.settings.cta_label }}
+          {% if section.settings.show_cta_arrow %}
+            <span class="clearance-banner__cta-arrow" aria-hidden="true">&rarr;</span>
+          {% endif %}
+        </a>
+      {% endif %}
+    </div>
+
+    {% if section.settings.show_decorative_element %}
+      <div class="clearance-banner__decoration" aria-hidden="true">
+        <span class="clearance-banner__decoration-text" style="color: {{ section.settings.decoration_color }};">
+          {{ section.settings.decoration_text }}
+        </span>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .clearance-banner {
+    padding: {{ section.settings.padding_top }}px 2rem {{ section.settings.padding_bottom }}px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .clearance-banner__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .clearance-banner__content {
+    {% if section.settings.text_align == 'center' %}
+    text-align: center;
+    margin: 0 auto;
+    {% elsif section.settings.text_align == 'right' %}
+    text-align: right;
+    margin-left: auto;
+    {% else %}
+    text-align: left;
+    {% endif %}
+  }
+
+  .clearance-banner__eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.875rem;
+    border-radius: 50px;
+    margin-bottom: 0.75rem;
+  }
+
+  .clearance-banner__heading {
+    font-size: {{ section.settings.heading_size }}px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .clearance-banner__subheading {
+    font-size: 1rem;
+    line-height: 1.55;
+    margin: 0 0 1.5rem 0;
+    opacity: 0.85;
+    max-width: 480px;
+  }
+
+  .clearance-banner__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .clearance-banner__cta:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .clearance-banner__cta-arrow {
+    font-size: 1.1em;
+    transition: transform 0.2s ease;
+  }
+
+  .clearance-banner__cta:hover .clearance-banner__cta-arrow {
+    transform: translateX(3px);
+  }
+
+  .clearance-banner__decoration {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .clearance-banner__decoration-text {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 1;
+    opacity: 0.15;
+    letter-spacing: -0.04em;
+    user-select: none;
+  }
+
+  @media (max-width: 768px) {
+    .clearance-banner {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .clearance-banner__container {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .clearance-banner__content {
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .clearance-banner__heading {
+      font-size: {{ section.settings.heading_size | times: 0.75 | round }}px;
+    }
+
+    .clearance-banner__subheading {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .clearance-banner__decoration {
+      display: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Clearance Banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow / Badge Text",
+      "info": "Small badge above the heading (e.g. 'Limited Time'). Leave blank to hide.",
+      "default": "Clearance Sale"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Up to 40% Off Selected Products"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Limited stock available. Shop our clearance range before it's gone."
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button Label",
+      "default": "Shop Clearance"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta_arrow",
+      "label": "Show arrow on button",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Decorative Element"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_decorative_element",
+      "label": "Show decorative text",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "decoration_text",
+      "label": "Decorative Text",
+      "info": "Large background text for visual interest",
+      "default": "SALE"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading Font Size (px)",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 16,
+      "max": 120,
+      "step": 8,
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 16,
+      "max": 120,
+      "step": 8,
+      "default": 56
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Badge Background Color",
+      "default": "#FED440"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge Text Color",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg_color",
+      "label": "Button Background Color",
+      "default": "#03B239"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "Button Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "decoration_color",
+      "label": "Decorative Text Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Clearance Banner"
+    }
+  ]
+}
+{% endschema %}

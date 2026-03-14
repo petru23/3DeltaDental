@@ -4,22 +4,88 @@
       "type": "main-page",
       "disabled": true
     },
-    "privacy_hero": {
-      "type": "custom-liquid",
+    "privacy_page": {
+      "type": "policy-page",
+      "blocks": {
+        "section_1": {
+          "type": "text_section",
+          "settings": {
+            "title": "Organization Details",
+            "content": "<p><strong>Company:</strong> 3 Delta Dental</p><p><strong>Address:</strong> 1/5A Ashton St, Labrador, Queensland 4215, Australia</p><p><strong>Contact:</strong> <a href=\"mailto:info@3deltadental.com\">info@3deltadental.com</a> | <a href=\"tel:0448419050\">0448 419 050</a></p><p><strong>ABN:</strong> 67 354 783 242</p>",
+            "highlight_style": "none"
+          }
+        },
+        "section_2": {
+          "type": "text_section",
+          "settings": {
+            "title": "Personal Information We Collect",
+            "content": "<p>We collect the following personal information to provide our services:</p><ul><li>Name</li><li>Email address</li><li>Mobile number</li><li>Date of birth</li><li>Physical address</li></ul>",
+            "highlight_style": "none"
+          }
+        },
+        "section_3": {
+          "type": "text_section",
+          "settings": {
+            "title": "Data Retention Policy",
+            "content": "<p>Information is kept for 90 days to 2 years after user accounts remain idle, or as long as necessary for stated purposes. Extended retention may occur for:</p><ul><li>Legal compliance</li><li>Fraud prevention</li><li>Enforcement of rights</li></ul><p>Anonymous aggregate data may be retained indefinitely for analytics purposes.</p>",
+            "highlight_style": "none"
+          }
+        },
+        "section_4": {
+          "type": "text_section",
+          "settings": {
+            "title": "Your Rights",
+            "content": "<p>You have the right to:</p><ul><li>Access, correct, or erase your personal data</li><li>Obtain copies of your data</li><li>Restrict or object to data processing</li><li>Request data portability to another entity</li><li>Withdraw consent at any time</li><li>Lodge complaints with relevant authorities</li><li>Opt out of direct marketing and profiling</li></ul>",
+            "highlight_style": "none"
+          }
+        },
+        "section_5": {
+          "type": "text_section",
+          "settings": {
+            "title": "Security Measures",
+            "content": "<p>We employ reasonable security measures to prevent loss, misuse, or unauthorized alteration of your data. However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.</p>",
+            "highlight_style": "none"
+          }
+        },
+        "section_6": {
+          "type": "text_section",
+          "settings": {
+            "title": "Grievance Officer",
+            "content": "<p><strong>Contact:</strong> Emilio Ragazzo</p><p><strong>Email:</strong> <a href=\"mailto:info@3deltadental.com\">info@3deltadental.com</a></p>",
+            "highlight_style": "highlight"
+          }
+        },
+        "section_7": {
+          "type": "text_section",
+          "settings": {
+            "title": "",
+            "content": "<p><em>Please note: Refusing to provide necessary data may prevent access to certain services. For questions about this privacy policy, please contact us at <a href=\"mailto:info@3deltadental.com\">info@3deltadental.com</a>.</em></p>",
+            "highlight_style": "none"
+          }
+        }
+      },
+      "block_order": [
+        "section_1",
+        "section_2",
+        "section_3",
+        "section_4",
+        "section_5",
+        "section_6",
+        "section_7"
+      ],
       "settings": {
-        "custom_liquid": "<div style=\"background: linear-gradient(135deg, #003B56 0%, #005A7A 100%); color: white; padding: 4rem 2rem; text-align: center;\">\n  <div style=\"max-width: 800px; margin: 0 auto;\">\n    <h1 style=\"font-size: 2.5rem; margin-bottom: 1rem; color: white;\">Privacy Policy</h1>\n    <p style=\"font-size: 1.125rem; opacity: 0.95;\">Last Updated: 27 March 2024 | Effective: 28 March 2024</p>\n  </div>\n</div>"
-      }
-    },
-    "privacy_content": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<div style=\"max-width: 900px; margin: 0 auto; padding: 4rem 2rem;\">\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Organization Details</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 0.5rem;\"><strong>Company:</strong> 3 Delta Dental</p>\n    <p style=\"line-height: 1.8; margin-bottom: 0.5rem;\"><strong>Address:</strong> 1/5A Ashton St, Labrador, Queensland 4215, Australia</p>\n    <p style=\"line-height: 1.8; margin-bottom: 0.5rem;\"><strong>Contact:</strong> <a href=\"mailto:info@3deltadental.com\" style=\"color: #03B239;\">info@3deltadental.com</a> | <a href=\"tel:0448419050\" style=\"color: #03B239;\">0448 419 050</a></p>\n    <p style=\"line-height: 1.8;\"><strong>ABN:</strong> 67 354 783 242</p>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Personal Information We Collect</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\">We collect the following personal information to provide our services:</p>\n    <ul style=\"line-height: 1.8; margin-left: 2rem; margin-bottom: 1rem;\">\n      <li>Name</li>\n      <li>Email address</li>\n      <li>Mobile number</li>\n      <li>Date of birth</li>\n      <li>Physical address</li>\n    </ul>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Data Retention Policy</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\">Information is kept for 90 days to 2 years after user accounts remain idle, or as long as necessary for stated purposes. Extended retention may occur for:</p>\n    <ul style=\"line-height: 1.8; margin-left: 2rem;\">\n      <li>Legal compliance</li>\n      <li>Fraud prevention</li>\n      <li>Enforcement of rights</li>\n    </ul>\n    <p style=\"line-height: 1.8; margin-top: 1rem;\">Anonymous aggregate data may be retained indefinitely for analytics purposes.</p>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Your Rights</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\">You have the right to:</p>\n    <ul style=\"line-height: 1.8; margin-left: 2rem;\">\n      <li>Access, correct, or erase your personal data</li>\n      <li>Obtain copies of your data</li>\n      <li>Restrict or object to data processing</li>\n      <li>Request data portability to another entity</li>\n      <li>Withdraw consent at any time</li>\n      <li>Lodge complaints with relevant authorities</li>\n      <li>Opt out of direct marketing and profiling</li>\n    </ul>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Security Measures</h2>\n    <p style=\"line-height: 1.8;\">We employ reasonable security measures to prevent loss, misuse, or unauthorized alteration of your data. However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.</p>\n  </div>\n\n  <div style=\"background: #F7F7F7; padding: 2rem; border-radius: 8px; margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Grievance Officer</h2>\n    <p style=\"line-height: 1.8;\"><strong>Contact:</strong> Emilio Ragazzo</p>\n    <p style=\"line-height: 1.8;\"><strong>Email:</strong> <a href=\"mailto:info@3deltadental.com\" style=\"color: #03B239;\">info@3deltadental.com</a></p>\n  </div>\n\n  <div style=\"border-top: 2px solid #E5E5E5; padding-top: 2rem;\">\n    <p style=\"line-height: 1.8; color: #666; font-size: 0.938rem;\">Please note: Refusing to provide necessary data may prevent access to certain services. For questions about this privacy policy, please contact us at <a href=\"mailto:info@3deltadental.com\" style=\"color: #03B239;\">info@3deltadental.com</a>.</p>\n  </div>\n</div>"
+        "hero_title": "Privacy Policy",
+        "hero_subtitle": "Last Updated: 27 March 2024 | Effective: 28 March 2024",
+        "hero_bg_start": "#003B56",
+        "hero_bg_end": "#005A7A",
+        "hero_text_color": "#FFFFFF",
+        "section_title_color": "#003B56",
+        "link_color": "#03B239"
       }
     }
   },
   "order": [
     "main",
-    "privacy_hero",
-    "privacy_content"
+    "privacy_page"
   ]
 }

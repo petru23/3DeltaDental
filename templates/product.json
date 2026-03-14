@@ -1,12 +1,4 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */{
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -166,6 +158,14 @@
               },
               "blocks": {}
             },
+            "stock_status": {
+              "type": "custom-liquid",
+              "name": "Stock Status",
+              "settings": {
+                "custom_liquid": "{% if product.selected_or_first_available_variant.available %}<p style=\"font-size: 0.875rem; color: #03B239; font-weight: 600; margin: 0 0 8px 0;\">✓ In Stock</p>{% else %}<p style=\"font-size: 0.875rem; color: #CC3300; font-weight: 600; margin: 0 0 8px 0;\">✗ Out of Stock</p>{% endif %}"
+              },
+              "blocks": {}
+            },
             "divider_VJhene": {
               "type": "_divider",
               "name": "t:names.divider",
@@ -255,6 +255,7 @@
           "block_order": [
             "group_icgrde",
             "sku_display",
+            "stock_status",
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
@@ -273,6 +274,31 @@
         "padding-block-end": 0
       }
     },
+    "product_tga_specs": {
+      "type": "product-tga-specs",
+      "blocks": {},
+      "settings": {
+        "show_tga_badge": true,
+        "show_brand_link": true,
+        "show_specs_table": true,
+        "show_tga_info_box": true,
+        "tga_badge_label": "TGA Registered",
+        "approved_badge_label": "Australian Approved",
+        "brand_prefix_label": "Brand:",
+        "brand_page_link": "/pages/brands",
+        "specs_heading": "Technical Specifications",
+        "tga_info_box_title": "TGA Compliance Assurance",
+        "tga_info_box_text": "All products supplied by 3 Delta Dental are TGA registered and meet Australian regulatory requirements for dental medical devices and materials.",
+        "tga_info_box_link_label": "View our TGA Compliance page",
+        "tga_info_box_link": "/pages/tga-compliance",
+        "padding_top": 32,
+        "padding_bottom": 48,
+        "background_color": "#FFFFFF",
+        "accent_color": "#03B239",
+        "blue_color": "#003B56",
+        "gold_color": "#FED440"
+      }
+    },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
       "blocks": {
@@ -280,7 +306,7 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
-            "text": "<h3>You may also like </h3>",
+            "text": "<h3>You may also like</h3>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -417,6 +443,7 @@
   },
   "order": [
     "main",
+    "product_tga_specs",
     "product_recommendations_qggXJq"
   ]
 }

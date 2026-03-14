@@ -1,89 +1,88 @@
 {
   "sections": {
-    "cart-section": {
-      "type": "main-cart",
+    "main": {
+      "type": "main-page",
+      "disabled": true
+    },
+    "clearance_hero": {
+      "type": "clearance-page",
       "blocks": {
-        "cart-page-title": {
-          "type": "_cart-title",
-          "static": true,
+        "tier_acrylics": {
+          "type": "tier_card",
           "settings": {
-            "title": "Cart",
-            "show_count": true,
-            "type_preset": "h4",
-            "alignment": "left",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "icon": "🦷",
+            "discount_amount": "40%",
+            "title": "Acrylics",
+            "description": "End-of-line acrylic materials and shade systems at clearance pricing.",
+            "link_label": "Shop Acrylics",
+            "link": "/collections/acrylics",
+            "featured": true
+          }
         },
-        "cart-page-items": {
-          "type": "_cart-products",
-          "static": true,
+        "tier_burs": {
+          "type": "tier_card",
           "settings": {
-            "gap": 24,
-            "image_ratio": "portrait",
-            "dividers": true,
-            "vendor": true,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "icon": "⚙️",
+            "discount_amount": "30%",
+            "title": "Burs & Discs",
+            "description": "Selected burs and cutting discs at heavily reduced prices.",
+            "link_label": "Shop Burs",
+            "link": "/collections/burs",
+            "featured": false
+          }
         },
-        "cart-page-summary": {
-          "type": "_cart-summary",
-          "static": true,
+        "tier_polishing": {
+          "type": "tier_card",
           "settings": {
-            "extend_summary": true,
-            "inherit_color_scheme": false,
-            "color_scheme": "scheme-2",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0
-          },
-          "blocks": {}
+            "icon": "✨",
+            "discount_amount": "25%",
+            "title": "Polishing Materials",
+            "description": "Polishing compounds and finishing materials on clearance.",
+            "link_label": "Shop Polishing",
+            "link": "/collections/polishing",
+            "featured": false
+          }
         }
       },
+      "block_order": [
+        "tier_acrylics",
+        "tier_burs",
+        "tier_polishing"
+      ],
       "settings": {
-        "section_width": "page-width",
-        "color_scheme": "",
-        "padding-block-start": 24,
-        "padding-block-end": 0
-      }
-    },
-    "cart_po_field": {
-      "type": "cart-po-field",
-      "settings": {
-        "heading": "Order Reference & Notes",
-        "subtitle": "Enter your Purchase Order number and any special instructions for this order.",
-        "show_po_field": true,
-        "po_field_label": "Purchase Order Number",
-        "po_field_placeholder": "e.g. PO-2024-1234",
-        "po_field_optional_label": "optional",
-        "show_notes_field": true,
-        "notes_field_label": "Order Notes / Special Instructions",
-        "notes_field_placeholder": "e.g. Please ship to back dock. Do not substitute brands.",
-        "save_btn_label": "Save Details",
-        "saved_confirmation": "Details saved successfully",
-        "padding_vertical": 24,
-        "padding_horizontal": 24,
-        "background_color": "#F5F7FA",
-        "border_color": "#D1D5DB",
-        "label_color": "#003B56",
+        "hero_badge": "Clearance Sale",
+        "hero_title": "Clearance — Up to 40% Off",
+        "hero_subtitle": "Limited stock on selected dental lab supplies. All TGA-approved products. While stocks last.",
+        "hero_cta_label": "Shop Clearance Now",
+        "hero_cta_link": "/collections/clearance",
+        "discount_value": "40%",
+        "hero_padding_top": 80,
+        "hero_padding_bottom": 80,
+        "show_urgency_bar": true,
+        "urgency_text": "Limited stock — once it's gone, it's gone. Order today to avoid disappointment.",
+        "tiers_heading": "Clearance Categories",
+        "tiers_subheading": "Shop by category and save big on end-of-line and overstocked dental lab supplies.",
+        "tier_columns": 3,
+        "tiers_padding_top": 70,
+        "tiers_padding_bottom": 70,
+        "background_color": "#FFFFFF",
+        "blue_color": "#003B56",
         "accent_color": "#03B239",
-        "btn_text_color": "#FFFFFF"
+        "gold_color": "#FED440",
+        "hero_text_color": "#FFFFFF",
+        "cta_text_color": "#FFFFFF",
+        "tiers_bg": "#F5F7FA",
+        "tier_card_bg": "#FFFFFF",
+        "tier_card_border": "#E5E7EB",
+        "body_color": "#555555"
       }
     },
-    "product_list_NNFgcy": {
+    "clearance_products": {
       "type": "product-list",
       "blocks": {
         "static-header": {
           "type": "_product-list-content",
-          "name": "t:names.header",
+          "name": "Clearance Products Header",
           "static": true,
           "settings": {
             "content_direction": "row",
@@ -115,22 +114,22 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_list_text_fifeh4": {
+            "header_text": {
               "type": "_product-list-text",
-              "name": "t:names.collection_title",
+              "name": "Header Text",
               "settings": {
-                "text": "<h3>You may also like</h3>",
+                "text": "<h3>Clearance Products</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h4",
+                "type_preset": "h3",
                 "font": "var(--font-body--family)",
                 "font_size": "",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "color": "var(--color-foreground)",
+                "color": "var(--color-foreground-heading)",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -141,11 +140,11 @@
               },
               "blocks": {}
             },
-            "product_list_button_eibbma": {
+            "header_btn": {
               "type": "_product-list-button",
-              "name": "t:names.product_list_button",
+              "name": "View All Button",
               "settings": {
-                "label": "View all",
+                "label": "View all clearance",
                 "open_in_new_tab": false,
                 "style_class": "link",
                 "width": "fit-content",
@@ -157,8 +156,8 @@
             }
           },
           "block_order": [
-            "product_list_text_fifeh4",
-            "product_list_button_eibbma"
+            "header_text",
+            "header_btn"
           ]
         },
         "static-product-card": {
@@ -166,28 +165,27 @@
           "name": "t:names.product_card",
           "static": true,
           "settings": {
-            "product_card_gap": 4,
+            "product_card_gap": 8,
             "inherit_color_scheme": true,
             "color_scheme": "",
-            "border": "none",
+            "border": "all",
             "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "border_opacity": 15,
+            "border_radius": 8,
+            "padding-block-start": 12,
+            "padding-block-end": 12,
+            "padding-inline-start": 12,
+            "padding-inline-end": 12
           },
           "blocks": {
-            "product_card_gallery_PEPpfq": {
+            "product_card_gallery": {
               "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
               "settings": {
                 "image_ratio": "adapt",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
-                "border_radius": 0,
+                "border_radius": 4,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -195,38 +193,44 @@
               },
               "blocks": {}
             },
-            "product_title_WNMpHe": {
+            "product_title": {
               "type": "product-title",
-              "name": "t:names.product_title",
               "settings": {
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
+                "font_size": "0.938rem",
+                "line_height": "1.4",
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "color": "var(--color-foreground)",
+                "color": "var(--color-foreground-heading)",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
+                "padding-block-start": 8,
+                "padding-block-end": 4,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
               "blocks": {}
             },
-            "price_yXfkPX": {
+            "sku_display": {
+              "type": "custom-liquid",
+              "name": "SKU Display",
+              "settings": {
+                "custom_liquid": "<p style=\"font-size: 0.813rem; color: #666; margin: 4px 0 8px 0;\">SKU: {{ product.variants.first.sku }}</p>"
+              },
+              "blocks": {}
+            },
+            "product_price": {
               "type": "price",
-              "name": "t:names.product_price",
               "settings": {
                 "show_sale_price_first": true,
                 "show_installments": false,
-                "show_tax_info": false,
+                "show_tax_info": true,
                 "type_preset": "h6",
                 "width": "100%",
                 "alignment": "left",
@@ -235,7 +239,7 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
-                "color": "var(--color-foreground)",
+                "color": "var(--color-primary)",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -245,37 +249,38 @@
             }
           },
           "block_order": [
-            "product_card_gallery_PEPpfq",
-            "product_title_WNMpHe",
-            "price_yXfkPX"
+            "product_card_gallery",
+            "product_title",
+            "sku_display",
+            "product_price"
           ]
         }
       },
-      "name": "Featured collection",
+      "name": "Clearance Products",
       "settings": {
-        "collection": "all",
+        "collection": "clearance",
         "layout_type": "grid",
         "carousel_on_mobile": false,
-        "max_products": 4,
+        "max_products": 12,
         "columns": 4,
         "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 8,
+        "mobile_card_size": "75cqw",
+        "columns_gap": 16,
         "rows_gap": 24,
         "icons_style": "arrow",
-        "icons_shape": "none",
+        "icons_shape": "circle",
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
-        "gap": 28,
+        "gap": 32,
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-end": 64
       }
     }
   },
   "order": [
-    "cart-section",
-    "cart_po_field",
-    "product_list_NNFgcy"
+    "main",
+    "clearance_hero",
+    "clearance_products"
   ]
 }

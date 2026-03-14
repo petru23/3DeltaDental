@@ -4,22 +4,115 @@
       "type": "main-page",
       "disabled": true
     },
-    "shipping_hero": {
-      "type": "custom-liquid",
+    "shipping_page": {
+      "type": "policy-page",
+      "blocks": {
+        "section_1": {
+          "type": "text_section",
+          "settings": {
+            "title": "Shipping Information",
+            "content": "<p>We ship dental lab supplies across Australia and New Zealand with trusted courier partners to ensure your products arrive safely and on time.</p>",
+            "highlight_style": "none"
+          }
+        },
+        "section_2": {
+          "type": "text_section",
+          "settings": {
+            "title": "Delivery Times",
+            "content": "<p>Orders are typically processed within 1-2 business days. Estimated delivery times:</p><ul><li><strong>Queensland Metro:</strong> 2-3 business days</li><li><strong>Eastern States (NSW, VIC, ACT):</strong> 3-5 business days</li><li><strong>Other Australian States:</strong> 4-7 business days</li><li><strong>Remote Areas:</strong> 7-10 business days</li><li><strong>New Zealand:</strong> 7-14 business days</li></ul><p><strong>⚠️ Important:</strong> Delivery dates are estimates only and are not guaranteed. Delays may occur due to factors beyond our control.</p>",
+            "highlight_style": "none"
+          }
+        },
+        "section_3": {
+          "type": "text_section",
+          "settings": {
+            "title": "Shipping Costs",
+            "content": "<p>Shipping costs are calculated at checkout based on:</p><ul><li>Delivery location and carrier zone</li><li>Total weight and dimensions of your order</li><li>Selected shipping method</li></ul><p>Remote locations may incur additional surcharges. Customers are responsible for all freight and insurance costs.</p>",
+            "highlight_style": "none"
+          }
+        },
+        "section_4": {
+          "type": "text_section",
+          "settings": {
+            "title": "📦 Order Processing",
+            "content": "<p><strong>Business Hours:</strong> Monday to Friday, 9:00am – 6:00pm (AEST)</p><p>Orders placed outside business hours, on weekends, or public holidays will be processed on the next business day.</p>",
+            "highlight_style": "warning"
+          }
+        },
+        "section_5": {
+          "type": "text_section",
+          "settings": {
+            "title": "Damaged or Missing Items",
+            "content": "<p><strong>⚠️ You must report any damage to products within 24 hours of delivery.</strong></p><p>If you receive damaged or incorrect items:</p><ol><li>Take photos of the damaged packaging and products</li><li>Contact us immediately at <a href=\"mailto:info@3deltadental.com\">info@3deltadental.com</a> or <a href=\"tel:0448419050\">0448 419 050</a></li><li>Provide your order number and photos</li><li>Do not discard the packaging until the claim is resolved</li></ol>",
+            "highlight_style": "none"
+          }
+        },
+        "section_6": {
+          "type": "text_section",
+          "settings": {
+            "title": "Returns Policy",
+            "content": "<p>We want you to be completely satisfied with your purchase. Returns are accepted under the following conditions:</p><ul><li>Products must be unused and in original packaging</li><li>Returns must be initiated within 30 days of delivery</li><li>Products must be in resalable condition</li><li>Special order or custom items are non-returnable</li></ul><p><strong>To initiate a return:</strong></p><ol><li>Contact us at <a href=\"mailto:info@3deltadental.com\">info@3deltadental.com</a></li><li>Provide your order number and reason for return</li><li>Await return authorization and instructions</li><li>Ship the item back using a trackable method</li></ol>",
+            "highlight_style": "none"
+          }
+        },
+        "section_7": {
+          "type": "text_section",
+          "settings": {
+            "title": "Refunds",
+            "content": "<p>Once we receive and inspect your return:</p><ul><li>Approved refunds will be processed within 5-7 business days</li><li>Refunds will be issued to the original payment method</li><li>Return shipping costs are the customer's responsibility unless the return is due to our error</li><li>Restocking fees may apply to certain products</li></ul>",
+            "highlight_style": "none"
+          }
+        },
+        "section_8": {
+          "type": "text_section",
+          "settings": {
+            "title": "Exchanges",
+            "content": "<p>If you need to exchange an item for a different size, model, or product, please contact us to arrange the exchange. The fastest way to ensure you get what you want is to return the original item and place a new order.</p>",
+            "highlight_style": "none"
+          }
+        },
+        "section_9": {
+          "type": "text_section",
+          "settings": {
+            "title": "⏰ 24/7 Technical Support",
+            "content": "<p>Have questions about your order or products? Our technical support team is available 24/7 to assist you.</p><p><strong>Tech Support:</strong> <a href=\"tel:0478731344\">0478 731 344</a></p>",
+            "highlight_style": "success"
+          }
+        },
+        "section_10": {
+          "type": "text_section",
+          "settings": {
+            "title": "Contact Us",
+            "content": "<p>For shipping inquiries or to arrange a return:</p><p><strong>Email:</strong> <a href=\"mailto:info@3deltadental.com\">info@3deltadental.com</a></p><p><strong>Sales:</strong> <a href=\"tel:0448419050\">0448 419 050</a> (Emilio Ragazzo)</p><p><strong>Tech Support:</strong> <a href=\"tel:0478731344\">0478 731 344</a></p><p><strong>Business Hours:</strong> Monday to Friday, 9:00am – 6:00pm (AEST)</p>",
+            "highlight_style": "highlight"
+          }
+        }
+      },
+      "block_order": [
+        "section_1",
+        "section_2",
+        "section_3",
+        "section_4",
+        "section_5",
+        "section_6",
+        "section_7",
+        "section_8",
+        "section_9",
+        "section_10"
+      ],
       "settings": {
-        "custom_liquid": "<div style=\"background: linear-gradient(135deg, #003B56 0%, #005A7A 100%); color: white; padding: 4rem 2rem; text-align: center;\">\n  <div style=\"max-width: 800px; margin: 0 auto;\">\n    <h1 style=\"font-size: 2.5rem; margin-bottom: 1rem; color: white;\">Shipping & Returns</h1>\n    <p style=\"font-size: 1.125rem; opacity: 0.95;\">Fast delivery across Australia and New Zealand</p>\n  </div>\n</div>"
-      }
-    },
-    "shipping_content": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<div style=\"max-width: 900px; margin: 0 auto; padding: 4rem 2rem;\">\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Shipping Information</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\">We ship dental lab supplies across Australia and New Zealand with trusted courier partners to ensure your products arrive safely and on time.</p>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Delivery Times</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\">Orders are typically processed within 1-2 business days. Estimated delivery times:</p>\n    <ul style=\"line-height: 1.8; margin-left: 2rem; margin-bottom: 1rem;\">\n      <li><strong>Queensland Metro:</strong> 2-3 business days</li>\n      <li><strong>Eastern States (NSW, VIC, ACT):</strong> 3-5 business days</li>\n      <li><strong>Other Australian States:</strong> 4-7 business days</li>\n      <li><strong>Remote Areas:</strong> 7-10 business days</li>\n      <li><strong>New Zealand:</strong> 7-14 business days</li>\n    </ul>\n    <p style=\"line-height: 1.8; color: #DC3545; font-weight: 600;\"><strong>Important:</strong> Delivery dates are estimates only and are not guaranteed. Delays may occur due to factors beyond our control.</p>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Shipping Costs</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\">Shipping costs are calculated at checkout based on:</p>\n    <ul style=\"line-height: 1.8; margin-left: 2rem; margin-bottom: 1rem;\">\n      <li>Delivery location and carrier zone</li>\n      <li>Total weight and dimensions of your order</li>\n      <li>Selected shipping method</li>\n    </ul>\n    <p style=\"line-height: 1.8;\">Remote locations may incur additional surcharges. Customers are responsible for all freight and insurance costs.</p>\n  </div>\n\n  <div style=\"background: #FFF8E1; padding: 2rem; border-left: 4px solid #FED440; margin-bottom: 3rem;\">\n    <h3 style=\"color: #003B56; font-size: 1.25rem; margin-bottom: 1rem;\">📦 Order Processing</h3>\n    <p style=\"line-height: 1.8; margin-bottom: 0.5rem;\"><strong>Business Hours:</strong> Monday to Friday, 9:00am – 6:00pm (AEST)</p>\n    <p style=\"line-height: 1.8;\">Orders placed outside business hours, on weekends, or public holidays will be processed on the next business day.</p>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Damaged or Missing Items</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\"><strong style=\"color: #DC3545;\">You must report any damage to products within 24 hours of delivery.</strong></p>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\">If you receive damaged or incorrect items:</p>\n    <ol style=\"line-height: 1.8; margin-left: 2rem; margin-bottom: 1rem;\">\n      <li>Take photos of the damaged packaging and products</li>\n      <li>Contact us immediately at <a href=\"mailto:info@3deltadental.com\" style=\"color: #03B239;\">info@3deltadental.com</a> or <a href=\"tel:0448419050\" style=\"color: #03B239;\">0448 419 050</a></li>\n      <li>Provide your order number and photos</li>\n      <li>Do not discard the packaging until the claim is resolved</li>\n    </ol>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Returns Policy</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\">We want you to be completely satisfied with your purchase. Returns are accepted under the following conditions:</p>\n    <ul style=\"line-height: 1.8; margin-left: 2rem; margin-bottom: 1rem;\">\n      <li>Products must be unused and in original packaging</li>\n      <li>Returns must be initiated within 30 days of delivery</li>\n      <li>Products must be in resalable condition</li>\n      <li>Special order or custom items are non-returnable</li>\n    </ul>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\"><strong>To initiate a return:</strong></p>\n    <ol style=\"line-height: 1.8; margin-left: 2rem;\">\n      <li>Contact us at <a href=\"mailto:info@3deltadental.com\" style=\"color: #03B239;\">info@3deltadental.com</a></li>\n      <li>Provide your order number and reason for return</li>\n      <li>Await return authorization and instructions</li>\n      <li>Ship the item back using a trackable method</li>\n    </ol>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Refunds</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\">Once we receive and inspect your return:</p>\n    <ul style=\"line-height: 1.8; margin-left: 2rem;\">\n      <li>Approved refunds will be processed within 5-7 business days</li>\n      <li>Refunds will be issued to the original payment method</li>\n      <li>Return shipping costs are the customer's responsibility unless the return is due to our error</li>\n      <li>Restocking fees may apply to certain products</li>\n    </ul>\n  </div>\n\n  <div style=\"margin-bottom: 3rem;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Exchanges</h2>\n    <p style=\"line-height: 1.8;\">If you need to exchange an item for a different size, model, or product, please contact us to arrange the exchange. The fastest way to ensure you get what you want is to return the original item and place a new order.</p>\n  </div>\n\n  <div style=\"background: #E8F5E9; padding: 2rem; border-left: 4px solid #03B239; margin-bottom: 3rem;\">\n    <h3 style=\"color: #003B56; font-size: 1.25rem; margin-bottom: 1rem;\">⏰ 24/7 Technical Support</h3>\n    <p style=\"line-height: 1.8;\">Have questions about your order or products? Our technical support team is available 24/7 to assist you.</p>\n    <p style=\"line-height: 1.8; margin-top: 1rem;\"><strong>Tech Support:</strong> <a href=\"tel:0478731344\" style=\"color: #03B239;\">0478 731 344</a></p>\n  </div>\n\n  <div style=\"background: #F7F7F7; padding: 2rem; border-radius: 8px;\">\n    <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem;\">Contact Us</h2>\n    <p style=\"line-height: 1.8; margin-bottom: 1rem;\">For shipping inquiries or to arrange a return:</p>\n    <p style=\"line-height: 1.8; margin-bottom: 0.5rem;\"><strong>Email:</strong> <a href=\"mailto:info@3deltadental.com\" style=\"color: #03B239;\">info@3deltadental.com</a></p>\n    <p style=\"line-height: 1.8; margin-bottom: 0.5rem;\"><strong>Sales:</strong> <a href=\"tel:0448419050\" style=\"color: #03B239;\">0448 419 050</a> (Emilio Ragazzo)</p>\n    <p style=\"line-height: 1.8; margin-bottom: 0.5rem;\"><strong>Tech Support:</strong> <a href=\"tel:0478731344\" style=\"color: #03B239;\">0478 731 344</a></p>\n    <p style=\"line-height: 1.8;\"><strong>Business Hours:</strong> Monday to Friday, 9:00am – 6:00pm (AEST)</p>\n  </div>\n</div>"
+        "hero_title": "Shipping & Returns",
+        "hero_subtitle": "Fast delivery across Australia and New Zealand",
+        "hero_bg_start": "#003B56",
+        "hero_bg_end": "#005A7A",
+        "hero_text_color": "#FFFFFF",
+        "section_title_color": "#003B56",
+        "link_color": "#03B239"
       }
     }
   },
   "order": [
     "main",
-    "shipping_hero",
-    "shipping_content"
+    "shipping_page"
   ]
 }

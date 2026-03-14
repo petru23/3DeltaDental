@@ -4,29 +4,56 @@
       "type": "main-page",
       "disabled": true
     },
-    "contact_hero": {
-      "type": "custom-liquid",
+    "contact_page": {
+      "type": "contact-page",
       "settings": {
-        "custom_liquid": "<div style=\"background: linear-gradient(135deg, #003B56 0%, #005A7A 100%); color: white; padding: 4rem 2rem; text-align: center;\">\n  <div style=\"max-width: 800px; margin: 0 auto;\">\n    <h1 style=\"font-size: 2.5rem; margin-bottom: 1rem; color: white;\">Contact Us</h1>\n    <p style=\"font-size: 1.25rem; opacity: 0.95;\">We're here to help with your dental lab supply needs</p>\n  </div>\n</div>"
-      }
-    },
-    "contact_info": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<div style=\"max-width: 1200px; margin: 0 auto; padding: 3rem 2rem;\">\n  <div style=\"background: #F7F7F7; padding: 2rem; border-radius: 12px; margin-bottom: 3rem;\">\n    <p style=\"text-align: center; color: #DC3545; font-weight: 600; font-size: 1.125rem; margin: 0;\">\n      ⚠️ We are not a retail store and do not have a retail display. Please contact us prior to arriving.\n    </p>\n  </div>\n  <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3rem;\">\n    <div style=\"text-align: center; padding: 2rem; background: #F7F7F7; border-radius: 8px;\">\n      <div style=\"font-size: 2.5rem; margin-bottom: 1rem;\">📍</div>\n      <h3 style=\"color: #003B56; margin-bottom: 0.5rem;\">Address</h3>\n      <p style=\"line-height: 1.6;\">1/5a Ashton Street<br>Labrador, Queensland<br>Australia 4215</p>\n    </div>\n    <div style=\"text-align: center; padding: 2rem; background: #F7F7F7; border-radius: 8px;\">\n      <div style=\"font-size: 2.5rem; margin-bottom: 1rem;\">📧</div>\n      <h3 style=\"color: #003B56; margin-bottom: 0.5rem;\">Email</h3>\n      <p style=\"line-height: 1.6;\"><a href=\"mailto:info@3deltadental.com\" style=\"color: #03B239; text-decoration: none;\">info@3deltadental.com</a></p>\n      <p style=\"font-size: 0.875rem; color: #666; margin-top: 0.5rem;\">Fax not available - email preferred</p>\n    </div>\n    <div style=\"text-align: center; padding: 2rem; background: #F7F7F7; border-radius: 8px;\">\n      <div style=\"font-size: 2.5rem; margin-bottom: 1rem;\">📞</div>\n      <h3 style=\"color: #003B56; margin-bottom: 0.5rem;\">Phone</h3>\n      <p style=\"line-height: 1.6;\">\n        <strong>Sales (Emilio Ragazzo):</strong><br>\n        <a href=\"tel:0448419050\" style=\"color: #03B239; text-decoration: none;\">0448 419 050</a><br><br>\n        <strong>Technical Support:</strong><br>\n        <a href=\"tel:0478731344\" style=\"color: #03B239; text-decoration: none;\">0478 731 344</a>\n      </p>\n    </div>\n  </div>\n  <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;\">\n    <div style=\"text-align: center; padding: 2rem; background: #F7F7F7; border-radius: 8px;\">\n      <div style=\"font-size: 2.5rem; margin-bottom: 1rem;\">🕒</div>\n      <h3 style=\"color: #003B56; margin-bottom: 0.5rem;\">Business Hours</h3>\n      <p style=\"line-height: 1.6;\">\n        <strong>Monday to Friday:</strong><br>\n        9:00am – 6:00pm (AEST)<br><br>\n        <strong>Closed:</strong><br>\n        Weekends, QLD/National Public Holidays,<br>and Christmas Holidays\n      </p>\n      <p style=\"font-size: 0.875rem; color: #666; margin-top: 1rem;\">Orders not processed outside business hours</p>\n    </div>\n    <div style=\"text-align: center; padding: 2rem; background: linear-gradient(135deg, #03B239 0%, #029A2F 100%); color: white; border-radius: 8px;\">\n      <div style=\"font-size: 2.5rem; margin-bottom: 1rem;\">⏰</div>\n      <h3 style=\"color: white; margin-bottom: 0.5rem;\">24/7 Technical Support</h3>\n      <p style=\"line-height: 1.6; opacity: 0.95;\">\n        Round-the-clock technical assistance available for our customers\n      </p>\n    </div>\n    <div style=\"text-align: center; padding: 2rem; background: #F7F7F7; border-radius: 8px;\">\n      <div style=\"font-size: 2.5rem; margin-bottom: 1rem;\">🏢</div>\n      <h3 style=\"color: #003B56; margin-bottom: 0.5rem;\">ABN</h3>\n      <p style=\"line-height: 1.6; font-size: 1.125rem; font-weight: 600;\">\n        67 354 783 242\n      </p>\n    </div>\n  </div>\n</div>"
-      }
-    },
-    "contact_form": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<div style=\"max-width: 600px; margin: 0 auto; padding: 0 2rem 4rem 2rem;\">\n  <h2 style=\"color: #003B56; font-size: 1.75rem; margin-bottom: 1rem; text-align: center;\">Send us a message</h2>\n  <p style=\"text-align: center; margin-bottom: 2rem;\">Please include your Business Name, Contact Name (First and Last), and details about your enquiry. We'll respond during business hours.</p>\n  {% form 'contact' %}\n    <div style=\"margin-bottom: 1rem;\">\n      <label for=\"ContactForm-name\" style=\"display: block; margin-bottom: 0.5rem; font-weight: 600;\">Name *</label>\n      <input type=\"text\" id=\"ContactForm-name\" name=\"contact[name]\" required style=\"width: 100%; padding: 0.75rem; border: 1px solid #E5E5E5; border-radius: 4px;\">\n    </div>\n    <div style=\"margin-bottom: 1rem;\">\n      <label for=\"ContactForm-email\" style=\"display: block; margin-bottom: 0.5rem; font-weight: 600;\">Email *</label>\n      <input type=\"email\" id=\"ContactForm-email\" name=\"contact[email]\" required style=\"width: 100%; padding: 0.75rem; border: 1px solid #E5E5E5; border-radius: 4px;\">\n    </div>\n    <div style=\"margin-bottom: 1rem;\">\n      <label for=\"ContactForm-phone\" style=\"display: block; margin-bottom: 0.5rem; font-weight: 600;\">Phone</label>\n      <input type=\"tel\" id=\"ContactForm-phone\" name=\"contact[phone]\" style=\"width: 100%; padding: 0.75rem; border: 1px solid #E5E5E5; border-radius: 4px;\">\n    </div>\n    <div style=\"margin-bottom: 1rem;\">\n      <label for=\"ContactForm-message\" style=\"display: block; margin-bottom: 0.5rem; font-weight: 600;\">Message *</label>\n      <textarea id=\"ContactForm-message\" name=\"contact[body]\" rows=\"6\" required style=\"width: 100%; padding: 0.75rem; border: 1px solid #E5E5E5; border-radius: 4px; resize: vertical;\"></textarea>\n    </div>\n    <button type=\"submit\" style=\"width: 100%; padding: 1rem; background: #03B239; color: white; border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer;\">Send Message</button>\n  {% endform %}\n</div>"
+        "hero_title": "Contact Us",
+        "hero_subtitle": "We're here to help with your dental lab supply needs",
+        "hero_bg_start": "#003B56",
+        "hero_bg_end": "#005A7A",
+        "hero_text_color": "#FFFFFF",
+        "show_alert": true,
+        "alert_text": "We are not a retail store and do not have a retail display. Please contact us prior to arriving.",
+        "address_title": "Address",
+        "address_line_1": "1/5a Ashton Street",
+        "address_line_2": "Labrador, Queensland",
+        "address_line_3": "Australia 4215",
+        "email_title": "Email",
+        "email_address": "info@3deltadental.com",
+        "email_note": "Fax not available - email preferred",
+        "phone_title": "Phone",
+        "phone_1_label": "Sales (Emilio Ragazzo):",
+        "phone_1_number": "0448 419 050",
+        "phone_2_label": "Technical Support:",
+        "phone_2_number": "0478 731 344",
+        "hours_title": "Business Hours",
+        "hours_weekday_label": "Monday to Friday:",
+        "hours_weekday_time": "9:00am – 6:00pm (AEST)",
+        "hours_closed_label": "Closed:",
+        "hours_closed_days": "Weekends, QLD/National Public Holidays, and Christmas Holidays",
+        "hours_note": "Orders not processed outside business hours",
+        "support_title": "24/7 Technical Support",
+        "support_text": "Round-the-clock technical assistance available for our customers",
+        "highlight_bg_start": "#03B239",
+        "highlight_bg_end": "#029A2F",
+        "abn_title": "ABN",
+        "abn_number": "67 354 783 242",
+        "show_form": true,
+        "form_title": "Send us a message",
+        "form_intro": "Please include your Business Name, Contact Name (First and Last), and details about your enquiry. We'll respond during business hours.",
+        "form_name_label": "Name",
+        "form_email_label": "Email",
+        "form_phone_label": "Phone",
+        "form_message_label": "Message",
+        "form_button_text": "Send Message",
+        "card_title_color": "#003B56",
+        "link_color": "#03B239",
+        "button_bg_color": "#03B239"
       }
     }
   },
   "order": [
     "main",
-    "contact_hero",
-    "contact_info",
-    "contact_form"
+    "contact_page"
   ]
 }

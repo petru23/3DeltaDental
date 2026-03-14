@@ -1,12 +1,4 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */{
+{
   "sections": {
     "search": {
       "type": "search-header",
@@ -137,13 +129,21 @@
               },
               "blocks": {}
             },
+            "sku_display": {
+              "type": "custom-liquid",
+              "name": "SKU Display",
+              "settings": {
+                "custom_liquid": "<p style=\"font-size: 0.813rem; color: #666; margin: 4px 0 8px 0;\">SKU: {{ product.variants.first.sku }}</p>"
+              },
+              "blocks": {}
+            },
             "price_fYkUgG": {
               "type": "price",
               "name": "t:names.product_price",
               "settings": {
                 "show_sale_price_first": true,
                 "show_installments": false,
-                "show_tax_info": false,
+                "show_tax_info": true,
                 "type_preset": "h6",
                 "width": "100%",
                 "alignment": "left",
@@ -164,6 +164,7 @@
           "block_order": [
             "product_card_gallery_cFExAi",
             "product_title_j7qXTx",
+            "sku_display",
             "price_fYkUgG"
           ]
         }

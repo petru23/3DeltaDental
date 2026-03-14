@@ -1,0 +1,481 @@
+{% comment %}
+  Product TGA Badge & Technical Specifications Section
+  Displays TGA compliance badge, brand link, and an editable technical specs table
+  Designed to appear below the main product-information section
+  Fully editable from theme editor - all content set per-product via metafields or section defaults
+{% endcomment %}
+
+{%- liquid
+  assign accent_color  = section.settings.accent_color
+  assign blue_color    = section.settings.blue_color
+  assign gold_color    = section.settings.gold_color
+  assign bg_color      = section.settings.background_color
+  assign show_tga      = section.settings.show_tga_badge
+  assign show_specs    = section.settings.show_specs_table
+  assign show_brand    = section.settings.show_brand_link
+-%}
+
+{%- style -%}
+  .ptga-section {
+    background-color: {{ bg_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    font-family: var(--font-body--family, sans-serif);
+  }
+
+  .ptga-container {
+    max-width: var(--page-width, 1200px);
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* TGA Badge row */
+  .ptga-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .ptga-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .ptga-badge--tga {
+    background-color: {{ blue_color }};
+    color: #fff;
+    border: 2px solid {{ blue_color }};
+  }
+
+  .ptga-badge--tga-icon {
+    font-size: 1rem;
+  }
+
+  .ptga-badge--approved {
+    background-color: {{ accent_color }};
+    color: #fff;
+  }
+
+  .ptga-badge--brand {
+    background-color: #fff;
+    color: {{ blue_color }};
+    border: 2px solid {{ blue_color }};
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .ptga-badge--brand:hover {
+    background-color: {{ blue_color }};
+    color: #fff;
+  }
+
+  /* Divider */
+  .ptga-divider {
+    border: none;
+    border-top: 1px solid #E5E7EB;
+    margin: 0 0 2rem 0;
+  }
+
+  /* Specs table */
+  .ptga-specs__heading {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: {{ blue_color }};
+    margin: 0 0 1rem 0;
+  }
+
+  .ptga-specs__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+
+  .ptga-specs__table tr:nth-child(even) {
+    background-color: #F5F7FA;
+  }
+
+  .ptga-specs__table tr:nth-child(odd) {
+    background-color: #fff;
+  }
+
+  .ptga-specs__table td {
+    padding: 0.75rem 1rem;
+    vertical-align: top;
+    border-bottom: 1px solid #E5E7EB;
+  }
+
+  .ptga-specs__table td:first-child {
+    font-weight: 600;
+    color: {{ blue_color }};
+    width: 35%;
+    white-space: nowrap;
+  }
+
+  .ptga-specs__table td:last-child {
+    color: #444;
+  }
+
+  /* TGA compliance info box */
+  .ptga-info-box {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background-color: #EAF7EE;
+    border-left: 4px solid {{ accent_color }};
+    border-radius: 0 6px 6px 0;
+    padding: 1rem 1.25rem;
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  .ptga-info-box__icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .ptga-info-box__text strong {
+    color: {{ blue_color }};
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.9375rem;
+  }
+
+  .ptga-info-box a {
+    color: {{ accent_color }};
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    .ptga-specs__table td:first-child {
+      width: 45%;
+      white-space: normal;
+    }
+
+    .ptga-container {
+      padding: 0 1rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="ptga-section">
+  <div class="ptga-container">
+
+    {% if show_tga or show_brand %}
+      <div class="ptga-badges">
+        {% if show_tga %}
+          <span class="ptga-badge ptga-badge--tga">
+            <span class="ptga-badge--tga-icon" aria-hidden="true">🛡️</span>
+            {{ section.settings.tga_badge_label }}
+          </span>
+          <span class="ptga-badge ptga-badge--approved">
+            {{ section.settings.approved_badge_label }}
+          </span>
+        {% endif %}
+
+        {% if show_brand and product.vendor != blank %}
+          <a
+            href="{{ section.settings.brand_page_link | default: '/pages/brands' }}"
+            class="ptga-badge ptga-badge--brand"
+          >
+            {{ section.settings.brand_prefix_label }} {{ product.vendor }}
+          </a>
+        {% endif %}
+      </div>
+
+      <hr class="ptga-divider">
+    {% endif %}
+
+    {% if show_specs %}
+      <h2 class="ptga-specs__heading">{{ section.settings.specs_heading }}</h2>
+      <table class="ptga-specs__table" aria-label="{{ section.settings.specs_heading }}">
+        <tbody>
+          {% for block in section.blocks %}
+            {% if block.type == 'spec_row' %}
+              {% if block.settings.spec_label != blank %}
+                <tr {{ block.shopify_attributes }}>
+                  <td>{{ block.settings.spec_label }}</td>
+                  <td>{{ block.settings.spec_value }}</td>
+                </tr>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+
+          {%- comment -%}
+            Auto-populate common fields from product data if no spec blocks are defined
+          {%- endcomment -%}
+          {% assign spec_blocks = section.blocks | where: 'type', 'spec_row' %}
+          {% if spec_blocks.size == 0 %}
+            {% if product.vendor != blank %}
+              <tr>
+                <td>Brand</td>
+                <td>{{ product.vendor }}</td>
+              </tr>
+            {% endif %}
+            {% if product.type != blank %}
+              <tr>
+                <td>Product Type</td>
+                <td>{{ product.type }}</td>
+              </tr>
+            {% endif %}
+            {% if product.variants.first.sku != blank %}
+              <tr>
+                <td>SKU</td>
+                <td>{{ product.variants.first.sku }}</td>
+              </tr>
+            {% endif %}
+            {% if product.variants.first.barcode != blank %}
+              <tr>
+                <td>Barcode</td>
+                <td>{{ product.variants.first.barcode }}</td>
+              </tr>
+            {% endif %}
+            {% if product.variants.first.weight > 0 %}
+              <tr>
+                <td>Weight</td>
+                <td>{{ product.variants.first.weight | weight_with_unit }}</td>
+              </tr>
+            {% endif %}
+          {% endif %}
+        </tbody>
+      </table>
+    {% endif %}
+
+    {% if show_tga and section.settings.show_tga_info_box %}
+      <div class="ptga-info-box" role="note">
+        <span class="ptga-info-box__icon" aria-hidden="true">✅</span>
+        <div class="ptga-info-box__text">
+          <strong>{{ section.settings.tga_info_box_title }}</strong>
+          {{ section.settings.tga_info_box_text }}
+          {% if section.settings.tga_info_box_link_label != blank %}
+            <br><a href="{{ section.settings.tga_info_box_link | default: '/pages/tga-compliance' }}">{{ section.settings.tga_info_box_link_label }} &rarr;</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product TGA & Specs",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Display Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tga_badge",
+      "label": "Show TGA Compliance Badge",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_brand_link",
+      "label": "Show Brand Link Badge",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_specs_table",
+      "label": "Show Technical Specifications Table",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tga_info_box",
+      "label": "Show TGA Info Box",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Badge Labels"
+    },
+    {
+      "type": "text",
+      "id": "tga_badge_label",
+      "label": "TGA Badge Label",
+      "default": "TGA Registered"
+    },
+    {
+      "type": "text",
+      "id": "approved_badge_label",
+      "label": "Approved Badge Label",
+      "default": "Australian Approved"
+    },
+    {
+      "type": "text",
+      "id": "brand_prefix_label",
+      "label": "Brand Badge Prefix",
+      "default": "Brand:"
+    },
+    {
+      "type": "url",
+      "id": "brand_page_link",
+      "label": "Brand Badge Link",
+      "info": "Leave blank to use /pages/brands"
+    },
+    {
+      "type": "header",
+      "content": "Specifications Table"
+    },
+    {
+      "type": "text",
+      "id": "specs_heading",
+      "label": "Specifications Heading",
+      "default": "Technical Specifications"
+    },
+    {
+      "type": "header",
+      "content": "TGA Info Box"
+    },
+    {
+      "type": "text",
+      "id": "tga_info_box_title",
+      "label": "Info Box Title",
+      "default": "TGA Compliance Assurance"
+    },
+    {
+      "type": "textarea",
+      "id": "tga_info_box_text",
+      "label": "Info Box Text",
+      "default": "All products supplied by 3 Delta Dental are TGA registered and meet Australian regulatory requirements for dental medical devices and materials."
+    },
+    {
+      "type": "text",
+      "id": "tga_info_box_link_label",
+      "label": "Info Box Link Label",
+      "default": "View our TGA Compliance page"
+    },
+    {
+      "type": "url",
+      "id": "tga_info_box_link",
+      "label": "Info Box Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 0,
+      "max": 80,
+      "step": 8,
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 0,
+      "max": 80,
+      "step": 8,
+      "default": 48
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color (Green)",
+      "default": "#03B239"
+    },
+    {
+      "type": "color",
+      "id": "blue_color",
+      "label": "Primary Color (Blue)",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "gold_color",
+      "label": "Gold Accent",
+      "default": "#FED440"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "spec_row",
+      "name": "Specification Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "spec_label",
+          "label": "Specification Name",
+          "default": "Material"
+        },
+        {
+          "type": "text",
+          "id": "spec_value",
+          "label": "Specification Value",
+          "default": "PMMA Acrylic"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product TGA & Specs",
+      "blocks": [
+        {
+          "type": "spec_row",
+          "settings": {
+            "spec_label": "Material",
+            "spec_value": ""
+          }
+        },
+        {
+          "type": "spec_row",
+          "settings": {
+            "spec_label": "Shade System",
+            "spec_value": ""
+          }
+        },
+        {
+          "type": "spec_row",
+          "settings": {
+            "spec_label": "Pack Size",
+            "spec_value": ""
+          }
+        },
+        {
+          "type": "spec_row",
+          "settings": {
+            "spec_label": "Country of Origin",
+            "spec_value": ""
+          }
+        },
+        {
+          "type": "spec_row",
+          "settings": {
+            "spec_label": "TGA Registration Number",
+            "spec_value": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

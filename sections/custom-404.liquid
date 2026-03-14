@@ -1,0 +1,578 @@
+{% comment %}
+  Custom 404 Page Section - Branded error page for 3 Delta Dental
+  Features: branded hero, helpful navigation links, search prompt
+  Fully editable from theme editor
+{% endcomment %}
+
+{%- liquid
+  assign hero_bg_start = section.settings.hero_bg_start
+  assign hero_bg_end   = section.settings.hero_bg_end
+  assign accent_color  = section.settings.accent_color
+  assign text_color    = section.settings.hero_text_color
+-%}
+
+{%- style -%}
+  .c404-page {
+    font-family: var(--font-body--family, sans-serif);
+  }
+
+  /* Hero */
+  .c404-hero {
+    background: linear-gradient(135deg, {{ hero_bg_start }} 0%, {{ hero_bg_end }} 100%);
+    color: {{ text_color }};
+    padding: {{ section.settings.hero_padding_top }}px 2rem {{ section.settings.hero_padding_bottom }}px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .c404-hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .c404-hero__container {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .c404-hero__code {
+    font-size: clamp(6rem, 20vw, 10rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: {{ accent_color }};
+    display: block;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .c404-hero__title {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 800;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+    color: {{ text_color }};
+  }
+
+  .c404-hero__subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin: 0 0 2rem 0;
+    line-height: 1.6;
+  }
+
+  /* Search bar */
+  .c404-search {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .c404-search__form {
+    display: flex;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .c404-search__input {
+    flex: 1;
+    padding: 0.875rem 1.25rem;
+    border: none;
+    font-size: 1rem;
+    background: #fff;
+    color: #333;
+    outline: none;
+    font-family: inherit;
+  }
+
+  .c404-search__input::placeholder {
+    color: #888;
+  }
+
+  .c404-search__btn {
+    padding: 0.875rem 1.5rem;
+    background-color: {{ accent_color }};
+    color: {{ section.settings.cta_text_color }};
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+    transition: opacity 0.2s ease;
+  }
+
+  .c404-search__btn:hover {
+    opacity: 0.88;
+  }
+
+  /* Quick links */
+  .c404-links {
+    background-color: {{ section.settings.links_bg_color }};
+    padding: {{ section.settings.links_padding_top }}px 2rem {{ section.settings.links_padding_bottom }}px;
+  }
+
+  .c404-links__container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .c404-links__heading {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: {{ section.settings.links_title_color }};
+    margin: 0 0 2rem 0;
+  }
+
+  .c404-links__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.links_columns }}, 1fr);
+    gap: 1.25rem;
+  }
+
+  .c404-link-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: {{ section.settings.link_card_bg }};
+    border: 1px solid {{ section.settings.link_card_border }};
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  .c404-link-card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .c404-link-card__icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .c404-link-card__title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: {{ section.settings.links_title_color }};
+    margin: 0 0 0.4rem 0;
+  }
+
+  .c404-link-card__desc {
+    font-size: 0.875rem;
+    color: {{ section.settings.links_body_color }};
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* CTA strip */
+  .c404-cta-strip {
+    background-color: {{ section.settings.cta_strip_bg }};
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .c404-cta-strip__text {
+    font-size: 1.125rem;
+    color: {{ section.settings.cta_strip_text }};
+    margin: 0 0 1.25rem 0;
+  }
+
+  .c404-cta-strip__btn {
+    display: inline-block;
+    padding: 0.875rem 2.5rem;
+    background-color: {{ accent_color }};
+    color: {{ section.settings.cta_text_color }};
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 6px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .c404-cta-strip__btn:hover {
+    opacity: 0.88;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .c404-links__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .c404-search__form {
+      flex-direction: column;
+    }
+
+    .c404-search__btn {
+      border-radius: 0 0 8px 8px;
+    }
+
+    .c404-search__input {
+      border-radius: 8px 8px 0 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .c404-links__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+{%- endstyle -%}
+
+<div class="c404-page">
+  <!-- Hero -->
+  <div class="c404-hero">
+    <div class="c404-hero__container">
+      <span class="c404-hero__code">404</span>
+      <h1 class="c404-hero__title">{{ section.settings.hero_title }}</h1>
+      <p class="c404-hero__subtitle">{{ section.settings.hero_subtitle }}</p>
+
+      {% if section.settings.show_search %}
+        <div class="c404-search">
+          <form class="c404-search__form" action="/search" method="get" role="search">
+            <input
+              type="search"
+              name="q"
+              class="c404-search__input"
+              placeholder="{{ section.settings.search_placeholder }}"
+              aria-label="{{ section.settings.search_placeholder }}"
+            >
+            <button type="submit" class="c404-search__btn">{{ section.settings.search_btn_label }}</button>
+          </form>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Quick Links -->
+  {% if section.blocks.size > 0 %}
+    <div class="c404-links">
+      <div class="c404-links__container">
+        {% if section.settings.links_heading != blank %}
+          <h2 class="c404-links__heading">{{ section.settings.links_heading }}</h2>
+        {% endif %}
+        <div class="c404-links__grid">
+          {% for block in section.blocks %}
+            {% if block.type == 'quick_link' %}
+              <a
+                href="{{ block.settings.link }}"
+                class="c404-link-card"
+                {{ block.shopify_attributes }}
+              >
+                {% if block.settings.icon != blank %}
+                  <span class="c404-link-card__icon" aria-hidden="true">{{ block.settings.icon }}</span>
+                {% endif %}
+                <p class="c404-link-card__title">{{ block.settings.title }}</p>
+                {% if block.settings.description != blank %}
+                  <p class="c404-link-card__desc">{{ block.settings.description }}</p>
+                {% endif %}
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- CTA Strip -->
+  {% if section.settings.cta_label != blank %}
+    <div class="c404-cta-strip">
+      {% if section.settings.cta_text != blank %}
+        <p class="c404-cta-strip__text">{{ section.settings.cta_text }}</p>
+      {% endif %}
+      <a href="{{ section.settings.cta_link }}" class="c404-cta-strip__btn">
+        {{ section.settings.cta_label }}
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "404 Custom Page",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Page Not Found"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "The page you are looking for may have been moved, renamed, or does not exist. Try searching or browse our categories below."
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_top",
+      "label": "Hero Padding Top (px)",
+      "min": 40,
+      "max": 160,
+      "step": 10,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_bottom",
+      "label": "Hero Padding Bottom (px)",
+      "min": 40,
+      "max": 160,
+      "step": 10,
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Search Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show Search Bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search Placeholder Text",
+      "default": "Search products, brands, SKUs..."
+    },
+    {
+      "type": "text",
+      "id": "search_btn_label",
+      "label": "Search Button Label",
+      "default": "Search"
+    },
+    {
+      "type": "header",
+      "content": "Quick Links Section"
+    },
+    {
+      "type": "text",
+      "id": "links_heading",
+      "label": "Section Heading",
+      "default": "You Might Be Looking For..."
+    },
+    {
+      "type": "range",
+      "id": "links_columns",
+      "label": "Columns (Desktop)",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "links_padding_top",
+      "label": "Section Padding Top (px)",
+      "min": 30,
+      "max": 100,
+      "step": 10,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "links_padding_bottom",
+      "label": "Section Padding Bottom (px)",
+      "min": 30,
+      "max": 100,
+      "step": 10,
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Call to Action Strip"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Need help finding a product? Our team is ready to assist you."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA Button Label",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_start",
+      "label": "Hero Gradient Start",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_end",
+      "label": "Hero Gradient End",
+      "default": "#005A7A"
+    },
+    {
+      "type": "color",
+      "id": "hero_text_color",
+      "label": "Hero Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent / Button Color",
+      "default": "#03B239"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "Button Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "links_bg_color",
+      "label": "Quick Links Background",
+      "default": "#F5F7FA"
+    },
+    {
+      "type": "color",
+      "id": "link_card_bg",
+      "label": "Link Card Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "link_card_border",
+      "label": "Link Card Border",
+      "default": "#E5E7EB"
+    },
+    {
+      "type": "color",
+      "id": "links_title_color",
+      "label": "Links Title Color",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "links_body_color",
+      "label": "Links Body Color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "cta_strip_bg",
+      "label": "CTA Strip Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "cta_strip_text",
+      "label": "CTA Strip Text Color",
+      "default": "#003B56"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quick_link",
+      "name": "Quick Link Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "🔍"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "All Products"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Card Description",
+          "default": "Browse our full range of dental lab supplies"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Card Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "404 Custom Page",
+      "blocks": [
+        {
+          "type": "quick_link",
+          "settings": {
+            "icon": "🛍️",
+            "title": "All Products",
+            "description": "Browse our full catalogue of dental lab supplies",
+            "link": "/collections/all"
+          }
+        },
+        {
+          "type": "quick_link",
+          "settings": {
+            "icon": "🏷️",
+            "title": "Our Brands",
+            "description": "Explore our trusted European dental brands",
+            "link": "/pages/brands"
+          }
+        },
+        {
+          "type": "quick_link",
+          "settings": {
+            "icon": "📋",
+            "title": "Trade Account",
+            "description": "Apply for a trade account and unlock wholesale pricing",
+            "link": "/pages/trade-account"
+          }
+        },
+        {
+          "type": "quick_link",
+          "settings": {
+            "icon": "📞",
+            "title": "Contact Us",
+            "description": "Get expert support from our dental team",
+            "link": "/pages/contact"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

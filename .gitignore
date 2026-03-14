@@ -41,6 +41,9 @@ env/
 screenshot.png
 screenshot_*.png
 
+# Generated exports (product management automation)
+exports/
+
 # Editor directories and files
 .idea
 .vscode/*

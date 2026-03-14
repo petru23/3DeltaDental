@@ -1,89 +1,87 @@
 {
   "sections": {
-    "cart-section": {
-      "type": "main-cart",
+    "main": {
+      "type": "main-page",
+      "disabled": true
+    },
+    "new_products_hero": {
+      "type": "new-products-page",
       "blocks": {
-        "cart-page-title": {
-          "type": "_cart-title",
-          "static": true,
+        "card_acrylics": {
+          "type": "highlight_card",
           "settings": {
-            "title": "Cart",
-            "show_count": true,
-            "type_preset": "h4",
-            "alignment": "left",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "icon": "🦷",
+            "badge": "New",
+            "title": "New Acrylics Range",
+            "description": "Expanded shade options and faster processing acrylics from our European partners.",
+            "link_label": "Shop Acrylics",
+            "link": "/collections/acrylics"
+          }
         },
-        "cart-page-items": {
-          "type": "_cart-products",
-          "static": true,
+        "card_cad_cam": {
+          "type": "highlight_card",
           "settings": {
-            "gap": 24,
-            "image_ratio": "portrait",
-            "dividers": true,
-            "vendor": true,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "icon": "💎",
+            "badge": "Just In",
+            "title": "Zirconia & CAD/CAM",
+            "description": "High-translucency and multi-layer zirconia blanks for modern CAD/CAM workflows.",
+            "link_label": "Shop CAD/CAM",
+            "link": "/collections/cad-cam"
+          }
         },
-        "cart-page-summary": {
-          "type": "_cart-summary",
-          "static": true,
+        "card_equipment": {
+          "type": "highlight_card",
           "settings": {
-            "extend_summary": true,
-            "inherit_color_scheme": false,
-            "color_scheme": "scheme-2",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0
-          },
-          "blocks": {}
+            "icon": "🔧",
+            "badge": "Expanded",
+            "title": "Lab Equipment",
+            "description": "New machinery and tools to optimise your dental laboratory workflow.",
+            "link_label": "Shop Equipment",
+            "link": "/collections/equipment"
+          }
         }
       },
+      "block_order": [
+        "card_acrylics",
+        "card_cad_cam",
+        "card_equipment"
+      ],
       "settings": {
-        "section_width": "page-width",
-        "color_scheme": "",
-        "padding-block-start": 24,
-        "padding-block-end": 0
-      }
-    },
-    "cart_po_field": {
-      "type": "cart-po-field",
-      "settings": {
-        "heading": "Order Reference & Notes",
-        "subtitle": "Enter your Purchase Order number and any special instructions for this order.",
-        "show_po_field": true,
-        "po_field_label": "Purchase Order Number",
-        "po_field_placeholder": "e.g. PO-2024-1234",
-        "po_field_optional_label": "optional",
-        "show_notes_field": true,
-        "notes_field_label": "Order Notes / Special Instructions",
-        "notes_field_placeholder": "e.g. Please ship to back dock. Do not substitute brands.",
-        "save_btn_label": "Save Details",
-        "saved_confirmation": "Details saved successfully",
-        "padding_vertical": 24,
-        "padding_horizontal": 24,
-        "background_color": "#F5F7FA",
-        "border_color": "#D1D5DB",
-        "label_color": "#003B56",
+        "hero_badge": "Just Arrived",
+        "hero_title": "New Products",
+        "hero_subtitle": "Discover the latest additions to our dental lab supply range — new brands, new materials, and new innovations from Europe.",
+        "hero_cta_label": "Browse New Arrivals",
+        "hero_cta_link": "/collections/new-arrivals",
+        "hero_padding_top": 80,
+        "hero_padding_bottom": 80,
+        "highlights_heading": "What's New This Season",
+        "highlights_subheading": "Fresh stock, new suppliers, and expanded ranges — curated for Australian dental laboratories.",
+        "highlight_columns": 3,
+        "highlights_padding_top": 70,
+        "highlights_padding_bottom": 70,
+        "show_cta_strip": true,
+        "cta_strip_title": "Want First Access to New Products?",
+        "cta_strip_text": "Apply for a trade account to receive new product notifications, priority access, and exclusive pricing.",
+        "cta_strip_btn_label": "Apply for Trade Account",
+        "cta_strip_btn_link": "/pages/trade-account",
+        "hero_bg_start": "#003B56",
+        "hero_bg_end": "#005A7A",
+        "hero_text_color": "#FFFFFF",
         "accent_color": "#03B239",
-        "btn_text_color": "#FFFFFF"
+        "cta_text_color": "#FFFFFF",
+        "highlights_bg": "#F5F7FA",
+        "card_bg": "#FFFFFF",
+        "card_border": "#E5E7EB",
+        "title_color": "#003B56",
+        "body_color": "#555555"
       }
     },
-    "product_list_NNFgcy": {
+    "new_products_list": {
       "type": "product-list",
       "blocks": {
         "static-header": {
           "type": "_product-list-content",
-          "name": "t:names.header",
+          "name": "New Arrivals Header",
           "static": true,
           "settings": {
             "content_direction": "row",
@@ -115,22 +113,22 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_list_text_fifeh4": {
+            "header_text": {
               "type": "_product-list-text",
-              "name": "t:names.collection_title",
+              "name": "Header Text",
               "settings": {
-                "text": "<h3>You may also like</h3>",
+                "text": "<h3>Latest Arrivals</h3>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h4",
+                "type_preset": "h3",
                 "font": "var(--font-body--family)",
                 "font_size": "",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "color": "var(--color-foreground)",
+                "color": "var(--color-foreground-heading)",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -141,11 +139,11 @@
               },
               "blocks": {}
             },
-            "product_list_button_eibbma": {
+            "header_btn": {
               "type": "_product-list-button",
-              "name": "t:names.product_list_button",
+              "name": "View All Button",
               "settings": {
-                "label": "View all",
+                "label": "View all new products",
                 "open_in_new_tab": false,
                 "style_class": "link",
                 "width": "fit-content",
@@ -157,8 +155,8 @@
             }
           },
           "block_order": [
-            "product_list_text_fifeh4",
-            "product_list_button_eibbma"
+            "header_text",
+            "header_btn"
           ]
         },
         "static-product-card": {
@@ -166,28 +164,27 @@
           "name": "t:names.product_card",
           "static": true,
           "settings": {
-            "product_card_gap": 4,
+            "product_card_gap": 8,
             "inherit_color_scheme": true,
             "color_scheme": "",
-            "border": "none",
+            "border": "all",
             "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "border_opacity": 15,
+            "border_radius": 8,
+            "padding-block-start": 12,
+            "padding-block-end": 12,
+            "padding-inline-start": 12,
+            "padding-inline-end": 12
           },
           "blocks": {
-            "product_card_gallery_PEPpfq": {
+            "product_card_gallery": {
               "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
               "settings": {
                 "image_ratio": "adapt",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
-                "border_radius": 0,
+                "border_radius": 4,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -195,38 +192,44 @@
               },
               "blocks": {}
             },
-            "product_title_WNMpHe": {
+            "product_title": {
               "type": "product-title",
-              "name": "t:names.product_title",
               "settings": {
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
+                "font_size": "0.938rem",
+                "line_height": "1.4",
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "color": "var(--color-foreground)",
+                "color": "var(--color-foreground-heading)",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
+                "padding-block-start": 8,
+                "padding-block-end": 4,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
               "blocks": {}
             },
-            "price_yXfkPX": {
+            "sku_display": {
+              "type": "custom-liquid",
+              "name": "SKU Display",
+              "settings": {
+                "custom_liquid": "<p style=\"font-size: 0.813rem; color: #666; margin: 4px 0 8px 0;\">SKU: {{ product.variants.first.sku }}</p>"
+              },
+              "blocks": {}
+            },
+            "product_price": {
               "type": "price",
-              "name": "t:names.product_price",
               "settings": {
                 "show_sale_price_first": true,
                 "show_installments": false,
-                "show_tax_info": false,
+                "show_tax_info": true,
                 "type_preset": "h6",
                 "width": "100%",
                 "alignment": "left",
@@ -235,7 +238,7 @@
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
-                "color": "var(--color-foreground)",
+                "color": "var(--color-primary)",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -245,37 +248,38 @@
             }
           },
           "block_order": [
-            "product_card_gallery_PEPpfq",
-            "product_title_WNMpHe",
-            "price_yXfkPX"
+            "product_card_gallery",
+            "product_title",
+            "sku_display",
+            "product_price"
           ]
         }
       },
-      "name": "Featured collection",
+      "name": "New Arrivals Products",
       "settings": {
-        "collection": "all",
+        "collection": "new-arrivals",
         "layout_type": "grid",
         "carousel_on_mobile": false,
-        "max_products": 4,
+        "max_products": 12,
         "columns": 4,
         "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 8,
+        "mobile_card_size": "75cqw",
+        "columns_gap": 16,
         "rows_gap": 24,
         "icons_style": "arrow",
-        "icons_shape": "none",
+        "icons_shape": "circle",
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
-        "gap": 28,
+        "gap": 32,
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-end": 64
       }
     }
   },
   "order": [
-    "cart-section",
-    "cart_po_field",
-    "product_list_NNFgcy"
+    "main",
+    "new_products_hero",
+    "new_products_list"
   ]
 }

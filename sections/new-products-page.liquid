@@ -1,0 +1,585 @@
+{% comment %}
+  New Products Landing Page Section - 3 Delta Dental
+  Features: hero banner, new arrivals highlights, feature callouts
+  Fully editable from theme editor
+{% endcomment %}
+
+{%- liquid
+  assign hero_bg_start = section.settings.hero_bg_start
+  assign hero_bg_end   = section.settings.hero_bg_end
+  assign accent_color  = section.settings.accent_color
+  assign text_color    = section.settings.hero_text_color
+-%}
+
+{%- style -%}
+  .np-page {
+    font-family: var(--font-body--family, sans-serif);
+  }
+
+  /* Hero */
+  .np-hero {
+    background: linear-gradient(135deg, {{ hero_bg_start }} 0%, {{ hero_bg_end }} 100%);
+    color: {{ text_color }};
+    padding: {{ section.settings.hero_padding_top }}px 2rem {{ section.settings.hero_padding_bottom }}px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .np-hero::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .np-hero__container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .np-hero__badge {
+    display: inline-block;
+    background-color: {{ accent_color }};
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.25rem;
+  }
+
+  .np-hero__title {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 1rem 0;
+    color: {{ text_color }};
+  }
+
+  .np-hero__subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    opacity: 0.92;
+    margin: 0 0 2rem 0;
+    line-height: 1.6;
+  }
+
+  .np-hero__cta {
+    display: inline-block;
+    background-color: {{ accent_color }};
+    color: {{ section.settings.cta_text_color }};
+    padding: 1rem 2.5rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .np-hero__cta:hover {
+    opacity: 0.88;
+    transform: translateY(-2px);
+  }
+
+  /* Feature highlights */
+  .np-highlights {
+    background-color: {{ section.settings.highlights_bg }};
+    padding: {{ section.settings.highlights_padding_top }}px 2rem {{ section.settings.highlights_padding_bottom }}px;
+  }
+
+  .np-highlights__container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .np-highlights__heading {
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    margin: 0 0 0.5rem 0;
+  }
+
+  .np-highlights__subheading {
+    text-align: center;
+    font-size: 1.0625rem;
+    color: {{ section.settings.body_color }};
+    margin: 0 0 2.5rem 0;
+  }
+
+  .np-highlights__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.highlight_columns }}, 1fr);
+    gap: 1.5rem;
+  }
+
+  .np-highlight-card {
+    background: {{ section.settings.card_bg }};
+    border: 1px solid {{ section.settings.card_border }};
+    border-radius: 10px;
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .np-highlight-card__icon {
+    font-size: 2.25rem;
+  }
+
+  .np-highlight-card__badge {
+    display: inline-block;
+    background-color: {{ accent_color }};
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.625rem;
+    border-radius: 50px;
+    width: fit-content;
+  }
+
+  .np-highlight-card__title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: {{ section.settings.title_color }};
+    margin: 0;
+  }
+
+  .np-highlight-card__desc {
+    font-size: 0.9rem;
+    color: {{ section.settings.body_color }};
+    margin: 0;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .np-highlight-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: {{ accent_color }};
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    margin-top: 0.5rem;
+  }
+
+  .np-highlight-card__link:hover {
+    text-decoration: underline;
+  }
+
+  /* CTA strip */
+  .np-cta-strip {
+    background: linear-gradient(135deg, {{ hero_bg_start }} 0%, {{ hero_bg_end }} 100%);
+    padding: 3rem 2rem;
+    text-align: center;
+    color: {{ text_color }};
+  }
+
+  .np-cta-strip__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .np-cta-strip__text {
+    font-size: 1.0625rem;
+    opacity: 0.9;
+    margin: 0 0 1.75rem 0;
+  }
+
+  .np-cta-strip__btn {
+    display: inline-block;
+    background-color: #FED440;
+    color: #003B56;
+    padding: 1rem 2.5rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .np-cta-strip__btn:hover {
+    opacity: 0.88;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 900px) {
+    .np-highlights__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .np-highlights__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+{%- endstyle -%}
+
+<div class="np-page">
+  <!-- Hero -->
+  <div class="np-hero">
+    <div class="np-hero__container">
+      {% if section.settings.hero_badge != blank %}
+        <span class="np-hero__badge">{{ section.settings.hero_badge }}</span>
+      {% endif %}
+      <h1 class="np-hero__title">{{ section.settings.hero_title }}</h1>
+      {% if section.settings.hero_subtitle != blank %}
+        <p class="np-hero__subtitle">{{ section.settings.hero_subtitle }}</p>
+      {% endif %}
+      {% if section.settings.hero_cta_label != blank %}
+        <a href="{{ section.settings.hero_cta_link }}" class="np-hero__cta">
+          {{ section.settings.hero_cta_label }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Highlight Cards -->
+  {% assign highlight_blocks = section.blocks | where: 'type', 'highlight_card' %}
+  {% if highlight_blocks.size > 0 %}
+    <div class="np-highlights">
+      <div class="np-highlights__container">
+        {% if section.settings.highlights_heading != blank %}
+          <h2 class="np-highlights__heading">{{ section.settings.highlights_heading }}</h2>
+        {% endif %}
+        {% if section.settings.highlights_subheading != blank %}
+          <p class="np-highlights__subheading">{{ section.settings.highlights_subheading }}</p>
+        {% endif %}
+        <div class="np-highlights__grid">
+          {% for block in highlight_blocks %}
+            <div class="np-highlight-card" {{ block.shopify_attributes }}>
+              {% if block.settings.icon != blank %}
+                <span class="np-highlight-card__icon" aria-hidden="true">{{ block.settings.icon }}</span>
+              {% endif %}
+              {% if block.settings.badge != blank %}
+                <span class="np-highlight-card__badge">{{ block.settings.badge }}</span>
+              {% endif %}
+              <p class="np-highlight-card__title">{{ block.settings.title }}</p>
+              {% if block.settings.description != blank %}
+                <p class="np-highlight-card__desc">{{ block.settings.description }}</p>
+              {% endif %}
+              {% if block.settings.link_label != blank and block.settings.link != blank %}
+                <a href="{{ block.settings.link }}" class="np-highlight-card__link">
+                  {{ block.settings.link_label }} &rarr;
+                </a>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- CTA Strip -->
+  {% if section.settings.show_cta_strip %}
+    <div class="np-cta-strip">
+      {% if section.settings.cta_strip_title != blank %}
+        <h2 class="np-cta-strip__title">{{ section.settings.cta_strip_title }}</h2>
+      {% endif %}
+      {% if section.settings.cta_strip_text != blank %}
+        <p class="np-cta-strip__text">{{ section.settings.cta_strip_text }}</p>
+      {% endif %}
+      {% if section.settings.cta_strip_btn_label != blank %}
+        <a href="{{ section.settings.cta_strip_btn_link }}" class="np-cta-strip__btn">
+          {{ section.settings.cta_strip_btn_label }}
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "New Products Page",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "hero_badge",
+      "label": "Hero Badge Text",
+      "default": "Just Arrived"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "New Products"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Discover the latest additions to our dental lab supply range — new brands, new materials, and new innovations from Europe."
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_label",
+      "label": "Hero CTA Button Label",
+      "default": "Browse New Arrivals"
+    },
+    {
+      "type": "url",
+      "id": "hero_cta_link",
+      "label": "Hero CTA Button Link"
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_top",
+      "label": "Hero Padding Top (px)",
+      "min": 40,
+      "max": 160,
+      "step": 10,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "hero_padding_bottom",
+      "label": "Hero Padding Bottom (px)",
+      "min": 40,
+      "max": 160,
+      "step": 10,
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Highlights Section"
+    },
+    {
+      "type": "text",
+      "id": "highlights_heading",
+      "label": "Section Heading",
+      "default": "What's New This Season"
+    },
+    {
+      "type": "text",
+      "id": "highlights_subheading",
+      "label": "Section Subheading",
+      "default": "Fresh stock, new suppliers, and expanded ranges — curated for Australian dental laboratories."
+    },
+    {
+      "type": "range",
+      "id": "highlight_columns",
+      "label": "Columns (Desktop)",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "highlights_padding_top",
+      "label": "Section Padding Top (px)",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "highlights_padding_bottom",
+      "label": "Section Padding Bottom (px)",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "default": 70
+    },
+    {
+      "type": "header",
+      "content": "CTA Strip"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta_strip",
+      "label": "Show CTA Strip",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_strip_title",
+      "label": "CTA Strip Title",
+      "default": "Want First Access to New Products?"
+    },
+    {
+      "type": "text",
+      "id": "cta_strip_text",
+      "label": "CTA Strip Text",
+      "default": "Apply for a trade account to receive new product notifications, priority access, and exclusive pricing."
+    },
+    {
+      "type": "text",
+      "id": "cta_strip_btn_label",
+      "label": "CTA Strip Button Label",
+      "default": "Apply for Trade Account"
+    },
+    {
+      "type": "url",
+      "id": "cta_strip_btn_link",
+      "label": "CTA Strip Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_start",
+      "label": "Hero Gradient Start",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_end",
+      "label": "Hero Gradient End",
+      "default": "#005A7A"
+    },
+    {
+      "type": "color",
+      "id": "hero_text_color",
+      "label": "Hero Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#03B239"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "Button Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "highlights_bg",
+      "label": "Highlights Background",
+      "default": "#F5F7FA"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Card Border",
+      "default": "#E5E7EB"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body Text Color",
+      "default": "#555555"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "highlight_card",
+      "name": "Highlight Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "✨"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge Text",
+          "default": "New"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "New Product Category"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Card Description",
+          "default": "Describe what is new and why it matters to dental labs."
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link Label",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Products Page",
+      "blocks": [
+        {
+          "type": "highlight_card",
+          "settings": {
+            "icon": "🦷",
+            "badge": "New",
+            "title": "New Acrylics Range",
+            "description": "Expanded shade options and faster processing acrylics from our European partners.",
+            "link_label": "Shop Acrylics"
+          }
+        },
+        {
+          "type": "highlight_card",
+          "settings": {
+            "icon": "💎",
+            "badge": "Just In",
+            "title": "Zirconia Materials",
+            "description": "High-translucency and multi-layer zirconia blanks for CAD/CAM workflows.",
+            "link_label": "Shop CAD/CAM"
+          }
+        },
+        {
+          "type": "highlight_card",
+          "settings": {
+            "icon": "🔧",
+            "badge": "Expanded",
+            "title": "Lab Equipment",
+            "description": "New machinery and tools to optimise your lab workflow.",
+            "link_label": "Shop Equipment"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

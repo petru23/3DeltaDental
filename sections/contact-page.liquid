@@ -1,0 +1,539 @@
+{% comment %}
+  Contact Page Section - Fully Editable
+{% endcomment %}
+
+{%- style -%}
+  .contact-hero {
+    background: linear-gradient(135deg, {{ section.settings.hero_bg_start }} 0%, {{ section.settings.hero_bg_end }} 100%);
+    color: {{ section.settings.hero_text_color }};
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .contact-hero__container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .contact-hero__title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: {{ section.settings.hero_text_color }};
+  }
+  .contact-hero__subtitle {
+    font-size: 1.25rem;
+    opacity: 0.95;
+  }
+  .contact-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+  .contact-alert {
+    background: #F7F7F7;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+  }
+  .contact-alert__text {
+    text-align: center;
+    color: #DC3545;
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin: 0;
+  }
+  .contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  .contact-card {
+    text-align: center;
+    padding: 2rem;
+    background: #F7F7F7;
+    border-radius: 8px;
+  }
+  .contact-card--highlight {
+    background: linear-gradient(135deg, {{ section.settings.highlight_bg_start }} 0%, {{ section.settings.highlight_bg_end }} 100%);
+    color: white;
+  }
+  .contact-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .contact-card__title {
+    color: {{ section.settings.card_title_color }};
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+  .contact-card--highlight .contact-card__title {
+    color: white;
+  }
+  .contact-card__content {
+    line-height: 1.6;
+  }
+  .contact-card--highlight .contact-card__content {
+    opacity: 0.95;
+  }
+  .contact-link {
+    color: {{ section.settings.link_color }};
+    text-decoration: none;
+  }
+  .contact-link:hover {
+    text-decoration: underline;
+  }
+  .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem 2rem;
+  }
+  .contact-form__title {
+    color: {{ section.settings.card_title_color }};
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .contact-form__intro {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .contact-form__field {
+    margin-bottom: 1rem;
+  }
+  .contact-form__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  .contact-form__input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+  }
+  .contact-form__button {
+    width: 100%;
+    padding: 1rem;
+    background: {{ section.settings.button_bg_color }};
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .contact-form__button:hover {
+    opacity: 0.9;
+  }
+  @media (max-width: 768px) {
+    .contact-hero__title {
+      font-size: 2rem;
+    }
+    .contact-form__title {
+      font-size: 1.5rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="contact-hero">
+  <div class="contact-hero__container">
+    <h1 class="contact-hero__title">{{ section.settings.hero_title }}</h1>
+    <p class="contact-hero__subtitle">{{ section.settings.hero_subtitle }}</p>
+  </div>
+</div>
+
+<div class="contact-content">
+  {%- if section.settings.show_alert -%}
+    <div class="contact-alert">
+      <p class="contact-alert__text">⚠️ {{ section.settings.alert_text }}</p>
+    </div>
+  {%- endif -%}
+
+  <div class="contact-info">
+    <div class="contact-card">
+      <div class="contact-card__icon">📍</div>
+      <h3 class="contact-card__title">{{ section.settings.address_title }}</h3>
+      <div class="contact-card__content">{{ section.settings.address_line_1 }}<br>{{ section.settings.address_line_2 }}<br>{{ section.settings.address_line_3 }}</div>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-card__icon">📧</div>
+      <h3 class="contact-card__title">{{ section.settings.email_title }}</h3>
+      <div class="contact-card__content">
+        <a href="mailto:{{ section.settings.email_address }}" class="contact-link">{{ section.settings.email_address }}</a>
+        {%- if section.settings.email_note != blank -%}
+          <p style="font-size: 0.875rem; color: #666; margin-top: 0.5rem;">{{ section.settings.email_note }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-card__icon">📞</div>
+      <h3 class="contact-card__title">{{ section.settings.phone_title }}</h3>
+      <div class="contact-card__content">
+        <strong>{{ section.settings.phone_1_label }}</strong><br>
+        <a href="tel:{{ section.settings.phone_1_number | remove: ' ' }}" class="contact-link">{{ section.settings.phone_1_number }}</a><br><br>
+        <strong>{{ section.settings.phone_2_label }}</strong><br>
+        <a href="tel:{{ section.settings.phone_2_number | remove: ' ' }}" class="contact-link">{{ section.settings.phone_2_number }}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-info">
+    <div class="contact-card">
+      <div class="contact-card__icon">🕒</div>
+      <h3 class="contact-card__title">{{ section.settings.hours_title }}</h3>
+      <div class="contact-card__content">
+        <strong>{{ section.settings.hours_weekday_label }}</strong><br>
+        {{ section.settings.hours_weekday_time }}<br><br>
+        <strong>{{ section.settings.hours_closed_label }}</strong><br>
+        {{ section.settings.hours_closed_days }}
+        {%- if section.settings.hours_note != blank -%}
+          <p style="font-size: 0.875rem; color: #666; margin-top: 1rem;">{{ section.settings.hours_note }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="contact-card contact-card--highlight">
+      <div class="contact-card__icon">⏰</div>
+      <h3 class="contact-card__title">{{ section.settings.support_title }}</h3>
+      <div class="contact-card__content">{{ section.settings.support_text }}</div>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-card__icon">🏢</div>
+      <h3 class="contact-card__title">{{ section.settings.abn_title }}</h3>
+      <div class="contact-card__content" style="font-size: 1.125rem; font-weight: 600;">{{ section.settings.abn_number }}</div>
+    </div>
+  </div>
+</div>
+
+{%- if section.settings.show_form -%}
+  <div class="contact-form">
+    <h2 class="contact-form__title">{{ section.settings.form_title }}</h2>
+    <p class="contact-form__intro">{{ section.settings.form_intro }}</p>
+    {% form 'contact' %}
+      <div class="contact-form__field">
+        <label for="ContactForm-name" class="contact-form__label">{{ section.settings.form_name_label }} *</label>
+        <input type="text" id="ContactForm-name" name="contact[name]" required class="contact-form__input">
+      </div>
+      <div class="contact-form__field">
+        <label for="ContactForm-email" class="contact-form__label">{{ section.settings.form_email_label }} *</label>
+        <input type="email" id="ContactForm-email" name="contact[email]" required class="contact-form__input">
+      </div>
+      <div class="contact-form__field">
+        <label for="ContactForm-phone" class="contact-form__label">{{ section.settings.form_phone_label }}</label>
+        <input type="tel" id="ContactForm-phone" name="contact[phone]" class="contact-form__input">
+      </div>
+      <div class="contact-form__field">
+        <label for="ContactForm-message" class="contact-form__label">{{ section.settings.form_message_label }} *</label>
+        <textarea id="ContactForm-message" name="contact[body]" rows="6" required class="contact-form__input" style="resize: vertical;"></textarea>
+      </div>
+      <button type="submit" class="contact-form__button">{{ section.settings.form_button_text }}</button>
+    {% endform %}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Contact Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Contact Us"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "We're here to help with your dental lab supply needs"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_start",
+      "label": "Hero Background Start Color",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_end",
+      "label": "Hero Background End Color",
+      "default": "#005A7A"
+    },
+    {
+      "type": "color",
+      "id": "hero_text_color",
+      "label": "Hero Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Alert Banner"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_alert",
+      "label": "Show Alert Banner",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "alert_text",
+      "label": "Alert Text",
+      "default": "We are not a retail store and do not have a retail display. Please contact us prior to arriving."
+    },
+    {
+      "type": "header",
+      "content": "Address"
+    },
+    {
+      "type": "text",
+      "id": "address_title",
+      "label": "Address Title",
+      "default": "Address"
+    },
+    {
+      "type": "text",
+      "id": "address_line_1",
+      "label": "Address Line 1",
+      "default": "1/5a Ashton Street"
+    },
+    {
+      "type": "text",
+      "id": "address_line_2",
+      "label": "Address Line 2",
+      "default": "Labrador, Queensland"
+    },
+    {
+      "type": "text",
+      "id": "address_line_3",
+      "label": "Address Line 3",
+      "default": "Australia 4215"
+    },
+    {
+      "type": "header",
+      "content": "Email"
+    },
+    {
+      "type": "text",
+      "id": "email_title",
+      "label": "Email Title",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "email_address",
+      "label": "Email Address",
+      "default": "info@3deltadental.com"
+    },
+    {
+      "type": "text",
+      "id": "email_note",
+      "label": "Email Note",
+      "default": "Fax not available - email preferred"
+    },
+    {
+      "type": "header",
+      "content": "Phone"
+    },
+    {
+      "type": "text",
+      "id": "phone_title",
+      "label": "Phone Title",
+      "default": "Phone"
+    },
+    {
+      "type": "text",
+      "id": "phone_1_label",
+      "label": "Phone 1 Label",
+      "default": "Sales (Emilio Ragazzo):"
+    },
+    {
+      "type": "text",
+      "id": "phone_1_number",
+      "label": "Phone 1 Number",
+      "default": "0448 419 050"
+    },
+    {
+      "type": "text",
+      "id": "phone_2_label",
+      "label": "Phone 2 Label",
+      "default": "Technical Support:"
+    },
+    {
+      "type": "text",
+      "id": "phone_2_number",
+      "label": "Phone 2 Number",
+      "default": "0478 731 344"
+    },
+    {
+      "type": "header",
+      "content": "Business Hours"
+    },
+    {
+      "type": "text",
+      "id": "hours_title",
+      "label": "Hours Title",
+      "default": "Business Hours"
+    },
+    {
+      "type": "text",
+      "id": "hours_weekday_label",
+      "label": "Weekday Label",
+      "default": "Monday to Friday:"
+    },
+    {
+      "type": "text",
+      "id": "hours_weekday_time",
+      "label": "Weekday Time",
+      "default": "9:00am – 6:00pm (AEST)"
+    },
+    {
+      "type": "text",
+      "id": "hours_closed_label",
+      "label": "Closed Label",
+      "default": "Closed:"
+    },
+    {
+      "type": "textarea",
+      "id": "hours_closed_days",
+      "label": "Closed Days",
+      "default": "Weekends, QLD/National Public Holidays, and Christmas Holidays"
+    },
+    {
+      "type": "text",
+      "id": "hours_note",
+      "label": "Hours Note",
+      "default": "Orders not processed outside business hours"
+    },
+    {
+      "type": "header",
+      "content": "24/7 Support Highlight"
+    },
+    {
+      "type": "text",
+      "id": "support_title",
+      "label": "Support Title",
+      "default": "24/7 Technical Support"
+    },
+    {
+      "type": "textarea",
+      "id": "support_text",
+      "label": "Support Text",
+      "default": "Round-the-clock technical assistance available for our customers"
+    },
+    {
+      "type": "color",
+      "id": "highlight_bg_start",
+      "label": "Highlight Background Start Color",
+      "default": "#03B239"
+    },
+    {
+      "type": "color",
+      "id": "highlight_bg_end",
+      "label": "Highlight Background End Color",
+      "default": "#029A2F"
+    },
+    {
+      "type": "header",
+      "content": "ABN"
+    },
+    {
+      "type": "text",
+      "id": "abn_title",
+      "label": "ABN Title",
+      "default": "ABN"
+    },
+    {
+      "type": "text",
+      "id": "abn_number",
+      "label": "ABN Number",
+      "default": "67 354 783 242"
+    },
+    {
+      "type": "header",
+      "content": "Contact Form"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_form",
+      "label": "Show Contact Form",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Form Title",
+      "default": "Send us a message"
+    },
+    {
+      "type": "textarea",
+      "id": "form_intro",
+      "label": "Form Introduction",
+      "default": "Please include your Business Name, Contact Name (First and Last), and details about your enquiry. We'll respond during business hours."
+    },
+    {
+      "type": "text",
+      "id": "form_name_label",
+      "label": "Name Field Label",
+      "default": "Name"
+    },
+    {
+      "type": "text",
+      "id": "form_email_label",
+      "label": "Email Field Label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "form_phone_label",
+      "label": "Phone Field Label",
+      "default": "Phone"
+    },
+    {
+      "type": "text",
+      "id": "form_message_label",
+      "label": "Message Field Label",
+      "default": "Message"
+    },
+    {
+      "type": "text",
+      "id": "form_button_text",
+      "label": "Button Text",
+      "default": "Send Message"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card Titles Color",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link Color",
+      "default": "#03B239"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#03B239"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Page"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,212 @@
+{% comment %}
+  Policy Page Section - For Privacy, Terms, Shipping pages
+  Fully Editable with Rich Text Blocks
+{% endcomment %}
+
+{%- style -%}
+  .policy-hero {
+    background: linear-gradient(135deg, {{ section.settings.hero_bg_start }} 0%, {{ section.settings.hero_bg_end }} 100%);
+    color: {{ section.settings.hero_text_color }};
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .policy-hero__container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .policy-hero__title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: {{ section.settings.hero_text_color }};
+  }
+  .policy-hero__subtitle {
+    font-size: 1.125rem;
+    opacity: 0.95;
+  }
+  .policy-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+  .policy-section {
+    margin-bottom: 3rem;
+  }
+  .policy-section__title {
+    color: {{ section.settings.section_title_color }};
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  .policy-section__content {
+    line-height: 1.8;
+  }
+  .policy-section__content p {
+    margin-bottom: 1rem;
+  }
+  .policy-section__content ul,
+  .policy-section__content ol {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.8;
+  }
+  .policy-section__content a {
+    color: {{ section.settings.link_color }};
+  }
+  .policy-section__content strong {
+    font-weight: 600;
+  }
+  .policy-section--highlight {
+    background: #F7F7F7;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  .policy-section--warning {
+    background: #FFF8E1;
+    padding: 2rem;
+    border-left: 4px solid #FED440;
+  }
+  .policy-section--success {
+    background: #E8F5E9;
+    padding: 2rem;
+    border-left: 4px solid #03B239;
+  }
+  @media (max-width: 768px) {
+    .policy-hero__title {
+      font-size: 2rem;
+    }
+    .policy-section__title {
+      font-size: 1.5rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="policy-hero">
+  <div class="policy-hero__container">
+    <h1 class="policy-hero__title">{{ section.settings.hero_title }}</h1>
+    {%- if section.settings.hero_subtitle != blank -%}
+      <p class="policy-hero__subtitle">{{ section.settings.hero_subtitle }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+<div class="policy-content">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when 'text_section' -%}
+        <div class="policy-section{% if block.settings.highlight_style != 'none' %} policy-section--{{ block.settings.highlight_style }}{% endif %}" {{ block.shopify_attributes }}>
+          {%- if block.settings.title != blank -%}
+            <h2 class="policy-section__title">{{ block.settings.title }}</h2>
+          {%- endif -%}
+          <div class="policy-section__content">
+            {{ block.settings.content }}
+          </div>
+        </div>
+    {%- endcase -%}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Policy Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Privacy Policy"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle (optional)",
+      "default": "Last Updated: 27 March 2024"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_start",
+      "label": "Hero Background Start Color",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "hero_bg_end",
+      "label": "Hero Background End Color",
+      "default": "#005A7A"
+    },
+    {
+      "type": "color",
+      "id": "hero_text_color",
+      "label": "Hero Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Content Styling"
+    },
+    {
+      "type": "color",
+      "id": "section_title_color",
+      "label": "Section Titles Color",
+      "default": "#003B56"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link Color",
+      "default": "#03B239"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_section",
+      "name": "Text Section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Section Title",
+          "default": "Section Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Add your content here. You can use <strong>bold</strong>, <em>italic</em>, lists, and links.</p>"
+        },
+        {
+          "type": "select",
+          "id": "highlight_style",
+          "label": "Background Style",
+          "options": [
+            {
+              "value": "none",
+              "label": "None (white)"
+            },
+            {
+              "value": "highlight",
+              "label": "Light gray box"
+            },
+            {
+              "value": "warning",
+              "label": "Yellow box (warnings)"
+            },
+            {
+              "value": "success",
+              "label": "Green box (highlights)"
+            }
+          ],
+          "default": "none"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Policy Page"
+    }
+  ]
+}
+{% endschema %}
